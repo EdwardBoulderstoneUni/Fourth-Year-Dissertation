@@ -1,11 +1,59 @@
 Intro:
+What is netcode?
 What is rollback netcode?
+What existed before rollback?
 Why is it important
 Why have you done the study on it?
 
 
-Aims and Objectives (1 aim 5 ish objectives)
+Aims and Objectives
 Aim: To investigate rollback netcode, it's  in industry and any short comings of existing rollback netcode infrastructure
 
 Objectives:
-1) Understand 
+1) Understand rollback netcode and the effects on the games it's implemented in
+2) Explore the missing optimizations and issues in implementing rollback netcode in existing industry products
+3) Create a visualization/implementation of rollback netcode to demonstrate more clearly the useage of rollback
+4) Investigate further usages of rollback that can be applied elsewhere in the industry
+
+
+What you did and how.
+Games that have implemented first party rollback:
+SFV, MK11, Skull girls, GGST, KI, DBFZ, BBCF, Tekken 7, Brawlhalla, Melty Blood type lumina
+
+games that have had difficulty implementing rollback:
+SFV, MK11, Tekken 7, Melty Blood type lumina
+
+games that have added third party rollback:
+Melee, third strike, MVC2, SF2T, KOF2002, Metal Slug X
+
+Noteable games without:
+GBFV, Smash Bros Ultimate, UNICLR, SAMSHO, Soulcalibur VI, GGxrd, DOA 6, EA Sports UFC 4
+
+Difficulties of implmenting:
+- separate gameplay from rendering
+- serializable game state
+- particle simulation 
+- object lifetime 
+- sound fx
+- animation system
+- UI
+- desync detection
+
+- one sided rollbacks
+- optimization
+
+Genres that rollback could apply to (and why/why not?):
+Shooters, RTS (Including sports games), MMO, RPG, Racing Games, 
+researched GGPO
+
+Devloped Unity game (Big)
+
+Read existing rollback studies
+
+
+
+Evaluation:
+Re-evaluate objectives and soultions to them
+
+
+Conclusions and further works

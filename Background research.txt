@@ -7,6 +7,7 @@ https://dl.acm.org/doi/abs/10.1145/3519023 -> latency compenstation techniques
 
 Rollback netcode discussion:
 https://ki.infil.net/w02-netcode.html
+https://www.youtube.com/watch?v=pWkDU1YQTtE - >????
 
 Implementing rollback:
 https://www.youtube.com/watch?v=7jb0FOcImdg
@@ -17,8 +18,7 @@ https://github.com/pond3r/ggpo -> Source code for GGPO and a sample game
 https://www.ggpo.net/
 
 Difficulties:
-https://twitter.com/CMZinac/status/1181878689270599680?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1181878689270599680%7Ctwgr%5E%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fki.infil.net%2Fw02-netcode-p5.html
--> Systems with extra needed functionallity when using rollback
+https://twitter.com/CMZinac/status/1181878689270599680 -> Systems with extra needed functionallity when using rollback
 https://twitter.com/CMZinac/status/1183027367834308608
 https://www.twitch.tv/videos/493574286
 https://web.archive.org/web/20210228051849/https://mauve.mizuumi.net/2012/07/05/understanding-fighting-game-networking.html -> Guide on solving networking issues with GGPO
@@ -40,3 +40,5 @@ https://wondernetwork.com/pings -> ping anywhere in the world
 
 Experiment with delay + rollback quanitities?
 dealing with corrupted packets?
+
+https://gamesight.io/leaderboards/fighting-games
