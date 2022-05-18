@@ -1,0 +1,11 @@
+Intro:
+What is rollback netcode?
+Why is it important
+Why have you done the study on it?
+
+
+Aims and Objectives (1 aim 5 ish objectives)
+Aim: To investigate rollback netcode, it's  in industry and any short comings of existing rollback netcode infrastructure
+
+Objectives:
+1) Understand 
