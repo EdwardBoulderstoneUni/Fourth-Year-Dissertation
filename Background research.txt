@@ -4,6 +4,7 @@ https://cameroncohu.com/wp-content/uploads/2021/05/Rollback-Networking-in-Peer-t
 https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1322881&dswid=17 -> modeling states in delay and roll back networked games
 https://ieeexplore.ieee.org/abstract/document/7991545 -> "shot around the corner" networking issues for fps games
 https://dl.acm.org/doi/abs/10.1145/3519023 -> latency compenstation techniques
+https://gafferongames.com/ -> rollback in other genres
 
 Rollback netcode discussion:
 https://ki.infil.net/w02-netcode.html

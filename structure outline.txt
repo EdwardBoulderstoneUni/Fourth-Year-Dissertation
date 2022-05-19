@@ -5,6 +5,8 @@ What existed before rollback?
 Why is it important
 Why have you done the study on it?
 
+Centralised rollback?
+
 
 Aims and Objectives
 Aim: To investigate rollback netcode, it's  in industry and any short comings of existing rollback netcode infrastructure
@@ -19,6 +21,7 @@ Objectives:
 What you did and how.
 Games that have implemented first party rollback:
 SFV, MK11, Skull girls, GGST, KI, DBFZ, BBCF, Tekken 7, Brawlhalla, Melty Blood type lumina
+rocket league,
 
 games that have had difficulty implementing rollback:
 SFV, MK11, Tekken 7, Melty Blood type lumina
@@ -43,7 +46,8 @@ Difficulties of implmenting:
 - optimization
 
 Genres that rollback could apply to (and why/why not?):
-Shooters, RTS (Including sports games), MMO, RPG, Racing Games, 
+Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 
+Shooters (Need for visual consistency (shot around corner), existing soultion?) , RTS (Including sports games), MMO, RPG, Racing Games, 
 researched GGPO
 
 Devloped Unity game (Big)
