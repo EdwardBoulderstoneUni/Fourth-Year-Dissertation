@@ -2,6 +2,7 @@ using UnityEngine;
 public struct InputStruct{
     public bool jump;
     public int horizontalMove;
+    public int frameCount;
 }
 public class LocalInput : MonoBehaviour
 {

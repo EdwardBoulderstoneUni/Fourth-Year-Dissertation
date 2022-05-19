@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine; 
-public class DelayBased
+public class DelayBased : Netcode
 {
-    struct Packet{
-        InputStruct input;
-        int frameCount; 
-    }
-
-    public void update()
+    // TODO need to implement
+    override public void update(InputStruct input)
     {
         
+    }
+    override public InputStruct getRemoteInput()
+    {
+
     }
 }

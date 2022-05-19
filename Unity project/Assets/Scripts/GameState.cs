@@ -18,7 +18,7 @@ public class GameState : MonoBehaviour
     private InputQueue[] inputQueues = new InputQueue[2];
     private InputStruct remoteInput;
     private int frameCount;
-    private Netcode netcode;
+    private NetcodeManager netcodeManager;
 
     public State getState(){
         State state = new State();
@@ -28,9 +28,9 @@ public class GameState : MonoBehaviour
         return state;
     }
     void Start(){
-        netcode = gameObject.GetComponentInParent<Netcode>();
+        netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
         for(int character = 0; character < 2; character ++){
-            inputQueues[character] = new InputQueue(netcode.delayFrames[localPlayer] * 2);
+            inputQueues[character] = new InputQueue(netcodeManager.delayFrames[localPlayer] * 2);
         }
     }
     public void loadState(State state){
@@ -52,25 +52,27 @@ public class GameState : MonoBehaviour
         
     }
     void readLocalInput(){
-        inputQueues[localPlayer].push(localInput.getInput());
+        InputStruct userInput = localInput.getInput();
+        userInput.frameCount = frameCount;
+        inputQueues[localPlayer].push(userInput);
+
     }
     void sendLocalInput(){
-        netcode.update(inputQueues[localPlayer].top(), localPlayer);
+        netcodeManager.update(inputQueues[localPlayer].getFrame(frameCount), localPlayer);
     }
     void readRemoteInput(){
-        inputQueues[(localPlayer + 1) % 2].push(netcode.getRemoteInput(localPlayer));
+        inputQueues[(localPlayer + 1) % 2].push(netcodeManager.getRemoteInput(localPlayer));
     }
     void updateGame(){
-        for(int character = 0; character < 2; character ++){
-            characters[character].update(inputQueues[character].pop());
+        if (frameCount >= netcodeManager.delayFrames[localPlayer]){
+            for(int character = 0; character < 2; character ++){
+                characters[character].update(inputQueues[character].getFrame(frameCount - netcodeManager.delayFrames[localPlayer]));
+            }
         }
     }
 
     void FixedUpdate()
     {
-        // TODO input buffer isn't filling up
-        // TODO need to give remote player input buffer
-        // TODO need to account for frames arriving in wrong order
         readLocalInput();
         sendLocalInput();
         readRemoteInput();
