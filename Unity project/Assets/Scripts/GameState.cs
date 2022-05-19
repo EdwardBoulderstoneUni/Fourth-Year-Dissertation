@@ -13,10 +13,10 @@ public class GameState : MonoBehaviour
 
     [SerializeField] LocalInput localInput;
     [SerializeField] private int localPlayer;
+    [SerializeField] private CharacterController2D[] characters = new CharacterController2D[2]; 
 
-    private InputQueue inputQueue;
+    private InputQueue[] inputQueues = new InputQueue[2];
     private InputStruct remoteInput;
-    private CharacterController2D[] characters = new CharacterController2D[2]; 
     private int frameCount;
     private Netcode netcode;
 
@@ -29,7 +29,9 @@ public class GameState : MonoBehaviour
     }
     void Start(){
         netcode = gameObject.GetComponentInParent<Netcode>();
-        inputQueue = new InputQueue(netcode.delayFrames[localPlayer]);
+        for(int character = 0; character < 2; character ++){
+            inputQueues[character] = new InputQueue(netcode.delayFrames[localPlayer] * 2);
+        }
     }
     public void loadState(State state){
         characters[0].loadState(state.player1);
@@ -50,21 +52,25 @@ public class GameState : MonoBehaviour
         
     }
     void readLocalInput(){
-        inputQueue.push(localInput.getInput());
+        inputQueues[localPlayer].push(localInput.getInput());
     }
     void sendLocalInput(){
-        netcode.update(inputQueue.top(), localPlayer);
+        netcode.update(inputQueues[localPlayer].top(), localPlayer);
     }
     void readRemoteInput(){
-        remoteInput = netcode.getRemoteInput(localPlayer);
+        inputQueues[(localPlayer + 1) % 2].push(netcode.getRemoteInput(localPlayer));
     }
     void updateGame(){
-        characters[localPlayer].update(inputQueue.pop());
-        characters[(localPlayer + 1) % 2].update(remoteInput);
+        for(int character = 0; character < 2; character ++){
+            characters[character].update(inputQueues[character].pop());
+        }
     }
 
     void FixedUpdate()
     {
+        // TODO input buffer isn't filling up
+        // TODO need to give remote player input buffer
+        // TODO need to account for frames arriving in wrong order
         readLocalInput();
         sendLocalInput();
         readRemoteInput();
