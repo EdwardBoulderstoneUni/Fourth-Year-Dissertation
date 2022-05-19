@@ -20,7 +20,7 @@ Objectives:
 
 What you did and how.
 Games that have implemented first party rollback:
-SFV, MK11, Skull girls, GGST, KI, DBFZ, BBCF, Tekken 7, Brawlhalla, Melty Blood type lumina
+SFV, MK11, Skull girls, GGST, KI, BBCF, Tekken 7, Brawlhalla, Melty Blood type lumina
 rocket league,
 
 games that have had difficulty implementing rollback:
@@ -30,7 +30,7 @@ games that have added third party rollback:
 Melee, third strike, MVC2, SF2T, KOF2002, Metal Slug X
 
 Noteable games without:
-GBFV, Smash Bros Ultimate, UNICLR, SAMSHO, Soulcalibur VI, GGxrd, DOA 6, EA Sports UFC 4
+GBFV, Smash Bros Ultimate, UNICLR, SAMSHO, Soulcalibur VI, GGxrd, DOA 6, EA Sports UFC 4, DBFZ
 
 Difficulties of implmenting:
 - separate gameplay from rendering
