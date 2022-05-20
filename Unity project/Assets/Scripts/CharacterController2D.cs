@@ -42,6 +42,13 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public void pause(){
+        rigidBody.isKinematic = true;
+    }
+    public void resume(){
+        rigidBody.isKinematic = false;
+    }
+
     public SerializedPlayer serialized(){
         SerializedPlayer serialized = new SerializedPlayer();
         serialized.location = transform.position;
