@@ -1063,6 +1063,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1318182786}
+  - component: {fileID: 1318182789}
+  - component: {fileID: 1318182788}
+  - component: {fileID: 1318182787}
+  - component: {fileID: 1318182785}
   m_Layer: 0
   m_Name: NetworkedState
   m_TagString: Untagged
@@ -1070,6 +1074,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1318182785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7395aeaef0cd97b43a33d2df3159fdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayFrames: 8
 --- !u!4 &1318182786
 Transform:
   m_ObjectHideFlags: 0
@@ -1086,6 +1103,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1318182787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6464eede29dfa14f816ec011228fd45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayFrames: 1
+--- !u!114 &1318182788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd6c035b9e052e4dafb099db29b02d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1318182789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d15185643657243802b12f636ec5ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interference: {fileID: 1318182788}
+  rollbackNetcode: {fileID: 1318182787}
+  delayBasedNetcode: {fileID: 1318182785}
+  gameStates:
+  - {fileID: 1470653876}
+  - {fileID: 1581568031}
 --- !u!1 &1402374373
 GameObject:
   m_ObjectHideFlags: 0
