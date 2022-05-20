@@ -3,7 +3,7 @@ public struct State{
     public SerializedPlayer player1;
     public SerializedPlayer player2;
     public override string ToString(){
-        return "Player1: {" + player1 + "}, " + "Player2: {" + player2 + "}";
+        return "Player1: {" + player1.ToString() + "}, " + "Player2: {" + player2.ToString() + "}";
     }
 }
 public class GameState : MonoBehaviour
@@ -37,7 +37,7 @@ public class GameState : MonoBehaviour
         for(int character = 0; character < 2; character ++){
             inputQueues[character] = new TimedQueue<InputStruct>(delayFrames);
         }
-        stateQueue = new TimedQueue<State>(delayFrames);
+        stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames());
     }
 
     void FixedUpdate()
@@ -72,6 +72,14 @@ public class GameState : MonoBehaviour
                 characters[character].update(inputQueues[character].getFrame(frame - netcodeManager.getDelayFrames(localPlayer)).data);
             }
         }
+        saveState();
+    }
+
+    private void saveState(){
+        TimedData<State> state = new TimedData<State>();
+        state.data = getState();
+        state.frame = frame;
+        stateQueue.push(state);
     }
 
     public void pauseGame(){

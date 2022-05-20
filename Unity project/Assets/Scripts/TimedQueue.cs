@@ -3,7 +3,7 @@ public struct TimedData<T>{
     public int frame;
     public T data;
     public override string ToString(){
-        return "Frame: " + frame + data;
+        return "Frame: " + frame + ", " + data.ToString();
     }
 }
 
@@ -27,13 +27,13 @@ public class TimedQueue<T>
         var frameInput = content[frame % bufferSize];
         if (frameInput.frame == frame)
             return frameInput;
-        throw new IndexOutOfRangeException("Missing input for frame");
+        throw new IndexOutOfRangeException("Missing data for frame");
     }
 
     public override string ToString(){
         string output = "{ ";
         foreach(var data in content){
-            output += "{ " + data + " },";
+            output += "{ " + data.ToString() + " }, ";
         }
         return output + " }";
     }
