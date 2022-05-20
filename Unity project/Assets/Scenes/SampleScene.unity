@@ -1260,6 +1260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd6c035b9e052e4dafb099db29b02d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interferenceMetrics:
+    ping: 0
+    pingDeviation: 0
 --- !u!114 &1318182789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,6 +1755,7 @@ MonoBehaviour:
   characters:
   - {fileID: 835481182}
   - {fileID: 1431223174}
+  frame: 0
 --- !u!1 &1581568028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1823,7 @@ MonoBehaviour:
   characters:
   - {fileID: 2054610001}
   - {fileID: 669505268}
+  frame: 0
 --- !u!1 &1775557637
 GameObject:
   m_ObjectHideFlags: 0

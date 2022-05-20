@@ -28,9 +28,7 @@ public class NetcodeManager : MonoBehaviour
     }
 
     public void rollback(int frame){
-        Debug.Log("WHO WOULD HAVE THOUGHT?");
         gameStates[0].rollback(frame);
-        Debug.Log("NOT ME");
     }
 
     private Netcode getNetcode(int delayBased){

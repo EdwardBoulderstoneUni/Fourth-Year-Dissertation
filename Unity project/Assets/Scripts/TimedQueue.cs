@@ -50,7 +50,6 @@ public class TimedQueue<T>
                 newContents[index] = new TimedData<T>();
                 newContents[index].frame = -1;
             }
-            
         }
         this.contents = newContents;
         this.bufferSize = newBufferSize;

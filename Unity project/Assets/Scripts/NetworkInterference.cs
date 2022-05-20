@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public struct InterferenceMetrics{
+[System.Serializable] public struct InterferenceMetrics{
     public int ping;
     //public float packetLoss; add packetloss later
     public float pingDeviation;
@@ -10,6 +9,7 @@ public struct InterferenceMetrics{
 
 public class NetworkInterference : MonoBehaviour
 {
+    // TODO getting rollbacks at 0 ping/0variation, dir>jump not consistent behaviour, mash jump, jumps multiple times, desync issues
     [SerializeField] public InterferenceMetrics interferenceMetrics;
     System.Random rand = new System.Random();
 

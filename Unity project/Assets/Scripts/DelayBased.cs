@@ -6,6 +6,9 @@ public class DelayBased : Netcode
         delayBased = 1;
         recivedInputs = new TimedQueue<InputStruct>(delayFrames);
     }
+    override public void delayFramesChange(){
+        recivedInputs.increaseBufferSizeTo(delayFrames);
+    }
     override public void remoteInput(TimedData<InputStruct> input)
     {
         recivedInputs.push(input);

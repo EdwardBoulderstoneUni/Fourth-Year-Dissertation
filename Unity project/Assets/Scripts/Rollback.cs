@@ -11,7 +11,7 @@ public class Rollback : DelayBased
         recivedInputs = new TimedQueue<InputStruct>(delayFrames);
     }
     public void rollbackFramesChange(){
-
+        guessedInputs.increaseBufferSizeTo(rollbackFrames);
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
