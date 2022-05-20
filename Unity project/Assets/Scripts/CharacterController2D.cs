@@ -3,6 +3,9 @@ public struct SerializedPlayer {
     public Vector2 location;
     public Vector2 velocity;
     public bool grounded;
+    public override string ToString(){
+        return "location: " + location + ", velocity: " + velocity + ", grounded: " + grounded;
+    }
 }
 public class CharacterController2D : MonoBehaviour
 {

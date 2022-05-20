@@ -1,9 +1,11 @@
 public class DelayBased : Netcode
 {
     // Not accounting for packetLoss or desync
-    protected TimedQueue<InputStruct> recivedInputs;
     protected int haltingFrame = -1;
-    protected int delayBased = 1;
+    void Start(){
+        delayBased = 1;
+        recivedInputs = new TimedQueue<InputStruct>(delayFrames);
+    }
     override public void remoteInput(TimedData<InputStruct> input)
     {
         recivedInputs.push(input);

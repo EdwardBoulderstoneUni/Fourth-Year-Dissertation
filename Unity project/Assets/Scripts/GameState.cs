@@ -2,6 +2,9 @@ using UnityEngine;
 public struct State{
     public SerializedPlayer player1;
     public SerializedPlayer player2;
+    public override string ToString(){
+        return "Player1: {" + player1 + "}, " + "Player2: {" + player2 + "}";
+    }
 }
 public class GameState : MonoBehaviour
 {

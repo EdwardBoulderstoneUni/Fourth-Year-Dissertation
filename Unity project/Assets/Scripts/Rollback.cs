@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 public class Rollback : DelayBased
 {
     [SerializeField] public const int rollbackFrames = 8;
@@ -17,8 +18,16 @@ public class Rollback : DelayBased
         if (frame > mostRecentInput.frame)
             mostRecentInput = input;
 
-        if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data)
-            gameObject.GetComponent<NetcodeManager>().rollback(frame);
+        try{
+            if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data)
+                gameObject.GetComponent<NetcodeManager>().rollback(frame);
+        }catch (IndexOutOfRangeException){
+            Debug.Log("BROOOOOOOKEN");
+            Debug.Log("Frame = " + frame + ", Contains = " + guessedInputs.contains(frame));
+            Debug.Log(guessedInputs);
+            Time.timeScale = 0;
+            
+        }
         
         unhaltOnFrame(frame);
     }

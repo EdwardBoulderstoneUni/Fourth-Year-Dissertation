@@ -13,6 +13,10 @@ public struct InputStruct{
     public static bool operator!=(InputStruct lhs, InputStruct rhs){
         return !(lhs == rhs);
     }
+    
+    public override string ToString(){
+        return "jump: " + jump + ", horizontalMove: " + horizontalMove;
+    }
 }
 public class LocalInput : MonoBehaviour
 {

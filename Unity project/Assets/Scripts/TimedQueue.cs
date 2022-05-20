@@ -2,6 +2,9 @@ using System;
 public struct TimedData<T>{
     public int frame;
     public T data;
+    public override string ToString(){
+        return "Frame: " + frame + data;
+    }
 }
 
 public class TimedQueue<T>
@@ -23,7 +26,15 @@ public class TimedQueue<T>
     public TimedData<T> getFrame(int frame){
         var frameInput = content[frame % bufferSize];
         if (frameInput.frame == frame)
-            return content[frame % bufferSize];
+            return frameInput;
         throw new IndexOutOfRangeException("Missing input for frame");
+    }
+
+    public override string ToString(){
+        string output = "{ ";
+        foreach(var data in content){
+            output += "{ " + data + " },";
+        }
+        return output + " }";
     }
 }
