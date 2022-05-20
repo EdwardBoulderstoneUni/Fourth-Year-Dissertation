@@ -2,13 +2,16 @@ using UnityEngine;
 using System;
 public class Rollback : DelayBased
 {
-    [SerializeField] public int rollbackFrames = 8;
+    [SerializeField] [OnChangedCall("rollbackFramesChange")] public int rollbackFrames = 8;
     private TimedQueue<InputStruct> guessedInputs;
     private TimedData<InputStruct> mostRecentInput;
     void Start(){
         delayBased = 0;
         guessedInputs = new TimedQueue<InputStruct>(rollbackFrames);
         recivedInputs = new TimedQueue<InputStruct>(delayFrames);
+    }
+    public void rollbackFramesChange(){
+
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
@@ -18,10 +21,8 @@ public class Rollback : DelayBased
         if (frame > mostRecentInput.frame)
             mostRecentInput = input;
 
-        if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data){
-            Debug.Log("AHHHHHHHHH");
+        if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data)
             gameObject.GetComponent<NetcodeManager>().rollback(frame);
-        }
         
         unhaltOnFrame(frame);
     }

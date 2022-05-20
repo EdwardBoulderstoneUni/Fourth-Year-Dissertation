@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 public struct State{
     public SerializedPlayer player1;
     public SerializedPlayer player2;
@@ -20,7 +21,7 @@ public class GameState : MonoBehaviour
     private TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
     private TimedQueue<State> stateQueue;
     private TimedData<InputStruct> remoteInput;
-    private int frame;
+    public int frame;
     private NetcodeManager netcodeManager;
     private bool paused;
 
@@ -35,7 +36,7 @@ public class GameState : MonoBehaviour
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
         int delayFrames = netcodeManager.getDelayFrames(localPlayer) * 2;
         for(int character = 0; character < 2; character ++){
-            inputQueues[character] = new TimedQueue<InputStruct>(delayFrames);
+            inputQueues[character] = new TimedQueue<InputStruct>(netcodeManager.getRollbackFrames());
         }
         stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames());
     }
@@ -48,7 +49,6 @@ public class GameState : MonoBehaviour
             readRemoteInput();
             if (!paused){
                 updateGame();
-                frame += 1;
             }
         }
     }
@@ -67,12 +67,24 @@ public class GameState : MonoBehaviour
 
     }
     void updateGame(){
-        if (frame >= netcodeManager.getDelayFrames(localPlayer)){
+        int delayedFrame = frame - netcodeManager.getDelayFrames(localPlayer);
+        if (delayedFrame >= 0){
             for(int character = 0; character < 2; character ++){
-                characters[character].update(inputQueues[character].getFrame(frame - netcodeManager.getDelayFrames(localPlayer)).data);
+                
+                try {
+                    characters[character].update(inputQueues[character].getFrame(delayedFrame).data);
+                } catch (IndexOutOfRangeException){
+                    Debug.Log("Here!");
+                    Debug.Log("Frame = " + delayedFrame);
+                    Debug.Log("Queue = " + inputQueues[character]);
+                    Time.timeScale = 0;
+                    Debug.Log("Data = " + inputQueues[character]);
+
+                }
             }
         }
         saveState();
+        frame += 1;
     }
 
     private void saveState(){
@@ -109,13 +121,10 @@ public class GameState : MonoBehaviour
         frame = timedState.frame;
     }
     private void simulateToFrame (int destFrame){
-        Time.timeScale = 0;
-        for (; frame < destFrame; frame++){
-            for(int character = 0; character < 2; character ++){
-                characters[character].update(inputQueues[character].getFrame(frame - netcodeManager.getDelayFrames(localPlayer)).data);
-            }
+        while (frame < destFrame){
+            updateGame();
             Physics.Simulate(Time.fixedDeltaTime);
+            // TODO only want to simulate for one game
         }
-        Time.timeScale = 1;
     }
 }
