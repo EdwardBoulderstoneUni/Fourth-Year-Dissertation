@@ -1,5 +1,8 @@
-public abstract class Netcode
+using UnityEngine;
+public abstract class Netcode : MonoBehaviour
 {
-    public abstract void update(InputStruct input);
-    public abstract InputStruct getRemoteInput();
+    [SerializeField] public int delayFrames = 1;
+    TimedQueue<InputStruct> guessedInputs;
+    public abstract void remoteInput(TimedData<InputStruct> input);
+    public abstract TimedData<InputStruct> fetchRemote(int frame);
 }
