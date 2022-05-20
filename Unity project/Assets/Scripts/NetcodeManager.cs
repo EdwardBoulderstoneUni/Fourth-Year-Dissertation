@@ -16,20 +16,21 @@ public class NetcodeManager : MonoBehaviour
     public int getDelayFrames(int delayBased){
         return getNetcode(delayBased).delayFrames;
     }
+    public int getRollbackFrames(){
+        return rollbackNetcode.delayFrames + rollbackNetcode.rollbackFrames;
+    }
     public void pauseGame(int delayBased){
-        getGameState(delayBased).pauseGame();
+        gameStates[delayBased].pauseGame();
     }
 
     public void resumeGame(int delayBased){
-        getGameState(delayBased).resumeGame();
+        gameStates[delayBased].resumeGame();
     }
 
     public void rollback(int frame){
-        getGameState(0).rollback(frame);
-    }
-
-    private GameState getGameState(int delayBased){
-        return gameStates[delayBased];
+        Debug.Log("WHO WOULD HAVE THOUGHT?");
+        gameStates[0].rollback(frame);
+        Debug.Log("NOT ME");
     }
 
     private Netcode getNetcode(int delayBased){
