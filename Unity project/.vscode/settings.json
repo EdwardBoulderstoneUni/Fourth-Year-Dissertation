@@ -55,8 +55,10 @@
     },
     "cSpell.words": [
         "Behaviour",
+        "desync",
         "netcode",
         "Raycast",
+        "rejump",
         "Rigidbody"
     ]
 }
