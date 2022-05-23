@@ -1196,6 +1196,8 @@ GameObject:
   - component: {fileID: 1318182788}
   - component: {fileID: 1318182787}
   - component: {fileID: 1318182785}
+  - component: {fileID: 1318182790}
+  - component: {fileID: 1318182791}
   m_Layer: 0
   m_Name: NetworkedState
   m_TagString: Untagged
@@ -1215,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7395aeaef0cd97b43a33d2df3159fdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayFrames: 0
+  delayFrames: 1
 --- !u!4 &1318182786
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6464eede29dfa14f816ec011228fd45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayFrames: 0
+  delayFrames: 1
   rollbackFrames: 0
 --- !u!114 &1318182788
 MonoBehaviour:
@@ -1279,6 +1281,37 @@ MonoBehaviour:
   gameStates:
   - {fileID: 1470653876}
   - {fileID: 1581568031}
+--- !u!114 &1318182790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab79bacbf03ae4e459479813cea5b26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floor:
+    serializedVersion: 2
+    m_Bits: 128
+  rejumpPreventionFrames: 5
+  moveSpeed: 4
+  jumpSpeed: 2
+  distanceToGround: 0.05
+--- !u!114 &1318182791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318182784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdc3ef52ed93ae45a1fbe097ba472da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402374373
 GameObject:
   m_ObjectHideFlags: 0

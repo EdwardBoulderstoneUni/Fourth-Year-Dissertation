@@ -18,22 +18,19 @@ public class DesyncDetector : MonoBehaviour
             written[index] = 1;
     }
     void FixedUpdate(){
-        saveStates();
         desyncDetect();
     }
 
-    // Update is called once per frame
-    public void saveStates()
+    public void saveState(int gameIndex)
     {
-        for (var gameIndex = 0; gameIndex < 2; gameIndex++){
-            var gameEngine = gameEngines[gameIndex];
-            var state = gameEngine.getState();
-            var frameIndex = gameEngine.frame % bufferSize;
-            if (written[frameIndex]%primes[gameIndex] != 0){
-                written[frameIndex] = written[frameIndex]*primes[gameIndex]; 
-                gameStates[frameIndex, gameIndex] = state;
-            }
+        var gameEngine = gameEngines[gameIndex];
+        var state = gameEngine.getState();
+        var frameIndex = gameEngine.frame % bufferSize;
+        if (written[frameIndex]%primes[gameIndex] != 0){
+            written[frameIndex] = written[frameIndex]*primes[gameIndex]; 
+            gameStates[frameIndex, gameIndex] = state;
         }
+        
     }
     public void desyncDetect(){
         for (int index = 0; index < bufferSize; index++){

@@ -16,6 +16,8 @@ public class GameState : MonoBehaviour
         State state = new State();
         state.player1 = characters[0].serialized();
         state.player2 = characters[1].serialized();
+        state.player1.location -= (Vector2) gameObject.transform.position;
+        state.player2.location -= (Vector2) gameObject.transform.position;
         return state;
     }
     void Start(){
@@ -69,6 +71,7 @@ public class GameState : MonoBehaviour
         state.data = getState();
         state.frame = frame;
         stateQueue.push(state);
+        gameObject.transform.parent.GetComponentInParent<DesyncDetector>().saveState(localPlayer);
     }
 
     public void pauseGame(){
@@ -93,8 +96,11 @@ public class GameState : MonoBehaviour
         simulateToFrame(currentFrame);
     }
     private void loadState(TimedData<State> timedState){
-        characters[0].loadState(timedState.data.player1);
-        characters[1].loadState(timedState.data.player2);
+        var localState = timedState.data;
+        localState.player1.location += (Vector2) gameObject.transform.position;
+        localState.player2.location += (Vector2) gameObject.transform.position;
+        characters[0].loadState(localState.player1);
+        characters[1].loadState(localState.player2);
         frame = timedState.frame;
     }
     private void simulateToFrame (int destFrame){
