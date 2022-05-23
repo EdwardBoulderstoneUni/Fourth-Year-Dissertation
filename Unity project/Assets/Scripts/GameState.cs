@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 public struct State{
     public SerializedPlayer player1;
     public SerializedPlayer player2;
@@ -9,11 +8,6 @@ public struct State{
 }
 public class GameState : MonoBehaviour
 {
-    public const float MoveSpeed = 4f;
-    public const float JumpSpeed = 10f;
-    public const float DeadZone = 0.1f;
-    public const float DistanceToGround = 0.1f;
-
     [SerializeField] LocalInput localInput;
     [SerializeField] private int localPlayer;
     [SerializeField] private CharacterController2D[] characters = new CharacterController2D[2]; 

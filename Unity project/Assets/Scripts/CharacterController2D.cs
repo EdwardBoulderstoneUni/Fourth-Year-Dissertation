@@ -10,20 +10,23 @@ public struct SerializedPlayer {
 public class CharacterController2D : MonoBehaviour
 {
     private LayerMask floor;
-    private GameState state;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private RaycastHit2D[] collidedObjects;
-    private float distanceToGround; 
+    private float distanceToGround;
+    private float moveSpeed;
+    private float jumpSpeed;
     private bool grounded;
 
     void Start(){
-        state = gameObject.GetComponentInParent<GameState>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        floor = gameObject.transform.parent.GetComponentInParent<CharacterValues>().floor;
         collidedObjects = new RaycastHit2D[1];
-        distanceToGround =  GameState.DistanceToGround + boxCollider.size.y/2;
+        var characterValues = gameObject.transform.parent.GetComponentInParent<CharacterValues>();
+        floor = characterValues.floor;
+        moveSpeed =  characterValues.moveSpeed;
+        jumpSpeed = characterValues.jumpSpeed;
+        distanceToGround =  characterValues.distanceToGround + boxCollider.size.y/2;
         grounded = false;
     }
     void checkGrounded(){
@@ -31,10 +34,10 @@ public class CharacterController2D : MonoBehaviour
     }
 
     void jump(){
-        rigidBody.velocity += new Vector2(0, GameState.JumpSpeed);
+        rigidBody.velocity += new Vector2(0, jumpSpeed);
     }
     void move(int direction){
-        rigidBody.velocity = new Vector2(GameState.MoveSpeed * direction, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(moveSpeed * direction, rigidBody.velocity.y);
     }
 
     public void update(InputStruct input)
