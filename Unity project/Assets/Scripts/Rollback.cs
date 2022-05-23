@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 public class Rollback : DelayBased
 {
     [SerializeField] [OnChangedCall("rollbackFramesChange")] public int rollbackFrames = 8;
@@ -7,7 +6,7 @@ public class Rollback : DelayBased
     private TimedData<InputStruct> mostRecentInput;
     void Start(){
         delayBased = 0;
-        guessedInputs = new TimedQueue<InputStruct>(rollbackFrames + 1);
+        guessedInputs = new TimedQueue<InputStruct>(rollbackFrames);
         receivedInputs = new TimedQueue<InputStruct>(delayFrames + 1);
     }
     public void rollbackFramesChange(){
@@ -16,31 +15,41 @@ public class Rollback : DelayBased
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
+        Debug.Log("Rollback: Input received for frame " + input.frame + " = " + input.data);
         receivedInputs.push(input);
 
         int frame = input.frame;
         if (frame > mostRecentInput.frame)
             mostRecentInput = input;
 
-        if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data)
+        if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data){
+            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
+            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
+            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
+            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
+            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
             gameObject.GetComponent<NetcodeManager>().rollback(frame);
+        }
         
         unhaltOnFrame(frame);
     }
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
-        TimedData<InputStruct> remote = mostRecentInput;
+        TimedData<InputStruct> remote = new TimedData<InputStruct>();
         if (receivedInputs.contains(frame))
             remote = receivedInputs.getFrame(frame);
-
         else{
-            remote.frame = frame;
-            if (frame - mostRecentInput.frame <= rollbackFrames)
-                guessedInputs.push(remote);
-            
-            else
+            if (frame - mostRecentInput.frame > rollbackFrames)
                 haltForFrame(frame);
+            
+            else{
+                remote = mostRecentInput;
+                guessedInputs.push(remote);
+                remote.frame = frame;
+            }
+                
         }
+        Debug.Log("Rollback: Input sent to local for frame " + frame + " (" + remote.frame +") = " + remote.data);
         return remote;
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 public class NetcodeManager : MonoBehaviour
 {
-    // Player 0 has rollback and player 1 has delay based
+    // Player 0 receives rollback inputs and player 1 receives delay based inputs
     [SerializeField] private NetworkInterference interference;
     [SerializeField] private Rollback rollbackNetcode;
     [SerializeField] private DelayBased delayBasedNetcode;
