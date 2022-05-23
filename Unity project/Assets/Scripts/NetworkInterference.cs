@@ -15,7 +15,10 @@ public class NetworkInterference : MonoBehaviour
 
     public void interfere(Netcode target, TimedData<InputStruct> packet){
         double packetDelay = NextGaussian(rand, interferenceMetrics.ping/2, interferenceMetrics.pingDeviation);
-        StartCoroutine(sendPacket(target, packet, (float) packetDelay));
+        if (packetDelay >= 1/60)
+            StartCoroutine(sendPacket(target, packet, (float) packetDelay));
+        else
+            target.remoteInput(packet);
         // TODO chance to disregard the packet (packet loss)
     }
 

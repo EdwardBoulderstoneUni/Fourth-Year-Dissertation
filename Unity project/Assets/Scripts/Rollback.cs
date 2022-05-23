@@ -7,15 +7,16 @@ public class Rollback : DelayBased
     private TimedData<InputStruct> mostRecentInput;
     void Start(){
         delayBased = 0;
-        guessedInputs = new TimedQueue<InputStruct>(rollbackFrames);
-        recivedInputs = new TimedQueue<InputStruct>(delayFrames);
+        guessedInputs = new TimedQueue<InputStruct>(rollbackFrames + 1);
+        receivedInputs = new TimedQueue<InputStruct>(delayFrames + 1);
     }
     public void rollbackFramesChange(){
-        guessedInputs.increaseBufferSizeTo(rollbackFrames);
+        if (guessedInputs != null)
+            guessedInputs.increaseBufferSizeTo(rollbackFrames);
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
-        recivedInputs.push(input);
+        receivedInputs.push(input);
 
         int frame = input.frame;
         if (frame > mostRecentInput.frame)
@@ -29,8 +30,8 @@ public class Rollback : DelayBased
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
         TimedData<InputStruct> remote = mostRecentInput;
-        if (recivedInputs.contains(frame))
-            remote = recivedInputs.getFrame(frame);
+        if (receivedInputs.contains(frame))
+            remote = receivedInputs.getFrame(frame);
 
         else{
             remote.frame = frame;

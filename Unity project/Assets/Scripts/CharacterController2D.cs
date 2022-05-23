@@ -9,7 +9,8 @@ public struct SerializedPlayer {
 }
 public class CharacterController2D : MonoBehaviour
 {
-    [SerializeField] private GameState state;
+    private LayerMask floor;
+    private GameState state;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private RaycastHit2D[] collidedObjects;
@@ -17,14 +18,16 @@ public class CharacterController2D : MonoBehaviour
     private bool grounded;
 
     void Start(){
+        state = gameObject.GetComponentInParent<GameState>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        floor = gameObject.transform.parent.GetComponentInParent<CharacterValues>().floor;
         collidedObjects = new RaycastHit2D[1];
         distanceToGround =  GameState.DistanceToGround + boxCollider.size.y/2;
         grounded = false;
     }
     void checkGrounded(){
-        grounded = boxCollider.Raycast(Vector2.down, collidedObjects, distanceToGround) == 1;
+        grounded = boxCollider.Raycast(Vector2.down, collidedObjects, distanceToGround, floor) == 1;
     }
 
     void jump(){

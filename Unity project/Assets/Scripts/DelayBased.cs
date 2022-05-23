@@ -4,21 +4,22 @@ public class DelayBased : Netcode
     protected int haltingFrame = -1;
     void Start(){
         delayBased = 1;
-        recivedInputs = new TimedQueue<InputStruct>(delayFrames);
+        receivedInputs = new TimedQueue<InputStruct>(delayFrames + 1);
     }
     override public void delayFramesChange(){
-        recivedInputs.increaseBufferSizeTo(delayFrames);
+        if (receivedInputs != null)
+            receivedInputs.increaseBufferSizeTo(delayFrames);
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
-        recivedInputs.push(input);
+        receivedInputs.push(input);
         unhaltOnFrame(input.frame);
     }
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
         TimedData<InputStruct> remote = new TimedData<InputStruct>();
-        if (recivedInputs.contains(frame))
-            remote = recivedInputs.getFrame(frame);
+        if (receivedInputs.contains(frame))
+            remote = receivedInputs.getFrame(frame);
         else
             haltForFrame(frame);
 

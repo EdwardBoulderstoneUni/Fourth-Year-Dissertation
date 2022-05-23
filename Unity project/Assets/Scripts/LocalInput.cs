@@ -1,38 +1,33 @@
 using UnityEngine;
-public struct InputStruct{
-    public bool jump;
-    public int horizontalMove;
-    public override bool Equals(object obj) => this.Equals(obj is InputStruct other && this.Equals(other));
-
-    public bool Equals(InputStruct other) => jump == other.jump && horizontalMove == other.horizontalMove;
-
-    public override int GetHashCode() => (jump, horizontalMove).GetHashCode();
-    public static bool operator==(InputStruct lhs, InputStruct rhs){
-        return lhs.jump == rhs.jump && lhs.horizontalMove == rhs.horizontalMove;
-    }
-    public static bool operator!=(InputStruct lhs, InputStruct rhs){
-        return !(lhs == rhs);
-    }
-    
-    public override string ToString(){
-        return "jump: " + jump + ", horizontalMove: " + horizontalMove;
-    }
-}
 public class LocalInput : MonoBehaviour
 {
+    private const int inputs = 3;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
     [SerializeField] private KeyCode leftKey = KeyCode.A;
     [SerializeField] private KeyCode rightKey = KeyCode.D;
     private InputStruct input;
+    private bool[] inputBuffer;
+    void Start(){
+        inputBuffer = new bool[inputs];
+    }
     void Update()
     {
-        input.jump = Input.GetKey(jumpKey);
-        input.horizontalMove = 0;
-        input.horizontalMove -= Input.GetKey(leftKey) ? 1 : 0;
-        input.horizontalMove += Input.GetKey(rightKey) ? 1 : 0;
+        inputBuffer[0] = Input.GetKey(jumpKey) || inputBuffer[0];
+        inputBuffer[1] = Input.GetKey(leftKey) || inputBuffer[1];
+        inputBuffer[2] = Input.GetKey(rightKey) || inputBuffer[2];
     }
         
     public InputStruct getInput() {
+        input.jump = inputBuffer[0];
+        input.horizontalMove = 0;
+        input.horizontalMove -= inputBuffer[1] ? 1 : 0;
+        input.horizontalMove += inputBuffer[2] ? 1 : 0;
+        reset();
         return input;
+    }
+
+    private void reset(){
+        for (int index = 0; index < inputs; index++)
+            inputBuffer[index] = false;
     }
 }

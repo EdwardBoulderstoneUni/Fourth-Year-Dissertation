@@ -22,14 +22,21 @@ public class TimedQueue<T>
     }
 
     public void push(TimedData<T> input){
-        if (contents[input.frame % bufferSize].frame < input.frame){
-            contents[input.frame % bufferSize] = input;
+        if (bufferSize != 0){
+            if (contents[input.frame % bufferSize].frame < input.frame){
+                contents[input.frame % bufferSize] = input;
+            }
         }
     }
     public bool contains(int frame){
+        if (bufferSize == 0)
+            return false;
         return contents[frame % bufferSize].frame == frame;
     }
     public TimedData<T> getFrame(int frame){
+        if (bufferSize == 0)
+            return new TimedData<T>();
+
         var frameInput = contents[frame % bufferSize];
         if (frameInput.frame == frame)
             return frameInput;

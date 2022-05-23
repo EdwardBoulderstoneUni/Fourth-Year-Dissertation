@@ -727,6 +727,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
+  floor:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!212 &669505269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -989,6 +992,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
+  floor:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!212 &835481183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1637,6 +1643,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
+  floor:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!212 &1431223175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2083,6 +2092,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
+  floor:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!212 &2054610002
 SpriteRenderer:
   m_ObjectHideFlags: 0

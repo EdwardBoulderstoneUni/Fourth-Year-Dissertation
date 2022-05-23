@@ -34,11 +34,10 @@ public class GameState : MonoBehaviour
     void Start(){
         paused = false;
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
-        int delayFrames = netcodeManager.getDelayFrames(localPlayer) * 2;
         for(int character = 0; character < 2; character ++){
-            inputQueues[character] = new TimedQueue<InputStruct>(netcodeManager.getRollbackFrames());
+            inputQueues[character] = new TimedQueue<InputStruct>(netcodeManager.getRollbackFrames() + 1);
         }
-        stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames());
+        stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames() + 1);
     }
 
     void FixedUpdate()
@@ -70,17 +69,7 @@ public class GameState : MonoBehaviour
         int delayedFrame = frame - netcodeManager.getDelayFrames(localPlayer);
         if (delayedFrame >= 0){
             for(int character = 0; character < 2; character ++){
-                
-                try {
-                    characters[character].update(inputQueues[character].getFrame(delayedFrame).data);
-                } catch (IndexOutOfRangeException){
-                    Debug.Log("Here!");
-                    Debug.Log("Frame = " + delayedFrame);
-                    Debug.Log("Queue = " + inputQueues[character]);
-                    Time.timeScale = 0;
-                    Debug.Log("Data = " + inputQueues[character]);
-
-                }
+                characters[character].update(inputQueues[character].getFrame(delayedFrame).data);
             }
         }
         saveState();
