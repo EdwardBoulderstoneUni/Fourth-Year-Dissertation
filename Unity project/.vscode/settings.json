@@ -54,6 +54,9 @@
         "Temp/":true
     },
     "cSpell.words": [
-        "netcode"
+        "Behaviour",
+        "netcode",
+        "Raycast",
+        "Rigidbody"
     ]
 }
