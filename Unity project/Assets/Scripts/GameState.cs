@@ -1,11 +1,4 @@
 using UnityEngine;
-public struct State{
-    public SerializedPlayer player1;
-    public SerializedPlayer player2;
-    public override string ToString(){
-        return "Player1: {" + player1.ToString() + "}, " + "Player2: {" + player2.ToString() + "}";
-    }
-}
 public class GameState : MonoBehaviour
 {
     [SerializeField] LocalInput localInput;

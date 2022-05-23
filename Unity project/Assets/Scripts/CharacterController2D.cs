@@ -1,14 +1,9 @@
 using UnityEngine;
-public struct SerializedPlayer {
-    public Vector2 location;
-    public Vector2 velocity;
-    public bool grounded;
-    public override string ToString(){
-        return "location: " + location + ", velocity: " + velocity + ", grounded: " + grounded;
-    }
-}
 public class CharacterController2D : MonoBehaviour
 {
+    private int rejumpPreventionFrames;
+    private int jumpFrame;
+    private int frame;
     private LayerMask floor;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
@@ -26,14 +21,18 @@ public class CharacterController2D : MonoBehaviour
         floor = characterValues.floor;
         moveSpeed =  characterValues.moveSpeed;
         jumpSpeed = characterValues.jumpSpeed;
+        rejumpPreventionFrames = characterValues.rejumpPreventionFrames;
         distanceToGround =  characterValues.distanceToGround + boxCollider.size.y/2;
         grounded = false;
+        jumpFrame = -rejumpPreventionFrames;
+        frame = 0;
     }
     void checkGrounded(){
         grounded = boxCollider.Raycast(Vector2.down, collidedObjects, distanceToGround, floor) == 1;
     }
 
     void jump(){
+        jumpFrame = frame;
         rigidBody.velocity += new Vector2(0, jumpSpeed);
     }
     void move(int direction){
@@ -44,11 +43,12 @@ public class CharacterController2D : MonoBehaviour
     {
         checkGrounded();
         if (grounded){
-            if (input.jump)
+            if (input.jump && ((frame - jumpFrame) > rejumpPreventionFrames))
                 jump();
             else
                 move(input.horizontalMove);
         }
+        frame += 1;
     }
 
     public void pause(){

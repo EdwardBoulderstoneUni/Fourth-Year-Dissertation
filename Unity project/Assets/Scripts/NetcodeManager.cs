@@ -5,7 +5,7 @@ public class NetcodeManager : MonoBehaviour
     [SerializeField] private NetworkInterference interference;
     [SerializeField] private Rollback rollbackNetcode;
     [SerializeField] private DelayBased delayBasedNetcode;
-    [SerializeField] private GameState[] gameStates = new GameState[2];
+    [SerializeField] public GameState[] gameStates = new GameState[2];
     public void remoteInput(TimedData<InputStruct> input, int delayBased){
         interference.interfere(getNetcode((delayBased + 1) % 2), input);
     }
