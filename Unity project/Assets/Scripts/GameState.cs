@@ -62,6 +62,7 @@ public class GameState : MonoBehaviour
     void updateGame(){
         int delayedFrame = frame - netcodeManager.getDelayFrames(localPlayer);
         if (delayedFrame >= 0){
+            Debug.Log("Local player = " + localPlayer + " Inputs for frame " + frame + " = { " + inputQueues[0].getFrame(delayedFrame).data + ", " + inputQueues[1].getFrame(delayedFrame).data + " }");
             for(int character = 0; character < 2; character ++){
                 characters[character].update(inputQueues[character].getFrame(delayedFrame).data);
             }
