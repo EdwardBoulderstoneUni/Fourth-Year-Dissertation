@@ -5,12 +5,11 @@ public class GameState : MonoBehaviour
     [SerializeField] private int localPlayer;
     [SerializeField] private CharacterController2D[] characters = new CharacterController2D[2]; 
 
-    private TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
+    public TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
     private TimedQueue<State> stateQueue;
-    private TimedData<InputStruct> remoteInput;
     public int frame;
     private NetcodeManager netcodeManager;
-    private bool paused;
+    public bool paused;
 
     public State getState(){
         State state = new State();
@@ -57,16 +56,19 @@ public class GameState : MonoBehaviour
     void updateGame(){
         int delayedFrame = frame - netcodeManager.getDelayFrames(localPlayer);
         if (delayedFrame >= 0){
-            Debug.Log("Local player = " + localPlayer + " Inputs for frame " + frame + " = { " + inputQueues[0].getFrame(delayedFrame).data + ", " + inputQueues[1].getFrame(delayedFrame).data + " }");
-            for(int character = 0; character < 2; character ++){
-                characters[character].update(inputQueues[character].getFrame(delayedFrame).data);
-            }
+            updateObjectStates(delayedFrame);
+            GetComponentInParent<PhysicsUpdater>().runPhysics();
         }
-        saveState();
         frame += 1;
     }
+    void updateObjectStates(int frame){
+        Debug.Log("Local player = " + localPlayer + " Inputs for frame " + frame + " = { " + inputQueues[0].getFrame(frame).data + ", " + inputQueues[1].getFrame(frame).data + " }");
+        for(int character = 0; character < 2; character ++){
+            characters[character].update(inputQueues[character].getFrame(frame).data);
+        }
+    }
 
-    private void saveState(){
+    public void saveState(){
         TimedData<State> state = new TimedData<State>();
         state.data = getState();
         state.frame = frame;
@@ -74,20 +76,22 @@ public class GameState : MonoBehaviour
         gameObject.transform.parent.GetComponentInParent<DesyncDetector>().saveState(localPlayer);
     }
 
+    public void pausePhysics(){
+        characters[0].pause();
+        characters[1].pause();
+    }
+
+    public void resumePhysics(){
+        characters[0].resume();
+        characters[1].resume();
+    }
+
     public void pauseGame(){
-        if (!paused){
-            characters[0].pause();
-            characters[1].pause();
-            paused = true;
-        }
+        paused = true;
     }
 
     public void resumeGame(){
-        if(paused){
-            characters[0].resume();
-            characters[1].resume();
-            paused = false;
-        }
+        paused = false;
     }
 
     public void rollback(int frame){
@@ -105,9 +109,10 @@ public class GameState : MonoBehaviour
     }
     private void simulateToFrame (int destFrame){
         while (frame < destFrame){
-            updateGame();
-            Physics.Simulate(Time.fixedDeltaTime);
-            // TODO only want to simulate for one game
+            updateObjectStates(frame);
+            GetComponentInParent<PhysicsUpdater>().localPhysicsUpdate(localPlayer);
+            saveState();
+            frame += 1;
         }
     }
 }
