@@ -1299,7 +1299,7 @@ MonoBehaviour:
     m_Bits: 128
   rejumpPreventionFrames: 5
   moveSpeed: 4
-  jumpSpeed: 2
+  jumpSpeed: 5
   distanceToGround: 0.05
 --- !u!114 &1318182791
 MonoBehaviour:
@@ -1325,7 +1325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa304354c962fa447b694c6e18cea987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requestsForUpdate: 0
 --- !u!1 &1402374373
 GameObject:
   m_ObjectHideFlags: 0

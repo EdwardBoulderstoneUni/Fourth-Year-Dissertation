@@ -10,7 +10,6 @@ public class GameState : MonoBehaviour
     private int frame;
     private NetcodeManager netcodeManager;
     private bool paused;
-    private const float frameDuration = 1/60f;
 
     public State getState(){
         State state = new State();
@@ -32,6 +31,7 @@ public class GameState : MonoBehaviour
     void FixedUpdate()
     {
         readLocalInput();
+        sendLocalInput();
         if (!paused){
             readRemoteInput();
             if (!paused){
@@ -46,16 +46,18 @@ public class GameState : MonoBehaviour
         inputQueues[localPlayer].push(userInput);
 
     }
+    void sendLocalInput(){
+        netcodeManager.remoteInput(inputQueues[localPlayer].getFrame(frame), localPlayer);
+    }
     void readRemoteInput(){
-        inputQueues[1].push(netcodeManager.fetchRemote(frame));
+        inputQueues[(localPlayer + 1) % 2].push(netcodeManager.fetchRemote(localPlayer, frame));
 
     }
     void updateGame(){
-        int delayedFrame = frame - netcodeManager.getDelayFrames();
+        int delayedFrame = frame - netcodeManager.getDelayFrames(localPlayer);
         if (delayedFrame >= 0){
             updateObjectStates(delayedFrame);
-            Physics2D.Simulate(1/60f);
-            saveState();
+            GetComponentInParent<PhysicsUpdater>().runPhysics();
         }
         frame += 1;
     }
@@ -71,6 +73,7 @@ public class GameState : MonoBehaviour
         state.data = getState();
         state.frame = frame;
         stateQueue.push(state);
+        gameObject.transform.parent.GetComponentInParent<DesyncDetector>().saveState(localPlayer, state);
     }
 
     public void pausePhysics(){
@@ -108,7 +111,7 @@ public class GameState : MonoBehaviour
     private void simulateToFrame (int destFrame){
         while (frame < destFrame){
             updateObjectStates(frame);
-            Physics2D.Simulate(1/60f);
+            GetComponentInParent<PhysicsUpdater>().localPhysicsUpdate(localPlayer);
             saveState();
             frame += 1;
         }
