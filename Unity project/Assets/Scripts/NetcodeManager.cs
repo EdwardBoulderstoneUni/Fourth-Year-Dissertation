@@ -2,13 +2,18 @@ using UnityEngine;
 using System;
 public class NetcodeManager : MonoBehaviour
 {
-    // Player 0 receives rollback inputs and player 1 receives delay based inputs
     [SerializeField] private NetworkInterference interference;
     [SerializeField] private Rollback rollbackNetcode;
     [SerializeField] private DelayBased delayBasedNetcode;
     [SerializeField] public GameState game;
     [SerializeField] public bool useRollback = false;
+    [SerializeField] private InputManager remoteInputManager;
     public TimedData<InputStruct> fetchRemote(int frame){
+        var remoteInput = new TimedData<InputStruct>();
+        remoteInput.data = remoteInputManager.getInput();
+        remoteInput.frame = frame;
+        interference.interfere(rollbackNetcode, remoteInput);
+        interference.interfere(delayBasedNetcode, remoteInput);
         return getNetcode().fetchRemote(frame);
     }
 

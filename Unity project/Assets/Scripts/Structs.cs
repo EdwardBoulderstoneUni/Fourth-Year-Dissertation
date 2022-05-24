@@ -57,3 +57,11 @@ public struct State{
         return "Player1: {" + player1.ToString() + "}, " + "Player2: {" + player2.ToString() + "}";
     }
 }
+
+public struct TimedData<T>{
+    public int frame;
+    public T data;
+    public override string ToString(){
+        return "Frame: " + frame + ", " + data.ToString();
+    }
+}

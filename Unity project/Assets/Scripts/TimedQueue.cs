@@ -1,12 +1,4 @@
 using System;
-public struct TimedData<T>{
-    public int frame;
-    public T data;
-    public override string ToString(){
-        return "Frame: " + frame + ", " + data.ToString();
-    }
-}
-
 public class TimedQueue<T>
 {
     TimedData<T>[] contents;

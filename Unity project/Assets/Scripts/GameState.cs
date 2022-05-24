@@ -1,10 +1,13 @@
 using UnityEngine;
 public class GameState : MonoBehaviour
 {
-    [SerializeField] LocalInput localInput;
-    [SerializeField] private int localPlayer;
+    [SerializeField] InputManager localInput;
     [SerializeField] private CharacterController2D[] characters = new CharacterController2D[2]; 
-
+    [SerializeField] public LayerMask floor;
+    [SerializeField] public float distanceToGround;
+    [SerializeField] public float moveSpeed;
+    [SerializeField] public float jumpSpeed;
+    [SerializeField] public int rejumpPreventionFrames;    
     private TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
     private TimedQueue<State> stateQueue;
     private int frame;
@@ -43,7 +46,7 @@ public class GameState : MonoBehaviour
         TimedData<InputStruct> userInput = new TimedData<InputStruct>();
         userInput.data = localInput.getInput();
         userInput.frame = frame;
-        inputQueues[localPlayer].push(userInput);
+        inputQueues[0].push(userInput);
 
     }
     void readRemoteInput(){
@@ -54,13 +57,13 @@ public class GameState : MonoBehaviour
         int delayedFrame = frame - netcodeManager.getDelayFrames();
         if (delayedFrame >= 0){
             updateObjectStates(delayedFrame);
-            Physics2D.Simulate(1/60f);
+            Physics2D.Simulate(frameDuration);
             saveState();
         }
         frame += 1;
     }
     void updateObjectStates(int frame){
-        Debug.Log("Local player = " + localPlayer + " Inputs for frame " + frame + " = { " + inputQueues[0].getFrame(frame).data + ", " + inputQueues[1].getFrame(frame).data + " }");
+        Debug.Log("Local player = " + 0 + " Inputs for frame " + frame + " = { " + inputQueues[0].getFrame(frame).data + ", " + inputQueues[1].getFrame(frame).data + " }");
         for(int character = 0; character < 2; character ++){
             characters[character].update(inputQueues[character].getFrame(frame).data);
         }
@@ -71,16 +74,6 @@ public class GameState : MonoBehaviour
         state.data = getState();
         state.frame = frame;
         stateQueue.push(state);
-    }
-
-    public void pausePhysics(){
-        characters[0].pause();
-        characters[1].pause();
-    }
-
-    public void resumePhysics(){
-        characters[0].resume();
-        characters[1].resume();
     }
 
     public void pauseGame(){
@@ -99,8 +92,6 @@ public class GameState : MonoBehaviour
     private void loadState(TimedData<State> timedState){
         Debug.Log("PLEAES NOE");
         var localState = timedState.data;
-        localState.player1.location += (Vector2) gameObject.transform.position;
-        localState.player2.location += (Vector2) gameObject.transform.position;
         characters[0].loadState(localState.player1);
         characters[1].loadState(localState.player2);
         frame = timedState.frame;

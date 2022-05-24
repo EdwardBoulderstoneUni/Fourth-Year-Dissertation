@@ -1,4 +1,3 @@
-using UnityEngine;
 public class DelayBased : Netcode
 {
     // Not accounting for packetLoss or desync
@@ -14,7 +13,6 @@ public class DelayBased : Netcode
     override public void remoteInput(TimedData<InputStruct> input)
     {
         receivedInputs.push(input);
-        Debug.Log("Delay based: Input recived for frame " + input.frame + " = " + input.data);
         unhaltOnFrame(input.frame);
     }
     override public TimedData<InputStruct> fetchRemote(int frame)
@@ -24,19 +22,17 @@ public class DelayBased : Netcode
             remote = receivedInputs.getFrame(frame);
         else
             haltForFrame(frame);
-
-        Debug.Log("Delay based: Input sent to local for frame " + frame + " (" + remote.frame +") = " + remote.data);
         return remote;
     }
     protected void unhaltOnFrame(int frame){
         if (haltingFrame == frame){
             haltingFrame = -1;
-            gameObject.GetComponent<NetcodeManager>().resumeGame(delayBased);
+            gameObject.GetComponent<NetcodeManager>().resumeGame();
         }
     }
     protected void haltForFrame(int frame){
         haltingFrame = frame;
-        gameObject.GetComponent<NetcodeManager>().pauseGame(delayBased);
+        gameObject.GetComponent<NetcodeManager>().pauseGame();
     }
 
 }

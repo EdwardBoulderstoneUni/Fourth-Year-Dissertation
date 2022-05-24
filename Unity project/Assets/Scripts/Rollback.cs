@@ -15,7 +15,6 @@ public class Rollback : DelayBased
     }
     override public void remoteInput(TimedData<InputStruct> input)
     {
-        Debug.Log("Rollback: Input received for frame " + input.frame + " = " + input.data);
         receivedInputs.push(input);
 
         int frame = input.frame;
@@ -23,11 +22,7 @@ public class Rollback : DelayBased
             mostRecentInput = input;
 
         if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data){
-            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
-            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
-            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
-            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
-            Debug.Log("BAD BAD BAD BAD BAD BAD BAD BAD BAD ");
+            Debug.Log("ROLLBACK BABEE");
             gameObject.GetComponent<NetcodeManager>().rollback(frame);
         }
         
@@ -49,7 +44,6 @@ public class Rollback : DelayBased
             }
                 
         }
-        Debug.Log("Rollback: Input sent to local for frame " + frame + " (" + remote.frame +") = " + remote.data);
         return remote;
     }
 }

@@ -1,61 +1,45 @@
 using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
-    private int rejumpPreventionFrames;
     private int jumpFrame;
-    private int frame;
-    private LayerMask floor;
+    public int frame;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private RaycastHit2D[] collidedObjects;
-    private float distanceToGround;
-    private float moveSpeed;
-    private float jumpSpeed;
+    private GameState game;
     private bool grounded;
 
     void Start(){
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        game = gameObject.GetComponentInParent<GameState>();
         collidedObjects = new RaycastHit2D[1];
-        var characterValues = gameObject.transform.parent.GetComponentInParent<CharacterValues>();
-        floor = characterValues.floor;
-        moveSpeed =  characterValues.moveSpeed;
-        jumpSpeed = characterValues.jumpSpeed;
-        rejumpPreventionFrames = characterValues.rejumpPreventionFrames;
-        distanceToGround =  characterValues.distanceToGround + boxCollider.size.y/2;
         grounded = false;
-        jumpFrame = -rejumpPreventionFrames;
+        jumpFrame = -game.rejumpPreventionFrames;
         frame = 0;
     }
     void checkGrounded(){
-        grounded = boxCollider.Raycast(Vector2.down, collidedObjects, distanceToGround, floor) == 1;
+        grounded = boxCollider.Raycast(Vector2.down, collidedObjects, game.distanceToGround + boxCollider.size.y, game.floor) == 1;
     }
 
     void jump(){
         jumpFrame = frame;
-        rigidBody.velocity += new Vector2(0, jumpSpeed);
+        rigidBody.velocity += new Vector2(0, game.jumpSpeed);
     }
     void move(int direction){
-        rigidBody.velocity = new Vector2(moveSpeed * direction, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(game.moveSpeed * direction, rigidBody.velocity.y);
     }
 
     public void update(InputStruct input)
     {
         checkGrounded();
         if (grounded){
-            if (input.jump && ((frame - jumpFrame) > rejumpPreventionFrames))
+            if (input.jump && ((frame - jumpFrame) > game.rejumpPreventionFrames))
                 jump();
             else
                 move(input.horizontalMove);
         }
         frame += 1;
-    }
-
-    public void pause(){
-        rigidBody.isKinematic = true;
-    }
-    public void resume(){
-        rigidBody.isKinematic = false;
     }
 
     public SerializedPlayer serialized(){
