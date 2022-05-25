@@ -77,8 +77,6 @@ public class GameState : MonoBehaviour
         for(int character = 0; character < 2; character ++){
             if(characters[character].doInputsMatter())
                 characters[character].update(inputQueues[character].getFrame(targetFrame).data);
-            else
-                characters[character].noInputUpdate();
         }
     }
 
@@ -105,16 +103,6 @@ public class GameState : MonoBehaviour
     public void resumeGame(){
         paused = false;
     }
-    
-    private void unsyncCamera(){
-        for(int character = 0; character < 2; character ++)
-            characters[character].desyncPhysics();
-    }
-
-    private void resyncCamera(){
-        for(int character = 0; character < 2; character ++)
-            characters[character].resyncPhysics();
-    }
 
     public void rollback(int destFrame){
         haltGame();
@@ -131,11 +119,8 @@ public class GameState : MonoBehaviour
         frame = timedState.frame;
     }
     private void simulateToFrame (int destFrame){
-        unsyncCamera();
-        while (frame < destFrame){
+        while (frame < destFrame)
             updateGame();
-        }
-        resyncCamera();
     }
 
     public int getFrame(){

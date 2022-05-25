@@ -50,7 +50,7 @@ public class NetcodeManager : MonoBehaviour
         return networkStatus;
     }
     public void swapNetcode(){
-
+        useRollback = !useRollback;
     }
 
     public bool changeRollbackFrames(bool modifier){

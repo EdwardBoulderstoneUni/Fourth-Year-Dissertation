@@ -1,8 +1,7 @@
-using System;
+using System.Collections;
 using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
-    [SerializeField] private GameObject physicsObject;
     private int jumpFrame;
     private Rigidbody2D rigidBody;
     private GameState game;
@@ -11,7 +10,7 @@ public class CharacterController2D : MonoBehaviour
     private bool syncedRendering = false;
 
     void Start(){
-        rigidBody = physicsObject.GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         game = gameObject.GetComponentInParent<GameState>();
         grounded = false;
         jumpFrame = -GameState.rejumpPreventionFrames;
@@ -39,13 +38,6 @@ public class CharacterController2D : MonoBehaviour
             jump();
         else
             move(input.horizontalMove);
-        noInputUpdate();
-    }
-    public void noInputUpdate(){
-        if (syncedRendering){
-            transform.position += physicsObject.transform.position;
-            physicsObject.transform.position = new Vector3();
-        }
     }
 
     public SerializedPlayer serialized(){
@@ -60,15 +52,5 @@ public class CharacterController2D : MonoBehaviour
         transform.position = state.location;
         rigidBody.velocity = state.velocity;
         grounded = state.grounded;
-    }
-
-    public void desyncPhysics(){
-        syncedRendering = false;
-    }
-
-    public void resyncPhysics(){
-        syncedRendering = true;
-        noInputUpdate();
-
     }
 }

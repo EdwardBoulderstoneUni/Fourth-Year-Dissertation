@@ -11,11 +11,11 @@ public struct NetworkStatus{
         string output = "";
         output += "(Z/z) " + (rollback ? "Rollback" : "Delay Based") + "\n";
         if (rollback)
-            output += "Rollback Frames +(X) / -(x): " + rollbackFrames + "\n";
-        output += "Delay Frames +(C) / -(c): " + (rollback ? rollbackDelayFrames : delayDelayFrames) + "\n\n";
+            output += "Rollback Frames +(x) / -(X): " + rollbackFrames + "\n";
+        output += "Delay Frames +(c) / -(C): " + (rollback ? rollbackDelayFrames : delayDelayFrames) + "\n\n";
 
-        output += "Ping +(V) / -(v): " + ping + " ms\n";
-        output += "Ping Deviation +(B) / -(b): " + pingDeviation.ToString(".0#");
+        output += "Ping +(v) / -(V): " + ping + " ms\n";
+        output += "Ping Deviation +(b) / -(B): " + pingDeviation.ToString(".0#");
         return output;
     }
 }
@@ -38,19 +38,20 @@ public class NetworkStatusEditor : MonoBehaviour
     {
         bool changed = false;
         bool modifier = Input.GetKey(modifierKey);
-        if (Input.GetKey(netcodeTypeKey)){
+        if (Input.GetKeyDown(netcodeTypeKey)){
             netcodeManager.swapNetcode();
+            changed = true;
         }
-        if (Input.GetKey(rollbackFramesKey))
+        if (Input.GetKeyDown(rollbackFramesKey))
             changed = netcodeManager.changeRollbackFrames(modifier);
 
-        if (Input.GetKey(delayFramesKey))
+        if (Input.GetKeyDown(delayFramesKey))
             changed = netcodeManager.changeDelayFrames(modifier);
 
-        if (Input.GetKey(pingKey))
+        if (Input.GetKeyDown(pingKey))
             netcodeManager.changePing(modifier);
 
-        if (Input.GetKey(pingDeviationsKey))
+        if (Input.GetKeyDown(pingDeviationsKey))
             netcodeManager.changePingDeviation(modifier);
         
         if(changed)
