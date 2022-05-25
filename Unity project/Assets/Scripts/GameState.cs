@@ -15,8 +15,6 @@ public class GameState : MonoBehaviour
     private bool paused;
     private bool halted;
     private const float frameDuration = 1/60f;
-    private CameraClearFlags cameraClearFlags;
-    private int cameraCullingMask;
 
     public State getState(){
         State state = new State();
@@ -27,8 +25,6 @@ public class GameState : MonoBehaviour
         return state;
     }
     void Start(){
-        cameraClearFlags = Camera.main.clearFlags;
-        cameraCullingMask = Camera.main.cullingMask;
         halted = false;
         paused = false;
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
@@ -81,6 +77,8 @@ public class GameState : MonoBehaviour
         for(int character = 0; character < 2; character ++){
             if(characters[character].doInputsMatter())
                 characters[character].update(inputQueues[character].getFrame(targetFrame).data);
+            else
+                characters[character].noInputUpdate();
         }
     }
 
@@ -101,23 +99,23 @@ public class GameState : MonoBehaviour
     }
 
     public void pauseGame(){
-        pauseCamera();
         paused = true;
     }
 
     public void resumeGame(){
-        resumeCamera();
         paused = false;
     }
+    
+    private void unsyncCamera(){
+        for(int character = 0; character < 2; character ++)
+            characters[character].desyncPhysics();
+    }
 
-    private void pauseCamera(){
-        Camera.main.clearFlags = CameraClearFlags.Nothing;
-        Camera.main.cullingMask = 0;
+    private void resyncCamera(){
+        for(int character = 0; character < 2; character ++)
+            characters[character].resyncPhysics();
     }
-    private void resumeCamera(){
-        Camera.main.clearFlags = cameraClearFlags;
-        Camera.main.cullingMask = cameraCullingMask;
-    }
+
     public void rollback(int destFrame){
         haltGame();
         //Debug.Log("Rolling back from frame " + frame + "to frame " + destFrame);
@@ -133,9 +131,11 @@ public class GameState : MonoBehaviour
         frame = timedState.frame;
     }
     private void simulateToFrame (int destFrame){
+        unsyncCamera();
         while (frame < destFrame){
             updateGame();
         }
+        resyncCamera();
     }
 
     public int getFrame(){
