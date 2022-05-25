@@ -1,5 +1,5 @@
 using System;
-public class TimedQueue<T>
+[Serializable] public class TimedQueue<T>
 {
     TimedData<T>[] contents;
     int bufferSize;

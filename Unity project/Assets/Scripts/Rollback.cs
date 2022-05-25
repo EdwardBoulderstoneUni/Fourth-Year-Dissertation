@@ -2,8 +2,8 @@ using UnityEngine;
 public class Rollback : DelayBased
 {
     [SerializeField] [OnChangedCall("rollbackFramesChange")] public int rollbackFrames = 8;
-    private TimedQueue<InputStruct> guessedInputs;
-    private TimedData<InputStruct> mostRecentInput;
+    public TimedQueue<InputStruct> guessedInputs;
+    public TimedData<InputStruct> mostRecentInput;
     void Start(){
         delayBased = 0;
         guessedInputs = new TimedQueue<InputStruct>(rollbackFrames);
