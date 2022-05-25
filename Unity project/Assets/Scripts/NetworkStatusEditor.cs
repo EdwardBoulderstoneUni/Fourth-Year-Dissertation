@@ -58,7 +58,6 @@ public class NetworkStatusEditor : MonoBehaviour
     }
 
     public void updateText(){
-        Debug.Log("????????");
         textMesh.text = netcodeManager.getStatus().ToString();
     }
 }
