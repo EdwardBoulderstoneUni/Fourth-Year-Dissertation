@@ -38,4 +38,51 @@ public class NetcodeManager : MonoBehaviour
     private Netcode getNetcode(){
         return useRollback ? rollbackNetcode : delayBasedNetcode;
     }
+
+    public NetworkStatus getStatus(){
+        var networkStatus = new NetworkStatus();
+        networkStatus.rollback = useRollback;
+        networkStatus.rollbackFrames = rollbackNetcode.rollbackFrames;
+        networkStatus.rollbackDelayFrames = rollbackNetcode.delayFrames;
+        networkStatus.delayDelayFrames = delayBasedNetcode.delayFrames;
+        networkStatus.ping = interference.interferenceMetrics.ping;
+        networkStatus.pingDeviation = interference.interferenceMetrics.pingDeviation;
+        return networkStatus;
+    }
+    public void swapNetcode(){
+
+    }
+
+    public bool changeRollbackFrames(bool modifier){
+        if (rollbackNetcode.rollbackFrames == 0 && modifier)
+            return false;
+        rollbackNetcode.rollbackFrames -= modifier ? 1 : -1;
+        return true;
+    }
+
+    public bool changeDelayFrames(bool modifier){
+        if ((useRollback && (rollbackNetcode.delayFrames == 0 && modifier)) || 
+            (!useRollback && (delayBasedNetcode.delayFrames == 0 && modifier)))
+            return false;
+        if (useRollback)
+            rollbackNetcode.delayFrames -= modifier ? 1 : -1;
+        else
+            delayBasedNetcode.delayFrames -= modifier ? 1 : -1;
+        return true;
+    }
+
+    public bool changePing(bool modifier){
+        if (interference.interferenceMetrics.ping == 0 && modifier)
+            return false;
+        interference.interferenceMetrics.ping -= modifier ? 1 : -1;
+        return true;
+    }
+
+    public bool changePingDeviation(bool modifier){
+        if (interference.interferenceMetrics.pingDeviation == 0 && modifier)
+            return false;
+        interference.interferenceMetrics.pingDeviation -= modifier ? 0.1f : -0.1f;
+        return true;
+    }
+
 }
