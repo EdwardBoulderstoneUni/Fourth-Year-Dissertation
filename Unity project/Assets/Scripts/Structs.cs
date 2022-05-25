@@ -1,5 +1,6 @@
 using UnityEngine;
-public struct InputStruct{
+using System;
+[Serializable] public struct InputStruct{
     public bool jump;
     public int horizontalMove;
     public override bool Equals(object obj) => this.Equals(obj is InputStruct other && this.Equals(other));
@@ -58,7 +59,7 @@ public struct State{
     }
 }
 
-public struct TimedData<T>{
+[Serializable] public struct TimedData<T>{
     public int frame;
     public T data;
     public override string ToString(){

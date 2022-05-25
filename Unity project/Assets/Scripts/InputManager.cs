@@ -5,12 +5,12 @@ public class InputManager : MonoBehaviour
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
     [SerializeField] private KeyCode leftKey = KeyCode.A;
     [SerializeField] private KeyCode rightKey = KeyCode.D;
-    public InputStruct input;
+    private InputStruct input;
     private bool[] inputBuffer;
     void Start(){
         inputBuffer = new bool[inputs];
     }
-    void Update()
+    public void ping()
     {
         inputBuffer[0] = Input.GetKey(jumpKey) || inputBuffer[0];
         inputBuffer[1] = Input.GetKey(leftKey) || inputBuffer[1];

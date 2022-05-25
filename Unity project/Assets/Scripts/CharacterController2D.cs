@@ -1,42 +1,42 @@
+using System;
 using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
     private int jumpFrame;
     private Rigidbody2D rigidBody;
-    private BoxCollider2D boxCollider;
-    private RaycastHit2D[] collidedObjects;
     private GameState game;
     private bool grounded;
+    private const float groundedY = 1.52f;
 
     void Start(){
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        boxCollider = gameObject.GetComponent<BoxCollider2D>();
         game = gameObject.GetComponentInParent<GameState>();
-        collidedObjects = new RaycastHit2D[1];
         grounded = false;
-        jumpFrame = -game.rejumpPreventionFrames;
+        jumpFrame = -GameState.rejumpPreventionFrames;
     }
     void checkGrounded(){
-        grounded = boxCollider.Raycast(Vector2.down, collidedObjects, game.distanceToGround + boxCollider.size.y, game.floor) == 1;
+        grounded = transform.position.y <= groundedY;
     }
 
     void jump(){
         jumpFrame = game.getFrame();
-        rigidBody.velocity += new Vector2(0, game.jumpSpeed);
+        rigidBody.velocity += new Vector2(0, GameState.jumpSpeed);
     }
     void move(int direction){
-        rigidBody.velocity = new Vector2(game.moveSpeed * direction, rigidBody.velocity.y);
+        rigidBody.velocity = new Vector2(GameState.moveSpeed * direction, rigidBody.velocity.y);
     }
+
+    public bool doInputsMatter(){
+        checkGrounded();
+        return grounded;
+    } 
 
     public void update(InputStruct input)
     {
-        checkGrounded();
-        if (grounded){
-            if (input.jump && ((game.getFrame() - jumpFrame) > game.rejumpPreventionFrames))
-                jump();
-            else
-                move(input.horizontalMove);
-        }
+        if (input.jump && ((game.getFrame() - jumpFrame) > GameState.rejumpPreventionFrames))
+            jump();
+        else
+            move(input.horizontalMove);
     }
 
     public SerializedPlayer serialized(){

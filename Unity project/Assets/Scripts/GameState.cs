@@ -3,23 +3,22 @@ using System;
 public class GameState : MonoBehaviour
 {
     [SerializeField] InputManager localInput;
+    [SerializeField] InputManager trueRemoteInput;
     [SerializeField] private CharacterController2D[] characters = new CharacterController2D[2]; 
-    [SerializeField] public LayerMask floor;
-    [SerializeField] public float distanceToGround;
-    [SerializeField] public float moveSpeed;
-    [SerializeField] public float jumpSpeed;
-    [SerializeField] public int rejumpPreventionFrames;    
+    public const float moveSpeed = 5f;
+    public const float jumpSpeed = 5f;
+    public const int rejumpPreventionFrames = 10;    
     private TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
     private TimedQueue<State> stateQueue;
-    public int frame;
+    private int frame;
     private NetcodeManager netcodeManager;
-    private int last_frame;
     private bool paused;
     private bool halted;
     private const float frameDuration = 1/60f;
+    private CameraClearFlags cameraClearFlags;
+    private int cameraCullingMask;
 
     public State getState(){
-        
         State state = new State();
         state.player1 = characters[0].serialized();
         state.player2 = characters[1].serialized();
@@ -28,7 +27,8 @@ public class GameState : MonoBehaviour
         return state;
     }
     void Start(){
-        last_frame = 0;
+        cameraClearFlags = Camera.main.clearFlags;
+        cameraCullingMask = Camera.main.cullingMask;
         halted = false;
         paused = false;
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
@@ -38,13 +38,18 @@ public class GameState : MonoBehaviour
         stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames() + 1);
     }
 
+    void Update(){
+        localInput.ping();
+        trueRemoteInput.ping();
+    }
+
     void FixedUpdate() {
         if(!halted){
-            Debug.Log("GameState frame = " + frame);
+            //Debug.Log("GameState frame = " + frame);
             readLocalInput();
             if (!paused){
                 readRemoteInput();
-                if (!paused && !halted){
+                if (!paused){
                     updateGame();
                 }
             }
@@ -71,10 +76,11 @@ public class GameState : MonoBehaviour
         frame += 1;
     }
     void updateObjectStates(int targetFrame) {
-        Debug.Log("Local player = " + 0 + " Data for frame " + targetFrame + " : " + inputQueues[0] + ", " + inputQueues[1]);
-        Debug.Log("Local player = " + 0 + " Inputs for frame " + targetFrame + " = { " + inputQueues[0].getFrame(targetFrame).data + ", " + inputQueues[1].getFrame(targetFrame).data + " }");
+        //Debug.Log("Local player = " + 0 + " Data for frame " + targetFrame + " : " + inputQueues[0] + ", " + inputQueues[1]);
+        //Debug.Log("Local player = " + 0 + " Inputs for frame " + targetFrame + " = { " + inputQueues[0].getFrame(targetFrame).data + ", " + inputQueues[1].getFrame(targetFrame).data + " }");
         for(int character = 0; character < 2; character ++){
-            characters[character].update(inputQueues[character].getFrame(targetFrame).data);
+            if(characters[character].doInputsMatter())
+                characters[character].update(inputQueues[character].getFrame(targetFrame).data);
         }
     }
 
@@ -84,22 +90,41 @@ public class GameState : MonoBehaviour
         state.frame = frame;
         stateQueue.push(state);
     }
+    private void haltGame(){
+        pauseGame();
+        halted = true;
+    }
+
+    private void unhaltGame(){
+        resumeGame();
+        halted = false;
+    }
 
     public void pauseGame(){
+        pauseCamera();
         paused = true;
     }
 
     public void resumeGame(){
+        resumeCamera();
         paused = false;
     }
 
+    private void pauseCamera(){
+        Camera.main.clearFlags = CameraClearFlags.Nothing;
+        Camera.main.cullingMask = 0;
+    }
+    private void resumeCamera(){
+        Camera.main.clearFlags = cameraClearFlags;
+        Camera.main.cullingMask = cameraCullingMask;
+    }
     public void rollback(int destFrame){
-        halted = true;
-        Debug.Log("Rolling back from frame " + frame + "to frame " + destFrame);
-        last_frame = frame;
+        haltGame();
+        //Debug.Log("Rolling back from frame " + frame + "to frame " + destFrame);
+        int last_frame = frame;
         loadState(stateQueue.getFrame(destFrame));
         simulateToFrame(last_frame);
-        halted = false;
+        unhaltGame();
     }
     private void loadState(TimedData<State> timedState){
         var localState = timedState.data;
@@ -114,6 +139,6 @@ public class GameState : MonoBehaviour
     }
 
     public int getFrame(){
-        return halted ? last_frame : frame;
+        return frame;
     }
 }

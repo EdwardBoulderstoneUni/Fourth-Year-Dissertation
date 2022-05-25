@@ -3,7 +3,6 @@ public class DelayBased : Netcode
     // Not accounting for packetLoss or desync
     protected int haltingFrame = -1;
     void Start(){
-        delayBased = 1;
         receivedInputs = new TimedQueue<InputStruct>(delayFrames + 1);
     }
     override public void delayFramesChange(){
