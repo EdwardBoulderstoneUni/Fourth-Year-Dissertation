@@ -2,7 +2,6 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
     private int jumpFrame;
-    public int frame;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private RaycastHit2D[] collidedObjects;
@@ -16,14 +15,13 @@ public class CharacterController2D : MonoBehaviour
         collidedObjects = new RaycastHit2D[1];
         grounded = false;
         jumpFrame = -game.rejumpPreventionFrames;
-        frame = 0;
     }
     void checkGrounded(){
         grounded = boxCollider.Raycast(Vector2.down, collidedObjects, game.distanceToGround + boxCollider.size.y, game.floor) == 1;
     }
 
     void jump(){
-        jumpFrame = frame;
+        jumpFrame = game.getFrame();
         rigidBody.velocity += new Vector2(0, game.jumpSpeed);
     }
     void move(int direction){
@@ -34,12 +32,11 @@ public class CharacterController2D : MonoBehaviour
     {
         checkGrounded();
         if (grounded){
-            if (input.jump && ((frame - jumpFrame) > game.rejumpPreventionFrames))
+            if (input.jump && ((game.getFrame() - jumpFrame) > game.rejumpPreventionFrames))
                 jump();
             else
                 move(input.horizontalMove);
         }
-        frame += 1;
     }
 
     public SerializedPlayer serialized(){

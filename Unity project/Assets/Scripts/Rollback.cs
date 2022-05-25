@@ -20,10 +20,14 @@ public class Rollback : DelayBased
         int frame = input.frame;
         if (frame > mostRecentInput.frame)
             mostRecentInput = input;
-
+        Debug.Log("Current Frame = " + frame);
+        Debug.Log("Actual input = " + input.data);
+        Debug.Log("Received Inputs = " + receivedInputs);
+        Debug.Log("Guessed inputs = "+ guessedInputs);
         if (guessedInputs.contains(frame) && guessedInputs.getFrame(frame).data != input.data){
             Debug.Log("ROLLBACK BABEE");
             gameObject.GetComponent<NetcodeManager>().rollback(frame);
+            Debug.Log("Rollback over");
         }
         
         unhaltOnFrame(frame);
@@ -31,11 +35,13 @@ public class Rollback : DelayBased
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
         TimedData<InputStruct> remote = new TimedData<InputStruct>();
-        if (receivedInputs.contains(frame))
+        if (receivedInputs.contains(frame)){
             remote = receivedInputs.getFrame(frame);
+        }
         else{
-            if (frame - mostRecentInput.frame > rollbackFrames)
+            if (frame - mostRecentInput.frame > rollbackFrames){
                 haltForFrame(frame);
+            }
             
             else{
                 remote = mostRecentInput;

@@ -14,8 +14,8 @@ public class NetworkInterference : MonoBehaviour
     System.Random rand = new System.Random();
 
     public void interfere(Netcode target, TimedData<InputStruct> packet){
-        double packetDelay = NextGaussian(rand, interferenceMetrics.ping/2000, interferenceMetrics.pingDeviation/2000);
-        if (packetDelay >= 1/60)
+        double packetDelay = NextGaussian(rand, interferenceMetrics.ping/200f, interferenceMetrics.pingDeviation/200f);
+        if (packetDelay >= 1/60f)
             StartCoroutine(sendPacket(target, packet, (float) packetDelay));
         else
             target.remoteInput(packet);
