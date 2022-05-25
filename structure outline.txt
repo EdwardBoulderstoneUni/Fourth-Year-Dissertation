@@ -51,6 +51,7 @@ Shooters (Need for visual consistency (shot around corner), existing soultion?) 
 researched GGPO
 
 Devloped Unity game (Big)
+- 
 
 Read existing rollback studies
 

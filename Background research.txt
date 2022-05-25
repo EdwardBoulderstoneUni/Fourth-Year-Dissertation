@@ -4,12 +4,12 @@ https://cameroncohu.com/wp-content/uploads/2021/05/Rollback-Networking-in-Peer-t
 https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1322881&dswid=17 -> modeling states in delay and roll back networked games
 https://ieeexplore.ieee.org/abstract/document/7991545 -> "shot around the corner" networking issues for fps games
 https://dl.acm.org/doi/abs/10.1145/3519023 -> latency compenstation techniques
-https://gafferongames.com/ -> rollback in other genres
 
 Rollback netcode discussion:
 https://ki.infil.net/w02-netcode.html
-https://www.youtube.com/watch?v=pWkDU1YQTtE - >????
+https://www.youtube.com/watch?v=pWkDU1YQTtE -> How packet loss can affect netcode.
 
+https://www.youtube.com/watch?v=0NLe4IpdS1w -> Rollback netcode analysis
 Implementing rollback:
 https://www.youtube.com/watch?v=7jb0FOcImdg
 
@@ -20,8 +20,8 @@ https://www.ggpo.net/
 
 Difficulties:
 https://twitter.com/CMZinac/status/1181878689270599680 -> Systems with extra needed functionallity when using rollback
-https://twitter.com/CMZinac/status/1183027367834308608
-https://www.twitch.tv/videos/493574286
+https://twitter.com/CMZinac/status/1183027367834308608 -> uneven rollback demo
+https://www.twitch.tv/videos/493574286 -> uneven rollback demo
 https://web.archive.org/web/20210228051849/https://mauve.mizuumi.net/2012/07/05/understanding-fighting-game-networking.html -> Guide on solving networking issues with GGPO
 
 Beta telemetery?
@@ -39,7 +39,10 @@ https://whiffpunish.com/netcode -> online rollback vs delay simulator
 
 https://wondernetwork.com/pings -> ping anywhere in the world
 
+https://packetlosstest.com/ -> Packet Loss tester
 Experiment with delay + rollback quanitities?
 dealing with corrupted packets?
 
-https://gamesight.io/leaderboards/fighting-games
+https://gamesight.io/leaderboards/fighting-games -> Popular fighting games
+
+https://gafferongames.com/ -> rollback in other genres
