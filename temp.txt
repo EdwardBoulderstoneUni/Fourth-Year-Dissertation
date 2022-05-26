@@ -1,0 +1,15 @@
+Connections over the internet communicate data in packets which can run into the following issues.
+\begin{itemize}
+\item{Packets take time to reach their destination (Network Latency).}
+\item{Packets can get lost on their way (Packet Loss).}
+\item{Packets can get there, but have their data corrupted (Corruption).}
+\item{Computers can run at different speeds.}
+\item{Computers can occasionally get hung up on doing things and skip a frame or two.}
+\end{itemize}
+To alleviate the effect of network latency, input latency frames can be added. Input latency delays the inputs of both users by a number of frames, such that the packet containing a users inputs can be sent ahead of time, and if it arrives during the input latency time, the game is not required to be paused.
+
+\begin{figure}[h]
+\centering
+\includegraphics{InputDelay}
+\caption{4 Frame Input Delay Example \cite{FightingGameNetworking}}
+\end{figure}

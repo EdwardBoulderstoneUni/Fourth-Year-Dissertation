@@ -36,22 +36,9 @@ Melee, third strike, MVC2, SF2T, KOF2002, Metal Slug X
 Noteable games without:
 GBFV, Smash Bros Ultimate, UNICLR, SAMSHO, Soulcalibur VI, GGxrd, DOA 6, EA Sports UFC 4, DBFZ
 
-Difficulties of implmenting:
-- separate gameplay from rendering
-- serializable game state
-- particle simulation 
-- object lifetime 
-- sound fx
-- animation system
-- UI
-- desync detection
-
-- one sided rollbacks
-- optimization
-
 Genres that rollback could apply to (and why/why not?):
-Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 
-Shooters (Need for visual consistency (shot around corner), existing soultion?) , RTS (Including sports games), MMO, RPG, Racing Games, 
+
+Shooters (Need for visual consistency (shot around corner), existing soultion?) ,, MMO, RPG, Racing Games, 
 researched GGPO
 
 Devloped Unity game (Big)
