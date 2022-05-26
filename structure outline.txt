@@ -1,12 +1,16 @@
 Intro:
-What is netcode?
-What is rollback netcode?
-What existed before rollback?
-Why is it important
 Why have you done the study on it?
 
 Centralised rollback?
 
+\item{Super Smash Bros. Ultimate\cite{SSBU}}
+\item{Granblue Fantasy Versus\cite{GBFV}}
+\item{Under Night In-Birth\cite{UNI}
+\item{Samurai Shodown\cite{SamSho}
+\item{Soulcalibur VI\cite{SVI}}
+\item{Dead or Alive 6\cite{DOA6}}
+\item{EA Sports UFC 4\cite{UFC4}}
+\item{Dragon Ball FighterZ\cite{DBFZ}}
 
 Aims and Objectives
 Aim: To investigate rollback netcode, it's  in industry and any short comings of existing rollback netcode infrastructure
