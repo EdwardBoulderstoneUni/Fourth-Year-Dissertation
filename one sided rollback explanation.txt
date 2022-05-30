@@ -9,3 +9,4 @@ Other things that can cause onesided rollback = framedrops
 If both clients agree on delay duration, then the simulation time = Last recived input - delay time
 
 Onesided rollbacks = One side gets huge delay other gets frequent rollbacks
+https://docs.google.com/spreadsheets/d/15Y6l-8OnB4Pr-NQwJRwC9EXjGpWGgKwucAxRLFx4tIg/edit?usp=sharing
