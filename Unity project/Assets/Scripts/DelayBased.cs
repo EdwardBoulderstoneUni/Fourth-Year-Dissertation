@@ -1,3 +1,4 @@
+using UnityEngine;
 public class DelayBased : Netcode
 {
     // Not accounting for packetLoss or desync
@@ -24,7 +25,7 @@ public class DelayBased : Netcode
         return remote;
     }
     protected void unhaltOnPacket(Packet<InputStruct> packet){
-        if (receivedInputs.contains(haltingFrame)){
+        if (haltingFrame > 0 && receivedInputs.contains(haltingFrame)){
             haltingFrame = -1;
             gameObject.GetComponent<NetcodeManager>().resumeGame();
         }
