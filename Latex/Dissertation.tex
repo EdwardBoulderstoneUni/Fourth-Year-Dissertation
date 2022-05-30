@@ -33,20 +33,10 @@ rollback, netcode, peer to peer, fighting games, networking, industry.
 The goal of networking in video games is to allow people from all over the world to play with each other. However fans of fighting games have historically (Before the pandemic) gone out of their way to organise local tournaments with most major tournaments before the pandemic taking place off-line\cite{FGCMajors}. This trend started because of the when fighting games were played in arcades in the mid 1990's,\cite{FirstUSTournament} and continued until the start of the pandemic, in part because fighting games rely on consistent timing and a low latency environment \cite{DelayVsRollback}, \cite{BadNetcode}. The existing networking solutions at the time simply did not provide this environment for competitive play\cite{FGCAsEsport}. However the spread of the corona virus in the mid 2020's fighting games found themselves having to fall back onto these "lower quality" online platforms. Games which did not have well optimized netcode found themselves on the back foot, with reduced attention \cite{SmashTournamentsInThePandemic}, and games with well written netcode found their success  \cite{GuiltyGearStriveInThePandemic}.
 
 \subsection{Delay Based Netcode}
-The first solution to online play for fighting games was a peer to peer system known as delay based netcode. Peer to peer netcode is important for fighting games because of the aforementioned need for low latency. Because most fighting games are between two players \cite{FightingGameDefine}, introducing a server will increase the ping between the two players, as the information has to travel to a seperate location, before being sent to the opposing player. 
-
-
-Delay based netcode works by keeping two players in lockstep, meaning that each player's simulation of the game are paused whilst waiting for the input from the other player\cite{DelayBasedNetcode}. This system works well when latency is not a major factor, for example, in a turn based game, where the inputs are spread apart by seconds, a pause of half a second may go unnoticed. To address packets taking time to travel between two remote players, a number of input delay frames are added. Input delay frames delay the game state by a number of frames, and allow the local inputs to be sent ahead of time. So if the remote input arrives before the input delay frames are finished, there is no pause \ref{fig:DelayBasedNetcodeRepresentation}.
-
-\begin{figure}[h]
-\centering
-\includegraphics{DelayBasedNetcodeRepresentation}
-\caption{Delay based netcode \cite{GGPODocumentation}}
-\label{fig:DelayBasedNetcodeRepresentation}
-\end{figure}
+The first solution to online play for fighting games was a peer to peer system known as delay based netcode. Peer to peer netcode is important for fighting games because of the aforementioned need for low latency. Because most fighting games are between two players \cite{FightingGameDefine}, introducing a server will increase the ping between the two players, as the information has to travel to a seperate location, before being sent to the opposing player. Delay based netcode works by keeping two players games identical, by waiting for the remote player's input, before running the game update
 
 \subsection{Rollback Netcode}
-Rollback netcode was developed in 2006 as a solution to the problems with delay based netcode. \cite{RollbackDevelopment}. It works on top of existing delay based netcode by adding rollback frames, predicting the remote users inputs. When the remote user's input arrives if it matches with the predicted input, nothing happens, however if there's a discrepancy the game will "rollback", to the point of the discrepancy and re-simulate the game state back to the real time frame \ref{fig:RollbackNetcodeRepresentation}.
+Rollback netcode was developed in 2006 as a solution to the problems with delay based netcode. \cite{RollbackDevelopment}. It works on top of existing delay based netcode by adding rollback frames, predicting the remote users inputs. When the remote user's input arrives if it matches with the predicted input, nothing happens, however if there's a discrepancy the game will "rollback", to the point of the discrepancy and re-simulate the game state back to the real time frame as shown in figure \ref{fig:RollbackNetcodeRepresentation}.
 
 \begin{figure}[h]
 \centering
@@ -82,10 +72,56 @@ To investigate rollback netcode, it's usage in industry and any short comings of
 \item Investigate further uses of rollback netcode, in the wider video game industry.
 \end{itemize}
 \newpage
-\section{What you did and how}
-
 \section{Background}
+This section aims to provide information surrounding the different technologies and
+concepts which relate to the project objectives. There is a more in depth explaination on the structure of netcode, and some of the common problems it can encounter.
+
+Peer to peer networks over the internet communicate data in packets which can run into the following issues.
+\begin{itemize}
+\item{Packets take time to reach their destination (Network Latency).}
+\item{Packets can get lost on their way (Packet Loss).}
+\item{Packets can get there, but have their data corrupted (Corruption).}
+\item{Computers can run at different speeds.}
+\item{Computers can occasionally get hung up on doing things and skip a frame or two.}
+\end{itemize}
+
 \subsection{Delay based netcode}
+Delay based netcode works by keeping both players games in lockstep, meaning that each player's simulation of the game are waits for the input of the remote player, before simulating the frame\cite{DelayBasedNetcode}. This system works well when latency is not a major factor, for example, in a turn based game, where the inputs are spread apart by seconds, a pause of half a second may go unnoticed.
+Input latency frames are added to compensate for the Network Latency, and allow the local inputs to be sent before the frame they would be read on as shown in figure \ref{fig:InputLatencyEffect}.
+
+\begin{figure}[h]
+\centering
+\includegraphics{InputDelay}
+\caption{4 Frame Input Delay Example \cite{FightingGameNetworking}}
+\label{fig:InputLatencyEffect}
+\end{figure}
+
+The Input delay to be used can be calculated as follows:
+\[InputLatencyFrames = Ceiling( (RoundTripLatency/2 + Constant) / FrameDuration )\]
+
+Where the constant represents additional frames of delay to compensate for variance in Network Latency.
+
+However this model does not take into account potential for packet loss/ corrupted packets, which may lead the actual states to progress as shown in figure \ref{fig:PacketLossEffect}
+
+\begin{figure}[h]
+\centering
+\includegraphics{PacketLossEffect}
+\caption{Packet Loss's Affect on Game State progression \cite{FightingGameNetworking}}
+\label{fig:PacketLossEffect}
+\end{figure}
+
+One unexpected side effect of packet loss with single input packets is knock on delays, where by a delay in one game, makes the frame process later, so the inputs for that frame are postponed, delaying the origins game.
+
+To combat packet loss and data corruption multiple inputs can be sent with one packet, extra frames of input delay can be added, and inputs can be sent multiple times, as shown in \ref{fig:PacketLossSoultions}
+
+\begin{figure}[h]
+\centering
+\includegraphics{PacketLossSoultions}
+\caption{Potential Solutions to Packet Loss in Delay Based Netcode \cite{FightingGameNetworking}}
+\label{fig:PacketLossSoultions}
+\end{figure}
+
+
 \subsection{Rollback netcode}
 \subsection{Difficulties in Implmentation}
 - separate gameplay from rendering
