@@ -1,3 +1,4 @@
+using UnityEngine;
 public class RemoteInput : InputManager
 {
     TimedQueue<InputStruct> remoteInputs;
@@ -5,7 +6,8 @@ public class RemoteInput : InputManager
     // Start is called before the first frame update
     void Start()
     {
-        remoteInputs = new TimedQueue<InputStruct>(NetcodeManager.packetFrameSize + 1);
+        inputBuffer = new bool[inputs];
+        remoteInputs = new TimedQueue<InputStruct>(NetcodeManager.packetFrameSize * 2);
     }
 
     public override InputStruct getInput() {
