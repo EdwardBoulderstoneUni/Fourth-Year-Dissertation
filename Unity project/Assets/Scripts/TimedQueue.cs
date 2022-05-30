@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 [Serializable] public class TimedQueue<T>
 {
     TimedData<T>[] contents;
@@ -25,10 +26,9 @@ using System;
         var packet = new Packet<T>();
         if (bufferSize == 0)
             return packet;
-        packet.framesCount = framesCount;
+        packet.framesCount = Math.Min(frame, framesCount);
         packet.data = new TimedData<T>[framesCount];
-        
-        for (int index = 0; index < framesCount; index++){
+        for (int index = 0; index < packet.framesCount ; index++){
             packet.data[index] = getFrame(frame-index);
         }
         return packet;
