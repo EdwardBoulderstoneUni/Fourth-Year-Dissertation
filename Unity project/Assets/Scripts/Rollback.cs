@@ -17,8 +17,6 @@ public class Rollback : DelayBased
     override public void remoteInput(Packet<InputStruct> input)
     {
         receivedInputs.readPacket(input);
-
-        // Could guess wrong for an earlier frame ?
         if (input.data[0].frame > mostRecentInput.frame){
             var rollbacked = false;
             for (int frameIndex = 0; frameIndex < input.framesCount && !rollbacked; frameIndex ++){
@@ -41,13 +39,8 @@ public class Rollback : DelayBased
             netcodeManager.haltGameForFrames(networkDelta);
         }
     }
-
-    private void haltForFrames(int frames){
-
-    }
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
-        //bool guessed = false;
         TimedData<InputStruct> remote = new TimedData<InputStruct>();
         if (receivedInputs.contains(frame)){
             remote = receivedInputs.getFrame(frame);

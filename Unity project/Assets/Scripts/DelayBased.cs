@@ -1,7 +1,5 @@
-using UnityEngine;
 public class DelayBased : Netcode
 {
-    // Not accounting for packetLoss or desync
     protected int haltingFrame = -1;
     void Start(){
         receivedInputs = new TimedQueue<InputStruct>(delayFrames + 1);

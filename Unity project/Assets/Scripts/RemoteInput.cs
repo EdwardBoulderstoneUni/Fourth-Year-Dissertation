@@ -1,9 +1,7 @@
-using UnityEngine;
 public class RemoteInput : InputManager
 {
     TimedQueue<InputStruct> remoteInputs;
     int remoteFrame = 0;
-    // Start is called before the first frame update
     void Start()
     {
         inputBuffer = new bool[inputs];
