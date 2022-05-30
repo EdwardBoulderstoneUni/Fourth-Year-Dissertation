@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7395aeaef0cd97b43a33d2df3159fdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayFrames: 0
+  delayFrames: 5
 --- !u!4 &1318182786
 Transform:
   m_ObjectHideFlags: 0
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318182784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6acd16e4914b04fbd8da6a3ee48124, type: 3}
+  m_Script: {fileID: 11500000, guid: ab96a487a75b2e64492b87d5f1f58a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpKey: 273
