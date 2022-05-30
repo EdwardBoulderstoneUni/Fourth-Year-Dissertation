@@ -38,7 +38,7 @@ public class Rollback : DelayBased
         var localFrame = netcodeManager.getLocalFrame() + delayFrames;
         var networkDelta = mostRecentInput.frame - localFrame;
         if (networkDelta > 0){
-            haltForFrames(networkDelta);
+            netcodeManager.haltGameForFrames(networkDelta);
         }
     }
 

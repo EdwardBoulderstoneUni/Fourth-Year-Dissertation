@@ -32,6 +32,9 @@ public class NetcodeManager : MonoBehaviour
     public void resumeGame(){
         game.resumeGame();
     }
+    public void haltGameForFrames(int frames){
+        game.haltForFrames(frames);
+    }
 
     public void rollback(int frame){
         game.rollback(frame);
