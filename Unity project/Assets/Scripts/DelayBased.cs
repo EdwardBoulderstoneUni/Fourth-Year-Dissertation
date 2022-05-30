@@ -9,10 +9,10 @@ public class DelayBased : Netcode
         if (receivedInputs != null)
             receivedInputs.increaseBufferSizeTo(delayFrames);
     }
-    override public void remoteInput(TimedData<InputStruct> input)
+    override public void remoteInput(Packet<InputStruct> input)
     {
-        receivedInputs.push(input);
-        unhaltOnFrame(input.frame);
+        receivedInputs.readPacket(input);
+        unhaltOnPacket(input);
     }
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
@@ -23,8 +23,8 @@ public class DelayBased : Netcode
             haltForFrame(frame);
         return remote;
     }
-    protected void unhaltOnFrame(int frame){
-        if (haltingFrame == frame){
+    protected void unhaltOnPacket(Packet<InputStruct> packet){
+        if (receivedInputs.contains(haltingFrame)){
             haltingFrame = -1;
             gameObject.GetComponent<NetcodeManager>().resumeGame();
         }
@@ -33,5 +33,4 @@ public class DelayBased : Netcode
         haltingFrame = frame;
         gameObject.GetComponent<NetcodeManager>().pauseGame();
     }
-
 }

@@ -7,13 +7,12 @@ public class NetcodeManager : MonoBehaviour
     [SerializeField] private DelayBased delayBasedNetcode;
     [SerializeField] public GameState game;
     [SerializeField] public bool useRollback = false;
-    [SerializeField] private InputManager remoteInputManager;
+    [SerializeField] private RemoteInput remoteInputManager;
+    public static int packetFrameSize = 5;
     public TimedData<InputStruct> fetchRemote(int frame){
-        var remoteInput = new TimedData<InputStruct>();
-        remoteInput.data = remoteInputManager.getInput();
-        remoteInput.frame = frame;
-        interference.interfere(rollbackNetcode, remoteInput);
-        interference.interfere(delayBasedNetcode, remoteInput);
+        var packet = remoteInputManager.getRemoteInput(frame);
+        interference.interfere(rollbackNetcode, packet);
+        interference.interfere(delayBasedNetcode, packet);
         return getNetcode().fetchRemote(frame);
     }
 
@@ -22,6 +21,9 @@ public class NetcodeManager : MonoBehaviour
     }
     public int getRollbackFrames(){
         return rollbackNetcode.delayFrames + rollbackNetcode.rollbackFrames;
+    }
+    public int getLocalFrame(){
+        return game.getFrame();
     }
     public void pauseGame(){
         game.pauseGame();

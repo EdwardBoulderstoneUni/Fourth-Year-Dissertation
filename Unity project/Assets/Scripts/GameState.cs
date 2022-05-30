@@ -12,6 +12,7 @@ public class GameState : MonoBehaviour
     private TimedQueue<State> stateQueue;
     private int frame;
     private NetcodeManager netcodeManager;
+    private int haltingFrames;
     private bool paused;
     private bool halted;
     private const float frameDuration = 1/60f;
@@ -25,6 +26,7 @@ public class GameState : MonoBehaviour
         return state;
     }
     void Start(){
+        haltingFrames = -1;
         halted = false;
         paused = false;
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
@@ -40,8 +42,8 @@ public class GameState : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if(!halted){
-            //Debug.Log("GameState frame = " + frame);
+        tickHaltingFrames();
+        if(!halted && haltingFrames < 1){
             readLocalInput();
             if (!paused){
                 readRemoteInput();
@@ -50,6 +52,13 @@ public class GameState : MonoBehaviour
                 }
             }
         }
+
+    }
+
+    void tickHaltingFrames(){
+        if (haltingFrames < 1)
+            return;
+        haltingFrames -= 1;
     }
 
     void readLocalInput() {
@@ -72,8 +81,6 @@ public class GameState : MonoBehaviour
         frame += 1;
     }
     void updateObjectStates(int targetFrame) {
-        //Debug.Log("Local player = " + 0 + " Data for frame " + targetFrame + " : " + inputQueues[0] + ", " + inputQueues[1]);
-        //Debug.Log("Local player = " + 0 + " Inputs for frame " + targetFrame + " = { " + inputQueues[0].getFrame(targetFrame).data + ", " + inputQueues[1].getFrame(targetFrame).data + " }");
         for(int character = 0; character < 2; character ++){
             if(characters[character].doInputsMatter())
                 characters[character].update(inputQueues[character].getFrame(targetFrame).data);
@@ -106,7 +113,6 @@ public class GameState : MonoBehaviour
 
     public void rollback(int destFrame){
         haltGame();
-        //Debug.Log("Rolling back from frame " + frame + "to frame " + destFrame);
         int last_frame = frame;
         loadState(stateQueue.getFrame(destFrame));
         simulateToFrame(last_frame);
@@ -125,5 +131,8 @@ public class GameState : MonoBehaviour
 
     public int getFrame(){
         return frame;
+    }
+    public void haltForFrames(int frames){
+        haltingFrames = frames;
     }
 }

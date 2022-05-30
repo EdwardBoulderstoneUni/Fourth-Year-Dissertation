@@ -66,3 +66,8 @@ public struct State{
         return "Frame: " + frame + ", " + data.ToString();
     }
 }
+
+public struct Packet<T>{
+    public int framesCount;
+    public TimedData<T>[] data;
+}

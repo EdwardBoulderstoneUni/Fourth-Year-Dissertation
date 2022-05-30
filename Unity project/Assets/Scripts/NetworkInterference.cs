@@ -9,11 +9,10 @@ using UnityEngine;
 
 public class NetworkInterference : MonoBehaviour
 {
-    // TODO getting rollbacks at 0 ping/0variation, dir>jump not consistent behaviour, mash jump, jumps multiple times, desync issues
     [SerializeField] public InterferenceMetrics interferenceMetrics;
     System.Random rand = new System.Random();
 
-    public void interfere(Netcode target, TimedData<InputStruct> packet){
+    public void interfere(Netcode target, Packet<InputStruct> packet){
         double packetDelay = NextGaussian(rand, interferenceMetrics.ping/2000f, interferenceMetrics.pingDeviation/2000f);
         if (packetDelay >= 1/60f)
             StartCoroutine(sendPacket(target, packet, (float) packetDelay));
@@ -22,7 +21,7 @@ public class NetworkInterference : MonoBehaviour
         // TODO chance to disregard the packet (packet loss)
     }
 
-    private IEnumerator sendPacket(Netcode target, TimedData<InputStruct> packet, float delayTime){
+    private IEnumerator sendPacket(Netcode target, Packet<InputStruct> packet, float delayTime){
         yield return new WaitForSeconds(delayTime);
         target.remoteInput(packet);
     }

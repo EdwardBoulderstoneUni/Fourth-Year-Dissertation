@@ -13,12 +13,43 @@ using System;
         this.bufferSize = bufferSize;
     }
 
+    public void readPacket(Packet<T> input){
+        if (bufferSize != 0){
+            for (int index = 0; index < input.framesCount; index++){
+                push(input.data[index]);
+            }
+        }
+    }
+
+    public Packet<T> getPacket(int frame, int framesCount){
+        var packet = new Packet<T>();
+        if (bufferSize == 0)
+            return packet;
+        packet.framesCount = framesCount;
+        packet.data = new TimedData<T>[framesCount];
+        
+        for (int index = 0; index < framesCount; index++){
+            packet.data[index] = getFrame(frame-index);
+        }
+        return packet;
+    }
     public void push(TimedData<T> input){
         if (bufferSize != 0){
             if (contents[input.frame % bufferSize].frame < input.frame){
                 contents[input.frame % bufferSize] = input;
             }
         }
+    }
+
+    public TimedData<T> pop(int frame){
+        var data = new TimedData<T>(); 
+        data.frame = -1;
+        if (bufferSize != 0 && contents[frame % bufferSize].frame == frame){
+            var temp = data;
+            data = contents[frame % bufferSize];
+            contents[frame % bufferSize] = temp;
+        }
+        return data;
     }
     public bool contains(int frame){
         if (bufferSize == 0)
