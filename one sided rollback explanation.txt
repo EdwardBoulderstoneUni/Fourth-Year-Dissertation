@@ -1,0 +1,11 @@
+Packet loss or some other thing happens = Rollback buffer + 1 new inputs arrive simultaneously, unhalting:
+Frame number desync = One sided rollback!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+How to balance onesided?
+
+Rollback to specified frame and re-read inputs 
+
+Other things that can cause onesided rollback = framedrops
+If both clients agree on delay duration, then the simulation time = Last recived input - delay time
+
+Onesided rollbacks = One side gets huge delay other gets frequent rollbacks
