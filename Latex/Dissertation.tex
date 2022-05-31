@@ -85,7 +85,8 @@ Peer to peer networks over the internet communicate data in packets which can ru
 \item{Computers can occasionally get hung up on doing things and skip a frame or two.}
 \end{itemize}
 
-\subsection{Delay based netcode}
+\subsection{Delay-based netcode}
+\subsubsection{Concept}
 Delay based netcode works by keeping both players games in lockstep, meaning that each player's simulation of the game are waits for the input of the remote player, before simulating the frame\cite{DelayBasedNetcode}. This system works well when latency is not a major factor, for example, in a turn based game, where the inputs are spread apart by seconds, a pause of half a second may go unnoticed.
 Input latency frames are added to compensate for the Network Latency, and allow the local inputs to be sent before the frame they would be read on as shown in figure \ref{fig:InputLatencyEffect}.
 
@@ -101,6 +102,7 @@ The Input delay to be used can be calculated as follows:
 
 Where the constant represents additional frames of delay to compensate for variance in Network Latency.
 
+\subsubsection{Improvements}
 However this model does not take into account potential for packet loss/ corrupted packets, which may lead the actual states to progress as shown in figure \ref{fig:PacketLossEffect}
 
 \begin{figure}[h]
@@ -121,8 +123,24 @@ To combat packet loss and data corruption multiple inputs can be sent with one p
 \label{fig:PacketLossSoultions}
 \end{figure}
 
+Another improvement to made to delay based netcode is to account for Network Latency variance with a dynamic number of delay frames. way to account for Network Latency variance is to have a dynamic number of Delay Frames, varying with average Latency\cite{DelayVsRollback}. This can hide stutters, and remedy degrading network conditions causing consistent pauses. However, consistency for fighting games is the one of the highest determiners on network quality\cite{Core-ARollback}.
 
+\subsubsection{Problems}
+%%%%%%%%%%%%%%%
+You might suspect the main problem is that, if your inputs are delayed any amount, it will hugely impact your reactions and game plan and make the game unplayably different from offline matches. While delays are not ideal, there are many players who will not be able to notice small delays on the order of two or three frames. For those who can notice it, or are training to do well at offline tournaments where there will be no delay, clever game design and the delay remaining consistent can mitigate the effects of the delay surprisingly well and still allow online play to be a useful method of practice.
+%%%%%%%%%%%%%
+But no, the main problem is consistency. Because networks are notoriously inconsistent, delay-based strategies struggle because they are terrible at handling network fluctuations. Suppose there is a spike in the connection and some information from your opponent takes a little longer than the estimated three frames to reach you. Because the game simply cannot proceed without information from both players, it has no choice but to stop and wait for the input to arrive, causing the game to chug and lurch along during moments of prolonged network trouble.
+%%%%%%%%%%%%%%% \cite{DelayVsRollback} 
+%%%%%%%%%%%%%%%
+This approach works, after a fashion. Both players stay in sync with each other, an important thing when so much vital information lives in each frame. But delaying the input of each player, even by a small amount, completely changes how the game plays and feels. It makes a big difference between rounds fought in person, and rounds fought online. Games that use delay-based netcode, when played by the best players, become something else — something not nearly as competitive or fair.
+
+
+
+%%%% 
+
+Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades \cite{KIInterview}.
 \subsection{Rollback netcode}
+max tolerable ping increases
 \subsection{Difficulties in Implmentation}
 - separate gameplay from rendering
 - serializable game state
@@ -154,6 +172,10 @@ To combat packet loss and data corruption multiple inputs can be sent with one p
 \section{Wider use case of rollback netcode}
 Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 
  RTS (Including sports games)
+
+Prediction quality:
+- Connection ‘quality’. This doesn’t mean bandwidth, but rather how much a connection’s response time fluctuates. This has improved in modern times, making rollback a much more viable option than it once was.
+- The type of game. Because rollback needs you to be able to revert the state of the game in some cases, trying to implement it in a game with hundreds of different units all acting at once is extremely challenging (not to mention very offputting for the player). As a result, it’s more suited to fighting games and other games with fewer player-controlled assets flying around at any given time.
 
 \section{Evaluation}
 
@@ -217,6 +239,10 @@ games. (Visted 26/05/2022)
 \bibitem{UFC4} {\texttt https://en.wikipedia.org/wiki/EA\_Sports\_UFC\_4} or {\texttt https://web.archive.org/web/20211019192531/https://en.wikipedia.org/wiki/EA\_Sports\_UFC\_4} EA Sports UFC 4 (Visited 26/05/2022)
 
 \bibitem{DBFZ} {\texttt https://en.wikipedia.org/wiki/Dragon\_Ball\_FighterZ} or {\texttt https://web.archive.org/web/20220424200258/https://en.wikipedia.org/wiki/Dragon\_Ball\_FighterZ} Dragon Ball FighterZ (Visited 26/05/2022)
+
+\bibitem{Core-ARollback} {\texttt https://www.youtube.com/watch?v=0NLe4IpdS1w} or {\texttt https://web.archive.org/web/20220529231214/https://www.youtube.com/watch?v=0NLe4IpdS1w} Core A Gaming. Analysis: Why Rollback Netcode Is Better. (Visted 31/05/2022)
+
+\bibitem{KIInterview} {\texttt https://www.youtube.com/watch?v=1RI5scXYhK0} or {\texttt https://web.archive.org/web/20220330062542/https://www.youtube.com/watch?v=1RI5scXYhK0} Hold Back To Block. Talking Netcode With Adam "Keits" Heart (Visited 31/05/2022)
 
 \end{thebibliography}
 \end{document}
