@@ -126,22 +126,13 @@ To combat packet loss and data corruption multiple inputs can be sent with one p
 Another improvement to made to delay based netcode is to account for Network Latency variance with a dynamic number of delay frames. way to account for Network Latency variance is to have a dynamic number of Delay Frames, varying with average Latency\cite{DelayVsRollback}. This can hide stutters, and remedy degrading network conditions causing consistent pauses. However, consistency for fighting games is the one of the highest determiners on network quality\cite{Core-ARollback}.
 
 \subsubsection{Problems}
-%%%%%%%%%%%%%%%
-You might suspect the main problem is that, if your inputs are delayed any amount, it will hugely impact your reactions and game plan and make the game unplayably different from offline matches. While delays are not ideal, there are many players who will not be able to notice small delays on the order of two or three frames. For those who can notice it, or are training to do well at offline tournaments where there will be no delay, clever game design and the delay remaining consistent can mitigate the effects of the delay surprisingly well and still allow online play to be a useful method of practice.
-%%%%%%%%%%%%%
-But no, the main problem is consistency. Because networks are notoriously inconsistent, delay-based strategies struggle because they are terrible at handling network fluctuations. Suppose there is a spike in the connection and some information from your opponent takes a little longer than the estimated three frames to reach you. Because the game simply cannot proceed without information from both players, it has no choice but to stop and wait for the input to arrive, causing the game to chug and lurch along during moments of prolonged network trouble.
-%%%%%%%%%%%%%%% \cite{DelayVsRollback} 
-%%%%%%%%%%%%%%%
-This approach works, after a fashion. Both players stay in sync with each other, an important thing when so much vital information lives in each frame. But delaying the input of each player, even by a small amount, completely changes how the game plays and feels. It makes a big difference between rounds fought in person, and rounds fought online. Games that use delay-based netcode, when played by the best players, become something else — something not nearly as competitive or fair.
+When there is minimal Network Latency variance, delay based netcode functions similarly to a non networked experience, with increased Input Latency. This is the ideal case for delay based networking. However, when the Network Latency variance is high, the game can freeze at seemingly random moments, removing agency from the player in the middle of a game. This breaks user imersion and significantly decreases the quality of the experience\cite{DelayVsRollback}.
 
-
-
-%%%% 
-
-Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades \cite{KIInterview}.
+Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades. \cite{KIInterview}.
 \subsection{Rollback netcode}
+
 max tolerable ping increases
-\subsection{Difficulties in Implmentation}
+\subsubsection{Difficulties in Implmentation}
 - separate gameplay from rendering
 - serializable game state
 - particle simulation 
@@ -150,9 +141,9 @@ max tolerable ping increases
 - animation system
 - UI
 - desync detection
-\subsubsection{One sided Rollback}
-\subsubsection{Street Fighter V}
-\subsubsection{Mortal Kombat X}
+\subsubsubsection{One sided Rollback}
+\subsubsubsection{Street Fighter V}
+\subsubsubsection{Mortal Kombat X}
 \subsection{Third party Rollback}
 
 \section{Effects of Rollback on Game Design}
@@ -243,6 +234,8 @@ games. (Visted 26/05/2022)
 \bibitem{Core-ARollback} {\texttt https://www.youtube.com/watch?v=0NLe4IpdS1w} or {\texttt https://web.archive.org/web/20220529231214/https://www.youtube.com/watch?v=0NLe4IpdS1w} Core A Gaming. Analysis: Why Rollback Netcode Is Better. (Visted 31/05/2022)
 
 \bibitem{KIInterview} {\texttt https://www.youtube.com/watch?v=1RI5scXYhK0} or {\texttt https://web.archive.org/web/20220330062542/https://www.youtube.com/watch?v=1RI5scXYhK0} Hold Back To Block. Talking Netcode With Adam "Keits" Heart (Visited 31/05/2022)
+
+\bibitem{InputLatencyDatabase} {\texttt https://displaylag.com/video-game-input-lag-database/} or {\texttt https://web.archive.org/web/20220519183335/https://displaylag.com/video-game-input-lag-database/} Display Lag. Video Game Input Lag Database. (Visted 02/06/2022)
 
 \end{thebibliography}
 \end{document}

@@ -48,3 +48,5 @@ https://gamesight.io/leaderboards/fighting-games -> Popular fighting games
 https://gafferongames.com/ -> rollback in other genres
 
 https://en.wikipedia.org/wiki/Super_Street_Fighter_II_Turbo_HD_Remix -> First game with rollback
+
+Modeling network latency: http://blog.simiacryptus.com/posts/modeling_network_latency/
