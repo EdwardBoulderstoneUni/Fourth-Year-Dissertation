@@ -73,9 +73,15 @@ To investigate rollback netcode, it's usage in industry and any short comings of
 \end{itemize}
 \newpage
 \section{Background}
+
 This section aims to provide information surrounding the different technologies and
 concepts which relate to the project objectives. There is a more in depth explaination on the structure of netcode, and some of the common problems it can encounter.
 
+
+
+\subsection{Netcode}
+ latency graph from  {https://youtu.be/7jb0FOcImdg?t=501}
+dead reckoning sends games state (sever always wins), not needed for both rollback and delay
 Peer to peer networks over the internet communicate data in packets which can run into the following issues.
 \begin{itemize}
 \item{Packets take time to reach their destination (Network Latency).}
@@ -84,6 +90,9 @@ Peer to peer networks over the internet communicate data in packets which can ru
 \item{Computers can run at different speeds.}
 \item{Computers can occasionally get hung up on doing things and skip a frame or two.}
 \end{itemize}
+- The need for good netcode
+- Increases search area, allows game to continue past when it should have expired (KI/Skull girls)
+- max tolerable ping increases
 
 \subsection{Delay-based netcode}
 \subsubsection{Concept}
@@ -130,36 +139,141 @@ When there is minimal Network Latency variance, delay based netcode functions si
 
 Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades. \cite{KIInterview}.
 \subsection{Rollback netcode}
+\subsubsection{Concept}
 Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  is These predictive frames By not requiring the input of the remote user to simulate a frame, it can tolerate late and lost packets better than delay based \cite{GGPODocumentation}. When a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing. In theory one could use the rollback buffer to reduce apparent network latency as well. This will be explored later.
+-- Add a picture -- explain future
+-- GGPO --
 
-
-max tolerable ping increases
-\subsubsection{Difficulties in Implmentation}
+\subsubsection{Extra functionality required}
+Implementing rollback is not as simple as just changing your existing networking solution, these things need to be added
 - separate gameplay from rendering
 - serializable game state
+- loadable game state
+\subsubsection{Issues In theory}
+Because rollback doesn't require the remote user's input to simulate the frame, it comes with it's own associated issues.
+
+Visual artefacts / Teleportation
 - particle simulation 
 - object lifetime 
 - sound fx
 - animation system
-- UI
 - desync detection
-%\subsubsubsection{One sided Rollback}
-%\subsubsubsection{Street Fighter V}
-%\subsubsubsection{Mortal Kombat X}
+- Desync Detection
+- One sided roll back (Force synced game state) (Copy forced delays?)
+- NEEDS OPTIMIZATION
+\subsection{Evaluation}
+table from {https://youtu.be/7jb0FOcImdg?t=623}
+\section{Industry Issues}
+
+\subsection{Street Fighter V}
+One sided rollback  
+
+\subsection{Mortal Kombat X}
+Identify QOS cut off (max ping)
+Added after lauch, huge performance issues solved with:
+Multithreading, improved object handling (deferred deletion), evaulation of fixed cost, profiling tools !, optimizing game play loop as it in the worst case is going to be replayed multiple times.
+Turn off predictable(?) things each frame (by predictable I mean, f(sum(inputs)) = sum(f(inputs)).
+Need a seperate resimulated gameplay loop (desync detection).
+Only need to save confirmed frame (good for worst, bad for average) (save simulation mid point calculate performance based on rollback frame and particles generated this frame)
+precompute!
+Really fuzzy matching on non gameplay effecting effects i.e. audio, particles with no hitboxes
+Game rollback max really infrequently. Humans input speed max = find sc2 max apm
+Possible to slow fps of game if struggling to get performance instead of pausing
+Design systems to update with variable time steps
+defer processing until guaranteed response i.e. camera cuts, particle spawning
+7/8 man years to implement (4/5 optimization, 1/2 serialization,
+
 \subsection{Third party Rollback}
 - Slippi
-- Fightcade
+- Fightcade (GGPO)
 
 \section{Effects of Rollback on Game Design}
 \subsection{8 Frames}
+Rollback frame size fastest move? Target frame?
+move away from flashy effects at start of animations
+Game over effect more subtle SF2T vs GGST 
 \subsection{Audio Design}
+each Audio clip 
 \subsection{Visual Design}
+Don't have particles that can change location based on user input after they're spawned
 
+\section{Rollback Visualization tool}
+\subsection{Design}
+Side by side delay vs rollback demo
+Used unity
+Choose between dyanmic vs static delay/rollback buffers
+Customise ping + variance + packet loss
+Experiment With packet loss solutions
+How many frames to send
+
+Extremly simple controls to start (left/right/jump) Then consider if worth implmenting attacks
+Networked state
+ |                  \
+\ /                  \
+ V                    Netcode handler (recives input from game states and handles communication between them) - Network interfence customiser, Rollback, delay based
+2 game states              
+/             \                        \
+1 local player   1 remote player        local input
+
+UML:
+Netcode
+/               \
+Delay based      Rollback
+
+Packet Structure:frame + input
+
+Simplicity helps greatly in this case, would have to serialize particles and audio and more information about player i.e. what move they're in health, meter,etc. (use picture here)
+State structure = player 1 serialized + player 2 serialized
+Player serialization = location + speed + actionable (grounded in this case)
+
+input struct = int for direction of movement (-1/0/1) + bool for jump) not a lot of data
+ ping modeling = standard distribution (wrong but easy)
+
+How seperate rendering from game state in unity? = Don't allow render texture to update
+
+\subsection{Implementation}
+
+Attempts at determinism in unity:
+Manually controller physics update for set duration 
+One entry point, sending state as packet
+
+(floats = problem (used fuzzy match)) on player serialization
+No deterministic Physics
+reworked design
+made own fixed size buffer class to prevent excess memory being used
+Networked state
+ |                  \
+\ /                  \
+ V                    Netcode handler (recives input from game states and handles communication between them) - Network interfence customiser, Rollback, delay based, remote input
+1 game states              
+/             \                        \
+1 local player   1 remote player        local input
+ remote input subclass of local input
+Rollback always saving state, so if swap, can load prior states
+Delay based code explained
+Rollback code explained
+pause game when rollbacks happen
+
+having issues with frames taking longer than 16ms (Turns out unity overhead)
+simulate max rollbacks 100\% of time
+needed extra for game state from rollback explained
+
+Buffer sizes?
+
+Implement ideas from delay based netcode packet soultions = expanded packet size
+
+\subsection{Evaluation}
+Unity no determinsim (redo engine?)
+Rollback hard even for simple projects
+Didn't implement Audio or particle systems
+Better ping modelling
 
 \section{Improvements for Rollback}
 
 I propose a theory for rollback frames 
+how to model ping?
 %rollback = ceiling(sqrt(RTT variance)/frameduration + constant)
+%
 %(Only care about upper bound so sd is halved)
 %(2 sd's 98.5 could use 3 for 99.95) 
 %30(SFV round length) * FPS (60) * 3 (BO3) = number of frames.
@@ -171,28 +285,31 @@ for dynamic: dynamically changing rollback = minimal effect, (Problem with maxin
 for static: use upperbound of tolerable network connections (cite Mortal kombat)
 
 \subsection{Prediction Quality}
-\subsection{Packet Contents Optimization}
-\subsection{Input Locking}
+https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962  -> neural networks
 
-\section{Rollback Visualization tool}
-\subsection{Design}
+-Naive is ~90% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4&t=1888s}
+\subsection{Packet Contents Optimization}
+Delay based strategies
+
+\subsection{Input Locking}
+No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window
+
 
 \section{Wider use case of rollback netcode}
 Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 
  RTS (Including sports games)
-
+FPS - https://ieeexplore.ieee.org/abstract/document/7991545
 Prediction quality:
 - Connection ‘quality’. This doesn’t mean bandwidth, but rather how much a connection’s response time fluctuates. This has improved in modern times, making rollback a much more viable option than it once was.
 - The type of game. Because rollback needs you to be able to revert the state of the game in some cases, trying to implement it in a game with hundreds of different units all acting at once is extremely challenging (not to mention very offputting for the player). As a result, it’s more suited to fighting games and other games with fewer player-controlled assets flying around at any given time.
 
-\section{Evaluation}
-
-This section might alternatively be called “Experimental results”.  It describes how you assessed your project and what you found out. Where you give results in tables or graphs, remember to highlight in the text the key points that the data shows and, if possible, try to explain why you got any unexpected results.
 
 \section{Conclusions and further work}
 
-In this section you summarise what you did and discovered and (importantly) what else you would have done (or done differently) if you had the chance. It is a chance to reflect on your success.
+Rollback hard to implement, but not too hard to be impossible, newer games not releasing without it. Lessons learnt. Probably not applicable for wider use case. 
 
+furture work: 
+Non-game applications? Expand upon demo
 \begin{thebibliography}{25}
 
 \bibitem{GGPODocumentation} {\texttt https://drive.google.com/file/d/1nRa3cRBQmKj0-SEyrT\_1VNOkPOJWNhVI/view} or 
