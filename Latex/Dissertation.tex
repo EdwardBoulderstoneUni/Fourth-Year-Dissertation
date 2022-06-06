@@ -125,11 +125,13 @@ To combat packet loss and data corruption multiple inputs can be sent with one p
 
 Another improvement to made to delay based netcode is to account for Network Latency variance with a dynamic number of delay frames. way to account for Network Latency variance is to have a dynamic number of Delay Frames, varying with average Latency\cite{DelayVsRollback}. This can hide stutters, and remedy degrading network conditions causing consistent pauses. However, consistency for fighting games is the one of the highest determiners on network quality\cite{Core-ARollback}.
 
-\subsubsection{Problems}
+\subsubsection{Evaluation}
 When there is minimal Network Latency variance, delay based netcode functions similarly to a non networked experience, with increased Input Latency. This is the ideal case for delay based networking. However, when the Network Latency variance is high, the game can freeze at seemingly random moments, removing agency from the player in the middle of a game. This breaks user imersion and significantly decreases the quality of the experience\cite{DelayVsRollback}.
 
 Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades. \cite{KIInterview}.
 \subsection{Rollback netcode}
+Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  is These predictive frames By not requiring the input of the remote user to simulate a frame, it can tolerate late and lost packets better than delay based \cite{GGPODocumentation}. When a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing. In theory one could use the rollback buffer to reduce apparent network latency as well. This will be explored later.
+
 
 max tolerable ping increases
 \subsubsection{Difficulties in Implmentation}
@@ -141,10 +143,12 @@ max tolerable ping increases
 - animation system
 - UI
 - desync detection
-\subsubsubsection{One sided Rollback}
-\subsubsubsection{Street Fighter V}
-\subsubsubsection{Mortal Kombat X}
+%\subsubsubsection{One sided Rollback}
+%\subsubsubsection{Street Fighter V}
+%\subsubsubsection{Mortal Kombat X}
 \subsection{Third party Rollback}
+- Slippi
+- Fightcade
 
 \section{Effects of Rollback on Game Design}
 \subsection{8 Frames}
@@ -153,6 +157,19 @@ max tolerable ping increases
 
 
 \section{Improvements for Rollback}
+
+I propose a theory for rollback frames 
+%rollback = ceiling(sqrt(RTT variance)/frameduration + constant)
+%(Only care about upper bound so sd is halved)
+%(2 sd's 98.5 could use 3 for 99.95) 
+%30(SFV round length) * FPS (60) * 3 (BO3) = number of frames.
+%Chance of a 1F stutter = (1-confidance interval)^frames = 
+
+
+%delay = ceiling ((RTT)/(2*frameDuration) + constant)
+for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback?), however try to keep delay static
+for static: use upperbound of tolerable network connections (cite Mortal kombat)
+
 \subsection{Prediction Quality}
 \subsection{Packet Contents Optimization}
 \subsection{Input Locking}
