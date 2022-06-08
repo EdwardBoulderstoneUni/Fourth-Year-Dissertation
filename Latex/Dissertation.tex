@@ -82,6 +82,8 @@ Peer to peer networks over the internet communicate data in packets which can ru
 \item{Computers can run at different speeds.}
 \item{Computers can occasionally get hung up on doing things and skip a frame or two.}
 \end{itemize}
+
+In solving these issues, 
 - The need for good netcode
 - Increases search area, allows game to continue past when it should have expired (KI/Skull girls)
 - max tolerable ping increases
@@ -190,15 +192,18 @@ each Audio clip
 Don't have particles that can change location based on user input after they're spawned
 
 \section{Rollback Visualization tool}
+To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was made.
 \subsection{Design}
-Side by side delay vs rollback demo
-Used unity
-Choose between dyanmic vs static delay/rollback buffers
-Customise ping + variance + packet loss
+The high level design of this simulation was to have two side by side game clients, communicating to each other through simulated latency and netcode. Because the simulation was just supposed to be a demonstration, no overly complex mechanics would be implemented. It would just be two avatars that could move and jump.
+
+Unity was chosen as the engine to develop the simulation, as designing from an existing game engine, would make development faster, and the developer had experience in using unity before.
+
+The user would have the options to change the effect of network latency on the simulation(s) in real time, and the properties of the netcode, such as Input Latency, Rollback frames and packet loss \%. 
+
+
 Experiment With packet loss solutions
 How many frames to send
 
-Extremly simple controls to start (left/right/jump) Then consider if worth implmenting attacks
 Networked state
  |                  \
 \ /                  \
@@ -259,6 +264,7 @@ Unity no determinsim (redo engine?)
 Rollback hard even for simple projects
 Didn't implement Audio or particle systems
 Better ping modelling
+This simulation could also allow for testing of various improvements of the netcodes, such as multiple packet sending, increasing frames sent, etc.
 
 \section{Improvements for Rollback}
 
