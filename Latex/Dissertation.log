@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.5.9)  8 JUN 2022 13:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.5.9)  8 JUN 2022 17:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -305,24 +305,24 @@ File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 ) (Dissertation.aux)
 \openout1 = `Dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 
 Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
@@ -337,7 +337,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 )
-Package hyperref Info: Link coloring ON on input line 11.
+Package hyperref Info: Link coloring ON on input line 10.
 
 (C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -352,9 +352,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count288
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
  (Dissertation.out) (Dissertation.out)
 \@outlinefile=\write3
 \openout3 = `Dissertation.out'.
@@ -404,324 +404,314 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 File: ./Images//RollbackNetcodeRepresentation.png Graphic file (type png)
 <use ./Images//RollbackNetcodeRepresentation.png>
 Package pdftex.def Info: ./Images//RollbackNetcodeRepresentation.png  used on i
-nput line 43.
+nput line 42.
 (pdftex.def)             Requested size: 349.30414pt x 261.9781pt.
 
 [2 <./Images//RollbackNetcodeRepresentation.png>] [3]
 <./Images//InputDelay.png, id=213, 303.38344pt x 185.19188pt>
 File: ./Images//InputDelay.png Graphic file (type png)
 <use ./Images//InputDelay.png>
-Package pdftex.def Info: ./Images//InputDelay.png  used on input line 98.
+Package pdftex.def Info: ./Images//InputDelay.png  used on input line 97.
 (pdftex.def)             Requested size: 303.38269pt x 185.1914pt.
 
-Overfull \hbox (51.5832pt too wide) detected at line 104
+Overfull \hbox (51.5832pt too wide) detected at line 103
  $ []$ 
  []
 
 <./Images//PacketLossEffect.png, id=218, 304.13625pt x 191.9672pt>
 File: ./Images//PacketLossEffect.png Graphic file (type png)
 <use ./Images//PacketLossEffect.png>
-Package pdftex.def Info: ./Images//PacketLossEffect.png  used on input line 113
+Package pdftex.def Info: ./Images//PacketLossEffect.png  used on input line 112
 .
 (pdftex.def)             Requested size: 304.1355pt x 191.96672pt.
 [4 <./Images//InputDelay.png>]
-<./Images//PacketLossSoultions.png, id=233, 304.88907pt x 179.16937pt>
+<./Images//PacketLossSoultions.png, id=232, 304.88907pt x 179.16937pt>
 File: ./Images//PacketLossSoultions.png Graphic file (type png)
 <use ./Images//PacketLossSoultions.png>
 Package pdftex.def Info: ./Images//PacketLossSoultions.png  used on input line 
-124.
+123.
 (pdftex.def)             Requested size: 304.88832pt x 179.16893pt.
  [5 <./Images//PacketLossEffect.png> <./Images//PacketLossSoultions.png>] [6] [
 7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-Overfull \hbox (121.23364pt too wide) in paragraph at lines 297--303
+<./Images//UIDesign.png, id=270, 1180.41pt x 389.20406pt>
+File: ./Images//UIDesign.png Graphic file (type png)
+<use ./Images//UIDesign.png>
+Package pdftex.def Info: ./Images//UIDesign.png  used on input line 205.
+(pdftex.def)             Requested size: 396.0pt x 130.56381pt.
+ [8 <./Images//UIDesign.png>]
+Overfull \hbox (121.23364pt too wide) in paragraph at lines 290--296
 \OT1/cmr/m/n/10.95 to im-ple-ment?, ) RTS (In-clud-ing sports games) FPS - http
 s://ieeexplore.ieee.org/abstract/document/7991545
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--316
+Underfull \hbox (badness 10000) in paragraph at lines 306--309
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://drive.google.com/file/d/1nRa3cRBQmKj0-
 SEyrT[]1VNOkPOJWNhVI/view
  []
 
 
-Underfull \hbox (badness 7685) in paragraph at lines 313--316
+Underfull \hbox (badness 7685) in paragraph at lines 306--309
 \OT1/cmr/m/n/8 or \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20
 220101162600/https://drive.google.com/file/d/1nRa3cRBQmKj0-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 317--320
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 310--313
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://liquipedia.net/fighters/Tier[]1[]Tourn
 aments
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--324
+Underfull \hbox (badness 10000) in paragraph at lines 314--317
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.usgamer.net/articles/the-oral-hist
 ory-
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 325--328
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--321
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://esportsinsider.com/2021/10/can-fightin
 g-games-become-a-mainstream-esport/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--328
+Underfull \hbox (badness 10000) in paragraph at lines 318--321
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516060805/https
 ://esportsinsider.com/2021/10/can-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.ssbwiki.com/COVID-19[]pandemic[]an
 d[]its[]impact[]on[]competitive[]Smash or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516020551/https
 ://www.ssbwiki.com/COVID-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210713144527/https
 ://techraptor.net/gaming/opinions/guilty-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://arstechnica.com/gaming/2019/10/explain
 ing-how-fighting-games-use-delay-based-and-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 \OT1/cmr/m/n/8 rollback-netcode/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220425211823/https
 ://arstechnica.com/gaming/2019/10/explaining-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 328--330
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.polygon.com/2020/3/25/21192522/net
 code-samurai-showdown-fighting-games-rollback-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 328--330
 \OT1/cmr/m/n/8 delay or
  []
 
 
-Overfull \hbox (7.79465pt too wide) in paragraph at lines 335--337
+Overfull \hbox (7.79465pt too wide) in paragraph at lines 328--330
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220401231646/https
 ://www.polygon.com/2020/3/25/21192522/netcode-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 []
  []
 
 
-Overfull \hbox (11.68015pt too wide) in paragraph at lines 338--339
+Overfull \hbox (11.68015pt too wide) in paragraph at lines 331--332
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://gamasutra.com/view/news/34050/Interview[
 ]How[]A[]Fighting[]Game[]Fan[]Solved[]Internet[]Latency 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 340--341
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
 [][]\OT1/cmr/m/n/8 Issues.php or
  []
 
 
-Overfull \hbox (226.72934pt too wide) in paragraph at lines 340--341
+Overfull \hbox (226.72934pt too wide) in paragraph at lines 333--334
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220325062609/https
 ://gamasutra.com/view/news/34050/Interview[]How[]A[]Fighting[]Game[]Fan[]Solved
 []Internet[]Latency[]Issues.php
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://archive.org/details/nextgen-issue-015/
 page/n33/mode/2up "The Next Gen-er-a-tion 1996
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gamasutra.com/view/feature/3094/15
 00[]archers[]on[]a[]288[]network[].php or
  []
 
 
-Overfull \hbox (111.2852pt too wide) in paragraph at lines 344--345
+Overfull \hbox (111.2852pt too wide) in paragraph at lines 337--338
 \OT1/cmr/m/n/8 https://web.archive.org/web/20220506231117/https://www.gamasutra
 .com/view/feature/3094/1500[]archers[]on[]a[]288[]network[].php
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 []
  []
 
 
-Overfull \hbox (3.36264pt too wide) in paragraph at lines 346--347
+Overfull \hbox (3.36264pt too wide) in paragraph at lines 339--340
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210228051849/https
 ://mauve.mizuumi.net/2012/07/05/understanding-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 341--342
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://attackofthefanboy.com/guides/rollback-
 netcode-games-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Super[]Smash[]Br
 os.[]Ultimate or
  []
 
 
-Overfull \hbox (15.07054pt too wide) in paragraph at lines 350--351
+Overfull \hbox (15.07054pt too wide) in paragraph at lines 343--344
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220519200835/https
 ://en.wikipedia.org/wiki/Super[]Smash[]Bros.[]Ultimate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Granblue[]Fantas
 y[]Versus or
  []
 
 
-Overfull \hbox (1.72565pt too wide) in paragraph at lines 352--353
+Overfull \hbox (1.72565pt too wide) in paragraph at lines 345--346
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220512125807/https
 ://en.wikipedia.org/wiki/Granblue[]Fantasy[]Versus
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Under[]Night[]In
 -Birth
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 356--357
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Samurai[]Shodown
 [](2019[]video[]game) or
  []
 
 
-Overfull \hbox (46.9657pt too wide) in paragraph at lines 356--357
+Overfull \hbox (46.9657pt too wide) in paragraph at lines 349--350
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220504020927/https
 ://en.wikipedia.org/wiki/Samurai[]Shodown[](2019[]video[]game)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Soulcalibur[]VI 
 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220421074040/https
 ://en.wikipedia.org/wiki/Soulcalibur[]VI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dead[]or[]Alive[
 ]6 or
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 362--363
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/EA[]Sports[]UFC[
 ]4
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dragon[]Ball[]Fi
 ghterZ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--367
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=0NLe4IpdS1w
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=1RI5scXYhK0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://displaylag.com/video-game-input-lag-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gdcvault.com/play/1025021/8-Frames
 -in-16ms-Rollback
  []
 
 [11] (Dissertation.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `Dissertation.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Dissertation.out':
-(rerunfilecheck)             Before: EA70844757D360CBA1C3D997D2593412;4250
-(rerunfilecheck)             After:  574EF20E6C120297EB3F558523E8F2C6;4324.
+Package rerunfilecheck Info: File `Dissertation.out' has not changed.
+(rerunfilecheck)             Checksum: 574EF20E6C120297EB3F558523E8F2C6;4324.
  ) 
 Here is how much of TeX's memory you used:
- 9435 strings out of 478584
- 148574 string characters out of 2842986
- 434164 words of memory out of 3000000
- 27414 multiletter control sequences out of 15000+600000
+ 9446 strings out of 478584
+ 148811 string characters out of 2842986
+ 434162 words of memory out of 3000000
+ 27425 multiletter control sequences out of 15000+600000
  482673 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,78p,1184b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-pdfTeX warning (dest): name{figure.5} has been referenced but does not exist, r
-eplaced by a fixed one
-
-<C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmbx8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/b8057698/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/b8057698/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/b8057698/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
-/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb
-><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmti10.pfb><C:/Users/b8057698/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/b8057698/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on Dissertation.pdf (11 pages, 306132 bytes).
+<C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/b8057698/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/b8057698/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/b8057698
+/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
+rs/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.p
+fb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmsy8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmti10.pfb><C:/Users/b8057698/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/b8057698/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on Dissertation.pdf (11 pages, 347914 bytes).
 PDF statistics:
- 358 PDF objects out of 1000 (max. 8388607)
+ 361 PDF objects out of 1000 (max. 8388607)
  80 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 266 words of extra memory for PDF output out of 10000 (max. 10000000)
 

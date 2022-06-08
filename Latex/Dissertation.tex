@@ -2,7 +2,6 @@
 \usepackage{CSC8498macro}
 \usepackage{graphicx}
 \graphicspath{{./Images/}}
-
 %% This document describes the formatting instructions for the CSC8498 final report.
 
 \makeatletter
@@ -194,28 +193,21 @@ Don't have particles that can change location based on user input after they're 
 \section{Rollback Visualization tool}
 To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was made.
 \subsection{Design}
-The high level design of this simulation was to have two side by side game clients, communicating to each other through simulated latency and netcode. Because the simulation was just supposed to be a demonstration, no overly complex mechanics would be implemented. It would just be two avatars that could move and jump.
+The high level design of this visualization tool was to have two side by side game clients, communicating to each other through simulated latency and netcode. Because the visualization tool was just supposed to be a demonstration, no overly complex mechanics would be implemented. It would just be two avatars that could move and jump.
 
 Unity was chosen as the engine to develop the simulation, as designing from an existing game engine, would make development faster, and the developer had experience in using unity before.
 
 The user would have the options to change the effect of network latency on the simulation(s) in real time, and the properties of the netcode, such as Input Latency, Rollback frames and packet loss \%. 
+The overall design of the visualization tool is shown in figure \ref{fig:DFD}.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{UIDesign}
+\caption{Data Flow Diagram for Rollback Visualization tool}
+\label{fig:DFD}
+\end{figure}
 
-Experiment With packet loss solutions
-How many frames to send
-
-Networked state
- |                  \
-\ /                  \
- V                    Netcode handler (recives input from game states and handles communication between them) - Network interfence customiser, Rollback, delay based
-2 game states              
-/             \                        \
-1 local player   1 remote player        local input
-
-UML:
-Netcode
-/               \
-Delay based      Rollback
+\subsection{Implementation}
 
 Packet Structure:frame + input
 
@@ -228,7 +220,8 @@ input struct = int for direction of movement (-1/0/1) + bool for jump) not a lot
 
 How seperate rendering from game state in unity? = Don't allow render texture to update
 
-\subsection{Implementation}
+Experiment With packet loss solutions
+How many frames to send
 
 Attempts at determinism in unity:
 Manually controller physics update for set duration 

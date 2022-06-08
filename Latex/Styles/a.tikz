@@ -1,0 +1,57 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-17.75, 8.75) {};
+		\node [style=none] (1) at (-17.75, 8) {};
+		\node [style=none] (2) at (-17.75, 7.25) {};
+		\node [style=none] (3) at (-18, 5.75) {};
+		\node [style=none] (4) at (-17.5, 5.75) {};
+		\node [style=none] (5) at (-18.5, 8.5) {};
+		\node [style=none] (6) at (-17, 8.5) {};
+		\node [style=none] (7) at (-17.75, 9.5) {};
+		\node [style=none] (9) at (-13, 12.5) {};
+		\node [style=none] (10) at (-13, 3.5) {};
+		\node [style=none] (11) at (9, 3.5) {};
+		\node [style=none] (12) at (9, 12.5) {};
+		\node [style=Box Outline] (15) at (-7.25, 9) {Delay Based Netcode Local State};
+		\node [style=Box Outline] (16) at (-7.5, 5) {Rollback Netcode Local State};
+		\node [style=Box Outline] (17) at (-1, 7) {Network Interface};
+		\node [style=Box Outline] (18) at (4, 5) {Rollback Netcode};
+		\node [style=Box Outline] (19) at (-1, 11) {Network Interference};
+		\node [style=Box Outline] (20) at (4.25, 9) {Delay Based Netcode};
+		\node [style=none] (21) at (-15, 8.25) {};
+		\node [style=none] (22) at (-15, 11) {};
+		\node [style=none] (23) at (-15, 9) {};
+		\node [style=none] (24) at (-15, 5) {};
+		\node [style=none] (25) at (-17, 7.5) {};
+		\node [style=none] (26) at (-15, 7.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (1.center);
+		\draw (1.center) to (2.center);
+		\draw (2.center) to (3.center);
+		\draw (2.center) to (4.center);
+		\draw (1.center) to (5.center);
+		\draw (1.center) to (6.center);
+		\draw (9.center) to (12.center);
+		\draw (12.center) to (11.center);
+		\draw (11.center) to (10.center);
+		\draw (10.center) to (9.center);
+		\draw (7.center)
+			 to [bend left=90, looseness=1.75] (0.center)
+			 to [bend left=90, looseness=1.75] cycle;
+		\draw [style=Pointer] (16) to (17);
+		\draw [style=Pointer] (15) to (17);
+		\draw [style=Pointer] (19) to (17);
+		\draw [style=Pointer, in=360, out=180] (20) to (15);
+		\draw [style=Pointer] (17) to (20);
+		\draw [style=Pointer] (17) to (18);
+		\draw [style=Pointer] (18) to (16);
+		\draw [style=Pointer] (23.center) to (15);
+		\draw [style=Pointer] (24.center) to (16);
+		\draw [style=Pointer] (22.center) to (19);
+		\draw (21.center) to (23.center);
+		\draw (23.center) to (22.center);
+		\draw (21.center) to (24.center);
+		\draw (25.center) to (26.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
