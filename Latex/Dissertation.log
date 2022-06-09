@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.5.9)  8 JUN 2022 17:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.5.9)  9 JUN 2022 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -413,305 +413,315 @@ File: ./Images//InputDelay.png Graphic file (type png)
 <use ./Images//InputDelay.png>
 Package pdftex.def Info: ./Images//InputDelay.png  used on input line 97.
 (pdftex.def)             Requested size: 303.38269pt x 185.1914pt.
-
-Overfull \hbox (51.5832pt too wide) detected at line 103
- $ []$ 
- []
-
 <./Images//PacketLossEffect.png, id=218, 304.13625pt x 191.9672pt>
 File: ./Images//PacketLossEffect.png Graphic file (type png)
 <use ./Images//PacketLossEffect.png>
 Package pdftex.def Info: ./Images//PacketLossEffect.png  used on input line 112
 .
 (pdftex.def)             Requested size: 304.1355pt x 191.96672pt.
-[4 <./Images//InputDelay.png>]
-<./Images//PacketLossSoultions.png, id=232, 304.88907pt x 179.16937pt>
+ [4 <./Images//InputDelay.png>]
+<./Images//PacketLossSoultions.png, id=233, 304.88907pt x 179.16937pt>
 File: ./Images//PacketLossSoultions.png Graphic file (type png)
 <use ./Images//PacketLossSoultions.png>
 Package pdftex.def Info: ./Images//PacketLossSoultions.png  used on input line 
 123.
 (pdftex.def)             Requested size: 304.88832pt x 179.16893pt.
- [5 <./Images//PacketLossEffect.png> <./Images//PacketLossSoultions.png>] [6] [
-7]
-<./Images//UIDesign.png, id=270, 1180.41pt x 389.20406pt>
+ [5 <./Images//PacketLossEffect.png> <./Images//PacketLossSoultions.png>]
+[6] [7]
+<./Images//UIDesign.png, id=271, 1180.41pt x 389.20406pt>
 File: ./Images//UIDesign.png Graphic file (type png)
 <use ./Images//UIDesign.png>
 Package pdftex.def Info: ./Images//UIDesign.png  used on input line 205.
 (pdftex.def)             Requested size: 396.0pt x 130.56381pt.
- [8 <./Images//UIDesign.png>]
-Overfull \hbox (121.23364pt too wide) in paragraph at lines 290--296
+
+
+LaTeX Warning: Reference `sec: Background' on page 8 undefined on input line 21
+2.
+
+[8 <./Images//UIDesign.png>]
+Overfull \hbox (121.23364pt too wide) in paragraph at lines 293--299
 \OT1/cmr/m/n/10.95 to im-ple-ment?, ) RTS (In-clud-ing sports games) FPS - http
 s://ieeexplore.ieee.org/abstract/document/7991545
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--309
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 309--312
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://drive.google.com/file/d/1nRa3cRBQmKj0-
 SEyrT[]1VNOkPOJWNhVI/view
  []
 
 
-Underfull \hbox (badness 7685) in paragraph at lines 306--309
+Underfull \hbox (badness 7685) in paragraph at lines 309--312
 \OT1/cmr/m/n/8 or \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20
 220101162600/https://drive.google.com/file/d/1nRa3cRBQmKj0-
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 310--313
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--316
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://liquipedia.net/fighters/Tier[]1[]Tourn
 aments
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--317
+Underfull \hbox (badness 10000) in paragraph at lines 317--320
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.usgamer.net/articles/the-oral-hist
 ory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--321
+Underfull \hbox (badness 10000) in paragraph at lines 321--324
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://esportsinsider.com/2021/10/can-fightin
 g-games-become-a-mainstream-esport/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 318--321
+Underfull \hbox (badness 10000) in paragraph at lines 321--324
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516060805/https
 ://esportsinsider.com/2021/10/can-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.ssbwiki.com/COVID-19[]pandemic[]an
 d[]its[]impact[]on[]competitive[]Smash or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516020551/https
 ://www.ssbwiki.com/COVID-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--325
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210713144527/https
 ://techraptor.net/gaming/opinions/guilty-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://arstechnica.com/gaming/2019/10/explain
 ing-how-fighting-games-use-delay-based-and-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
 \OT1/cmr/m/n/8 rollback-netcode/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 326--327
+Underfull \hbox (badness 10000) in paragraph at lines 329--330
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220425211823/https
 ://arstechnica.com/gaming/2019/10/explaining-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--330
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.polygon.com/2020/3/25/21192522/net
 code-samurai-showdown-fighting-games-rollback-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 328--330
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
 \OT1/cmr/m/n/8 delay or
  []
 
 
-Overfull \hbox (7.79465pt too wide) in paragraph at lines 328--330
+Overfull \hbox (7.79465pt too wide) in paragraph at lines 331--333
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220401231646/https
 ://www.polygon.com/2020/3/25/21192522/netcode-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 []
  []
 
 
-Overfull \hbox (11.68015pt too wide) in paragraph at lines 331--332
+Overfull \hbox (11.68015pt too wide) in paragraph at lines 334--335
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://gamasutra.com/view/news/34050/Interview[
 ]How[]A[]Fighting[]Game[]Fan[]Solved[]Internet[]Latency 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 336--338
 [][]\OT1/cmr/m/n/8 Issues.php or
  []
 
 
-Overfull \hbox (226.72934pt too wide) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 336--338
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220325062609/https
-://gamasutra.com/view/news/34050/Interview[]How[]A[]Fighting[]Game[]Fan[]Solved
-[]Internet[]Latency[]Issues.php
+://gamasutra.com/view/news/34050/
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 335--336
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://archive.org/details/nextgen-issue-015/
 page/n33/mode/2up "The Next Gen-er-a-tion 1996
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--338
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gamasutra.com/view/feature/3094/15
 00[]archers[]on[]a[]288[]network[].php or
  []
 
 
-Overfull \hbox (111.2852pt too wide) in paragraph at lines 337--338
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
 \OT1/cmr/m/n/8 https://web.archive.org/web/20220506231117/https://www.gamasutra
-.com/view/feature/3094/1500[]archers[]on[]a[]288[]network[].php
+.com/view/feature/3094/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 []
  []
 
 
-Overfull \hbox (3.36264pt too wide) in paragraph at lines 339--340
+Overfull \hbox (3.36264pt too wide) in paragraph at lines 344--345
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210228051849/https
 ://mauve.mizuumi.net/2012/07/05/understanding-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--342
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://attackofthefanboy.com/guides/rollback-
 netcode-games-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--344
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Super[]Smash[]Br
 os.[]Ultimate or
  []
 
 
-Overfull \hbox (15.07054pt too wide) in paragraph at lines 343--344
+Overfull \hbox (15.07054pt too wide) in paragraph at lines 348--349
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220519200835/https
 ://en.wikipedia.org/wiki/Super[]Smash[]Bros.[]Ultimate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 345--346
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Granblue[]Fantas
 y[]Versus or
  []
 
 
-Overfull \hbox (1.72565pt too wide) in paragraph at lines 345--346
+Overfull \hbox (1.72565pt too wide) in paragraph at lines 350--351
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220512125807/https
 ://en.wikipedia.org/wiki/Granblue[]Fantasy[]Versus
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Under[]Night[]In
 -Birth
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 349--350
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Samurai[]Shodown
 [](2019[]video[]game) or
  []
 
 
-Overfull \hbox (46.9657pt too wide) in paragraph at lines 349--350
-\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220504020927/https
-://en.wikipedia.org/wiki/Samurai[]Shodown[](2019[]video[]game)
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
+\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220504020927/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
+\OT1/cmr/m/n/8 https://en.wikipedia.org/wiki/Samurai[]Shodown[](2019[]video[]ga
+me) Samu-rai Shodown (Vis-ited
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Soulcalibur[]VI 
 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 351--352
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220421074040/https
 ://en.wikipedia.org/wiki/Soulcalibur[]VI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dead[]or[]Alive[
 ]6 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/EA[]Sports[]UFC[
 ]4
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dragon[]Ball[]Fi
 ghterZ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=0NLe4IpdS1w
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--362
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=1RI5scXYhK0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://displaylag.com/video-game-input-lag-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gdcvault.com/play/1025021/8-Frames
 -in-16ms-Rollback
  []
 
 [11] (Dissertation.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Dissertation.out' has not changed.
 (rerunfilecheck)             Checksum: 574EF20E6C120297EB3F558523E8F2C6;4324.
  ) 
 Here is how much of TeX's memory you used:
- 9446 strings out of 478584
- 148811 string characters out of 2842986
- 434162 words of memory out of 3000000
- 27425 multiletter control sequences out of 15000+600000
- 482673 words of font info for 83 fonts, out of 8000000 for 9000
+ 9448 strings out of 478584
+ 148846 string characters out of 2842986
+ 433162 words of memory out of 3000000
+ 27427 multiletter control sequences out of 15000+600000
+ 482981 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,78p,1184b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 <C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/b8057698/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/b8057698/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/b8057698
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Use
-rs/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.p
-fb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmr8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmsy8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmti10.pfb><C:/Users/b8057698/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Users/b8057698/AppData/Local
-/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on Dissertation.pdf (11 pages, 347914 bytes).
+cm/cmbx10.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/b8057698/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/b8057698/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/b805769
+8/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
+.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/b8057698/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/b8057698/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/b8057698/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/User
+s/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.p
+fb>
+Output written on Dissertation.pdf (11 pages, 367955 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
+ 371 PDF objects out of 1000 (max. 8388607)
  80 named destinations out of 1000 (max. 500000)
  266 words of extra memory for PDF output out of 10000 (max. 10000000)
 
