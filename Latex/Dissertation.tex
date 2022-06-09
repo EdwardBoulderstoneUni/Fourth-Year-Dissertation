@@ -211,10 +211,10 @@ The overall design of the visualization tool is shown in figure \ref{fig:DFD}.
 
 Initially the packet structure was chosen to be a single frame's input, however during development I realized that the packet structure improvements mentioned in \ref{sec: Background} could be applied to combat packet loss.
 
-State serialization was surprising simple, as the only two dynamic elements of my game were the two players. Meaning that the only properties I had to save would be their location and velocity. If the game had more functionality, such as a health system, or audio effects, which are present in most modern games, extra systems would have had to be implemented on top to support dynamic saving and loading of state. (Use picture)
+State serialization was surprising simple, as the only two dynamic elements of my game were the two players. Meaning that the only properties I had to save would be their location and velocity. If the game had more functionality, such as a health system, or audio effects, which are present in most modern games, extra systems would have had to be implemented on top to support dynamic saving and loading of state.
 
 Experiment With packet loss solutions
-How many frames to send, request for frame?
+
 
 How seperate rendering from game state in unity? = Don't allow render texture to update
 
@@ -260,7 +260,7 @@ This simulation could also allow for testing of various improvements of the netc
 
 I propose a theory for rollback frames 
 how to model ping?
-%\[rollback = ceiling(\frac{\sqrt{RTT variance}}{frameduration} + constant)\]
+\[rollback frames = ceiling(max acceptable ping}{2*frameduration} - delay frames)\]
 %
 %(Only care about upper bound so sd is halved)
 %(2 sd's 98.5 could use 3 for 99.95) 
@@ -277,11 +277,15 @@ https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962  ->
 
 -Naive is ~90% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4&t=1888s}
 \subsection{Packet Contents Optimization}
-Delay based strategies
+Delay based strategies]
+How many frames to send, request for frame? = delay frames? + constant?
+
 
 \subsection{Input Locking}
 No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window
 
+\subsection{Conculsion}
+These require further testing
 
 \section{Wider use case of rollback netcode}
 Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 

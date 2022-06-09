@@ -1,27 +1,27 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.5.9)  9 JUN 2022 13:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.4.12)  9 JUN 2022 19:20
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **./Dissertation.tex
 (Dissertation.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-21> (entcs.cls
+L3 programming layer <2022-02-24> (entcs.cls
 Document Class: entcs 2003/9/14, 2e-1.15: Electronic Notes in Theoretical Compu
 ter Science
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\newlfont.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\newlfont.sty
 Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
 LaTeX Info: Redefining \em on input line 57.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
 ))
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.st
 y
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks16
@@ -31,26 +31,26 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.st
 y
-Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.st
 y
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexc
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexc
 mds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarer
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarer
 r.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
@@ -58,33 +58,33 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkey
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkey
 s.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdef
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdef
 inekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescap
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescap
 e.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxma
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxma
 cro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.
 sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
@@ -92,54 +92,49 @@ Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 \Hy@linkcounter=\count185
 \Hy@pagecounter=\count186
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-la
-ngpatches.def
-File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
-nguages
-)
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.st
 y
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.
 sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count187
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `raiselinks' set `false' on input line 4073.
-Package hyperref Info: Option `colorlinks' set `true' on input line 4073.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 4073.
-Package hyperref Info: Hyper figures OFF on input line 4192.
-Package hyperref Info: Link nesting OFF on input line 4197.
-Package hyperref Info: Hyper index ON on input line 4200.
-Package hyperref Info: Plain pages OFF on input line 4207.
-Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Option `raiselinks' set `false' on input line 4018.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4018.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4018.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4445.
+Package hyperref Info: Bookmarks ON on input line 4390.
 \c@Hy@tempcnt=\count188
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4804.
+LaTeX Info: Redefining \url on input line 4749.
 \XeTeXLinkMargin=\dimen139
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintc
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintc
 alc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
@@ -147,17 +142,17 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 \Fld@menulength=\count189
 \Field@Width=\dimen140
 \Fld@charsize=\dimen141
-Package hyperref Info: Hyper figures OFF on input line 6076.
-Package hyperref Info: Link nesting OFF on input line 6081.
-Package hyperref Info: Hyper index ON on input line 6084.
-Package hyperref Info: backreferencing OFF on input line 6091.
-Package hyperref Info: Link coloring ON on input line 6094.
-Package hyperref Info: Link coloring with OCG OFF on input line 6101.
-Package hyperref Info: PDF/A mode OFF on input line 6106.
-LaTeX Info: Redefining \ref on input line 6146.
-LaTeX Info: Redefining \pageref on input line 6150.
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring ON on input line 6045.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.st
 y
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
@@ -171,22 +166,22 @@ Package hyperref Warning: Option `pdfpagelabels' is turned off
 )
 Package hyperref Info: Driver: hpdftex.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2022-02-21 v7.00n Hyperref driver for pdfTeX
 \Fld@listcount=\count192
 \c@bookmark@seq@number=\count193
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerun
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerun
 filecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.s
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.s
 ty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniq
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniq
 uecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
@@ -195,7 +190,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip47
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\leqno.clo
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\leqno.clo
 File: leqno.clo 2016/12/29 v1.2b Standard LaTeX option (left equation numbers)
 )
 LaTeX Info: Redefining \rm on input line 76.
@@ -256,48 +251,48 @@ LaTeX Info: Redefining \sc on input line 83.
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 11
 33.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
 LaTeX Font Info:    Trying to load font information for U+msa on input line 113
 3.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 113
 3.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 \Slashbox=\box54
 )
 (CSC8498macro.sty)
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.st
 y
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.st
 y
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphic
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphic
 s.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.
 def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen153
 \Gin@req@width=\dimen154
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-
 pdftex.def
 File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
@@ -328,10 +323,10 @@ LaTeX Font Info:    ... okay on input line 10.
 Package hyperref Warning: Height of page (\paperheight) is invalid (0.0pt),
 (hyperref)                using 11in.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
 Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.c
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.c
 fg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
@@ -339,14 +334,14 @@ Package color Info: Driver file: pdftex.def on input line 149.
 )
 Package hyperref Info: Link coloring ON on input line 10.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.st
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.st
 y
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\get
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\get
 titlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
@@ -360,7 +355,7 @@ LaTeX Info: Redefining \nameref on input line 10.
 \openout3 = `Dissertation.out'.
 
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf
 .mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count289
@@ -375,13 +370,13 @@ LaTeX Info: Redefining \nameref on input line 10.
 \makeMPintoPDFobject=\count294
 \everyMPtoPDFconversion=\toks21
 )
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopd
 f-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\b8057698\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sy
+(C:\Users\Wavedash\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sy
 s.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
@@ -399,7 +394,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  
  []
 
-[1{C:/Users/b8057698/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+[1{C:/Users/Wavedash/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 <./Images//RollbackNetcodeRepresentation.png, id=166, 349.305pt x 261.97874pt>
 File: ./Images//RollbackNetcodeRepresentation.png Graphic file (type png)
 <use ./Images//RollbackNetcodeRepresentation.png>
@@ -439,289 +434,310 @@ LaTeX Warning: Reference `sec: Background' on page 8 undefined on input line 21
 2.
 
 [8 <./Images//UIDesign.png>]
-Overfull \hbox (121.23364pt too wide) in paragraph at lines 293--299
+! Extra }, or forgotten $.
+\]->\relax \ifmmode \egroup 
+                            $\hfil \egroup \end {trivlist} \else \@badmath \fi 
+l.263 ...able ping}{2*frameduration} + constant)\]
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[9]
+Overfull \hbox (121.23364pt too wide) in paragraph at lines 291--297
 \OT1/cmr/m/n/10.95 to im-ple-ment?, ) RTS (In-clud-ing sports games) FPS - http
 s://ieeexplore.ieee.org/abstract/document/7991545
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 309--312
+
+Underfull \hbox (badness 10000) in paragraph at lines 307--310
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://drive.google.com/file/d/1nRa3cRBQmKj0-
 SEyrT[]1VNOkPOJWNhVI/view
  []
 
 
-Underfull \hbox (badness 7685) in paragraph at lines 309--312
+Underfull \hbox (badness 7685) in paragraph at lines 307--310
 \OT1/cmr/m/n/8 or \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20
 220101162600/https://drive.google.com/file/d/1nRa3cRBQmKj0-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--316
+Underfull \hbox (badness 10000) in paragraph at lines 311--314
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://liquipedia.net/fighters/Tier[]1[]Tourn
 aments
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--320
+Underfull \hbox (badness 10000) in paragraph at lines 315--318
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.usgamer.net/articles/the-oral-hist
 ory-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--324
+Underfull \hbox (badness 10000) in paragraph at lines 319--322
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://esportsinsider.com/2021/10/can-fightin
 g-games-become-a-mainstream-esport/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 321--324
+Underfull \hbox (badness 10000) in paragraph at lines 319--322
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516060805/https
 ://esportsinsider.com/2021/10/can-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.ssbwiki.com/COVID-19[]pandemic[]an
 d[]its[]impact[]on[]competitive[]Smash or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220516020551/https
 ://www.ssbwiki.com/COVID-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210713144527/https
 ://techraptor.net/gaming/opinions/guilty-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://arstechnica.com/gaming/2019/10/explain
 ing-how-fighting-games-use-delay-based-and-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 \OT1/cmr/m/n/8 rollback-netcode/ or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220425211823/https
 ://arstechnica.com/gaming/2019/10/explaining-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--333
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.polygon.com/2020/3/25/21192522/net
 code-samurai-showdown-fighting-games-rollback-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--333
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
 \OT1/cmr/m/n/8 delay or
  []
 
 
-Overfull \hbox (7.79465pt too wide) in paragraph at lines 331--333
+Overfull \hbox (7.79465pt too wide) in paragraph at lines 329--331
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220401231646/https
 ://www.polygon.com/2020/3/25/21192522/netcode-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 []
  []
 
 
-Overfull \hbox (11.68015pt too wide) in paragraph at lines 334--335
+Overfull \hbox (11.68015pt too wide) in paragraph at lines 332--333
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://gamasutra.com/view/news/34050/Interview[
 ]How[]A[]Fighting[]Game[]Fan[]Solved[]Internet[]Latency 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--338
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
 [][]\OT1/cmr/m/n/8 Issues.php or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--338
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220325062609/https
 ://gamasutra.com/view/news/34050/
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://archive.org/details/nextgen-issue-015/
 page/n33/mode/2up "The Next Gen-er-a-tion 1996
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--343
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gamasutra.com/view/feature/3094/15
 00[]archers[]on[]a[]288[]network[].php or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--343
+Underfull \hbox (badness 10000) in paragraph at lines 339--341
 \OT1/cmr/m/n/8 https://web.archive.org/web/20220506231117/https://www.gamasutra
 .com/view/feature/3094/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 344--345
+Underfull \hbox (badness 10000) in paragraph at lines 342--343
 []
  []
 
 
-Overfull \hbox (3.36264pt too wide) in paragraph at lines 344--345
+Overfull \hbox (3.36264pt too wide) in paragraph at lines 342--343
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20210228051849/https
 ://mauve.mizuumi.net/2012/07/05/understanding-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://attackofthefanboy.com/guides/rollback-
 netcode-games-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Super[]Smash[]Br
 os.[]Ultimate or
  []
 
 
-Overfull \hbox (15.07054pt too wide) in paragraph at lines 348--349
+Overfull \hbox (15.07054pt too wide) in paragraph at lines 346--347
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220519200835/https
 ://en.wikipedia.org/wiki/Super[]Smash[]Bros.[]Ultimate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 350--351
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Granblue[]Fantas
 y[]Versus or
  []
 
 
-Overfull \hbox (1.72565pt too wide) in paragraph at lines 350--351
+Overfull \hbox (1.72565pt too wide) in paragraph at lines 348--349
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220512125807/https
 ://en.wikipedia.org/wiki/Granblue[]Fantasy[]Versus
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Under[]Night[]In
 -Birth
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Samurai[]Shodown
 [](2019[]video[]game) or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220504020927/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+Underfull \hbox (badness 10000) in paragraph at lines 352--354
 \OT1/cmr/m/n/8 https://en.wikipedia.org/wiki/Samurai[]Shodown[](2019[]video[]ga
 me) Samu-rai Shodown (Vis-ited
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Soulcalibur[]VI 
 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
 \OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://web.archive.org/web/20220421074040/https
 ://en.wikipedia.org/wiki/Soulcalibur[]VI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dead[]or[]Alive[
 ]6 or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--362
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/EA[]Sports[]UFC[
 ]4
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://en.wikipedia.org/wiki/Dragon[]Ball[]Fi
 ghterZ
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--366
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=0NLe4IpdS1w
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.youtube.com/watch?v=1RI5scXYhK0
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://displaylag.com/video-game-input-lag-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+Underfull \hbox (badness 10000) in paragraph at lines 369--370
 []\OT1/cmtt/m/n/8 h\OT1/cmr/m/n/8 ttps://www.gdcvault.com/play/1025021/8-Frames
 -in-16ms-Rollback
  []
 
-[11] (Dissertation.aux)
+[11] [12] (Dissertation.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `Dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 574EF20E6C120297EB3F558523E8F2C6;4324.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `Dissertation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Dissertation.out':
+(rerunfilecheck)             Before: 294ECB8F9571C2152AF359F469C21783;4354
+(rerunfilecheck)             After:  374A9D1F91708962777F206198C95676;4435.
  ) 
 Here is how much of TeX's memory you used:
- 9448 strings out of 478584
- 148846 string characters out of 2842986
- 433162 words of memory out of 3000000
- 27427 multiletter control sequences out of 15000+600000
+ 9399 strings out of 478582
+ 148038 string characters out of 2842928
+ 433782 words of memory out of 3000000
+ 27381 multiletter control sequences out of 15000+600000
  482981 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,78p,1184b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
-cm/cmbx10.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/b8057698/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/b8057698/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/b805769
-8/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
-ers/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
-.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr8.pfb><C:/Users/b8057698/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/b8057698/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/b8057698/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/b8057698/
+ 75i,7n,78p,1184b,467s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb><C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb><C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Wavedash/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Wavedash/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Wavedas
+h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12
+.pfb><C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb><C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr8.pfb><C:/Users/Wavedash/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Wavedash/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Wavedash/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Wavedash/
 AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/User
-s/b8057698/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.p
+s/Wavedash/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.p
 fb>
-Output written on Dissertation.pdf (11 pages, 367955 bytes).
+Output written on Dissertation.pdf (12 pages, 369853 bytes).
 PDF statistics:
- 371 PDF objects out of 1000 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
+ 376 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  266 words of extra memory for PDF output out of 10000 (max. 10000000)
 
