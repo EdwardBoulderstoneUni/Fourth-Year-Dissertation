@@ -135,8 +135,6 @@ Rollback netcode takes the existing framework of delay based netcode and builds 
 \subsubsection{Extra functionality required}
 Implementing rollback is not as simple as just changing your existing networking solution, these things need to be added
 \begin{itemize}
-
-
 \item separate gameplay from rendering
 \item serializable game state
 \item loadable game state
@@ -155,7 +153,7 @@ Naturally rollbacks occur because the remote input state (and thus game state) d
 Because rollbac can require the simulation of multiple game state frames in the space of a normal frame duration, the game will likely have to have the capability to process game state updates faster than delay based solutions.
 \end{itemize}
 \subsection{Evaluation}
-Ultimatly Rollback on paper seems like a superior solution for fighting games as shown in the figure \ref{fig:NetcodeCompare}.  
+Ultimately Rollback on paper seems like a superior solution for fighting games as shown in the figure \ref{fig:NetcodeCompare}.  
 table from {https://youtu.be/7jb0FOcImdg?t=623}
 
 \begin{figure}[h]
@@ -165,35 +163,33 @@ table from {https://youtu.be/7jb0FOcImdg?t=623}
 \label{fig:NetcodeCompare}
 \end{figure}
 
-Made even easier to implement given an open source solution under the MIT licence \cite{GGPO}. 
+Made even easier to implement given an open source solution under the MIT licence \cite{GGPODocumentation}. 
 \section{Industry Issues}
-
+However the fighting game industry has had significant difficulty in adopting rollback netcode into their games \ref{sec: introduction}. In this section, Street Fighter V and Mortal Kombat X are analysed, to understand the issues they had with implementation of rollback.
 \subsection{Street Fighter V}
-https://www.youtube.com/watch?v=OtSveL7X6xg
-
-Dynamic Network latency frames can cause issues with rollback.
-Didn't design some game mechanics around rollback, so movement  is hard to react to.
-Mashing causes latency, even though inputs don't matter (Don't send them)
-
-https://www.youtube.com/watch?v=qYPBasy5STg
-One sided rollback got patched out
-
-https://www.youtube.com/watch?v=9ENocn-x0Ws
-Syncing between systems didn't take latency into account = one sided rollback guaranteed
+Street Fighter V(SFV)'s rollback netcode was released to the public to widespread disappointment \cite{Netcode 1} \cite{Netcode 2} \cite {Netcode 3} \cite {Netcode 4} \cite{Core-ARollback}.  The following issues were found with SFV's rollback:
+\begin{itemize}
+\item One Sided rollback. \cite{SFV 1}  \cite{SFV 2} \cite {SFV 3}
+\item Dynamic Delay frames. \cite{SFV 1}
+\item Large effects faster than rollback buffer. \cite{SFV 1}
+\end{itemize}
 
 
-https://github.com/AltimorTASDK/SFVNetcodeFix
-Netcode fix
-Constantly resyncs if drift
-
-https://github.com/fluffysheap/SFVNetcodeFix
-Montiors connection and evaluates if resync is needed, takes into account wifi jitter
-can hide resync when the game is paused
-
-
-
+From These issues we can learn the following lessons.
+\begin{itemize}
+\item How to fix one sided rollback.
+\item Static Delay frames.
+\item Make sure events are confirmed before large effects
+\end{itemize}
 \subsection{Mortal Kombat X}
+Mortal Kombat X (MKX) was released in 2015 with delay based netcode. Rollback netcode was added in a patch to the game in 2018. However there are les
+Issues:
+Manpower
+Performance
+
+Lessons Learnt:
 Identify QOS cut off (max ping)
+Performance tricks  
 Added after lauch, huge performance issues solved with:
 Multithreading, improved object handling (deferred deletion), evaulation of fixed cost, profiling tools !, optimizing game play loop as it in the worst case is going to be replayed multiple times.
 Turn off predictable(?) things each frame (by predictable I mean, f(sum(inputs)) = sum(f(inputs)).
@@ -207,9 +203,6 @@ Design systems to update with variable time steps
 defer processing until guaranteed response i.e. camera cuts, particle spawning
 7/8 man years to implement (4/5 optimization, 1/2 serialization,
 
-\subsection{Third party Rollback}
-- Slippi
-- Fightcade (GGPO)
 
 \section{Rollback Visualization tool}
 To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was made.
@@ -271,7 +264,7 @@ Buffer sizes?
 Implement ideas from delay based netcode packet soultions = expanded packet size
 
 \subsection{Evaluation}
-Unity no determinsim (redo engine?)
+Unity no determinism (redo engine?)
 Rollback hard even for simple projects
 Didn't implement Audio or particle systems
 Better ping modelling
@@ -279,25 +272,27 @@ This simulation could also allow for testing of various improvements of the netc
 
 \section{Improvements for Rollback}
 
-I propose a theory for rollback frames 
-\[rollback frames = ceiling{max acceptable ping}{2*frameduration} - delay frames)\]
-for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback? = Divergence and hardware doesn't support rolling back that far in 1 frame (16ms))
-however try to keep delay static
+
 
 \subsection{Prediction Quality}
 https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962  -> neural networks
 
 -Naive is ~90\% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4\&t=1888s}
 hard to run expensive algorithms alongside large rollbacks (cite MKX talk)
+
 \subsection{Packet Contents Optimization}
-Delay based strategies]
+Delay based strategies
 How many frames to send, request for frame? = delay frames? + constant?
 
+I propose a theory for rollback frames 
+\[rollback frames = ceiling{max acceptable ping}{2*frameduration} - delay frames)\]
+for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback? = Divergence and hardware doesn't support rolling back that far in 1 frame (16ms))
+however try to keep delay static \cite{sec:Industry Issues}
 
 \subsection{Input Locking}
-No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window
+No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window \cite{sec:Industry Issues}
 
-\subsection{Conculsion}
+\subsection{Conclusion}
 These require further testing
 
 \section{Wider use case of rollback netcode}
@@ -380,6 +375,20 @@ https://en.wikipedia.org/wiki/Samurai\_Shodown\_(2019\_video\_game)} Samurai Sho
 \bibitem{InputLatencyDatabase} {\texttt https://displaylag.com/video-game-input-lag-database/} or {\texttt https://web.archive.org/web/20220519183335/https://displaylag.com/video-game-input-lag-database/} Display Lag. Video Game Input Lag Database. (Visted 02/06/2022)
 
 \bibitem{8Frames} {\texttt https://www.gdcvault.com/play/1025021/8-Frames-in-16ms-Rollback} or {\texttt https://web.archive.org/web/20210819020226/https://www.gdcvault.com/play/1025021/8-Frames-in-16ms-Rollback} Michael S. 8 Frames in 16ms: Rollback Networking in 'Mortal Kombat' and 'Injustice 2'. (Visted 08/06/2022)
+
+\bibitem{Netcode 1} {\texttt https://www.eventhubs.com/news/2022/jan/09/3-problems-sf5-netcode/} Jon G. 3 major problems with Street Fighter 5's netcode I want fixed. (Visted 08/06/2022)
+
+\bibitem{Netcode 2} {\texttt https://litetheironman.medium.com/street-fighter-v-and-rollback-netcode-101-8921a1e8a1c6} Nathan D. Street Fighter V and Rollback Netcode 101. (Visted 08/06/2022)
+
+\bibitem{Netcode 3} {\texttt https://www.youtube.com/watch?v=iGgG6eWk1Xo} Brian F. Why SFV Netcode Sucks. (Visted 08/06/2022)
+
+\bibitem{Netcode 4} {\texttt https://egmnow.com/street-fighter-v-has-finally-fixed-its-netcode-but-a-modder-did-it-first/} Dave M. Street Fighter V Has Finally Fixed Its Netcode—But a Modder Did It First. (Visted 08/06/2022)
+
+\bibitem{SFV 1} {\texttt https://www.youtube.com/watch?v=OtSveL7X6xg} DigitalHalftones.  Altimor's SFV Netcode Fix Mod Visually Explained. (Visted 08/06/2022)
+
+\bibitem{SFV 2} {\texttt https://www.youtube.com/watch?v=9ENocn-x0Ws} fluffysheap. SFV Netcode Fix. (Visted 08/06/2022)
+
+\bibitem{SFV 3} {\texttt https://github.com/https://github.com/fluffysheap/SFVNetcodeFix/SFVNetcodeFix} fluffysheap. SFV Netcode Fix. (Visted 08/06/2022)
 
 \end{thebibliography}
 \end{document}
