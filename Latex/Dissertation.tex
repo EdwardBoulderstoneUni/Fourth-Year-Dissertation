@@ -82,10 +82,7 @@ Peer to peer networks over the internet communicate data in packets which can ru
 \item{Computers can occasionally get hung up on doing things and skip a frame or two.}
 \end{itemize}
 
-In solving these issues, 
-- The need for good netcode
-- Increases search area, allows game to continue past when it should have expired (KI/Skull girls)
-- max tolerable ping increases
+In solving these issues, not only does the quality of the user experience for on-line play, but it also allows for more effective matchmaking soultions, by increasing maximum tolerable connection quality.
 
 \subsection{Delay-based netcode}
 \subsubsection{Concept}
@@ -133,33 +130,67 @@ When there is minimal Network Latency variance, delay based netcode functions si
 Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades. \cite{KIInterview}.
 \subsection{Rollback netcode}
 \subsubsection{Concept}
-Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  is These predictive frames By not requiring the input of the remote user to simulate a frame, it can tolerate late and lost packets better than delay based \cite{GGPODocumentation}. When a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing. In theory one could use the rollback buffer to reduce apparent network latency as well. This will be explored later.
--- Add a picture -- explain future
--- GGPO --
+Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  is These predictive frames By not requiring the input of the remote user to simulate a frame, it can tolerate late and lost packets better than delay based \cite{GGPODocumentation}. When a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing.
 
 \subsubsection{Extra functionality required}
 Implementing rollback is not as simple as just changing your existing networking solution, these things need to be added
-- separate gameplay from rendering
-- serializable game state
-- loadable game state
+\begin{itemize}
+
+
+\item separate gameplay from rendering
+\item serializable game state
+\item loadable game state
+\item game state simulation for multiple frames in the duration (time) of a single frame
+\end{itemize}
 \subsubsection{Issues In theory}
 Because rollback doesn't require the remote user's input to simulate the frame, it comes with it's own associated issues.
-
-Visual artefacts / Teleportation
-- particle simulation 
-- object lifetime 
-- sound fx
-- animation system
-- desync detection
-- Desync Detection
-- One sided roll back (Force synced game state) (Copy forced delays?)
-- NEEDS OPTIMIZATION
+\begin{itemize}
+\item Particle Simulation.
+Because particles are often expensive computationally to process, so preventing deletion of the particles until the roll-back buffer expiries, and only generating them until their existence is confirmed from a remote input
+\item Sound Effects
+Typically sound effects are loaded as files and sent to audio drivers, with no ability to pause the effect or play from a specific time stamp. To allow for rollback without jarring audio effects they will have to be handled differently.
+\item Desync Detection
+Naturally rollbacks occur because the remote input state (and thus game state) disagrees with the local game state. Desyncs in rollback netcode happen when confirmed ( non-rollback) frames differ.
+\item Optimization
+Because rollbac can require the simulation of multiple game state frames in the space of a normal frame duration, the game will likely have to have the capability to process game state updates faster than delay based solutions.
+\end{itemize}
 \subsection{Evaluation}
+Ultimatly Rollback on paper seems like a superior solution for fighting games as shown in the figure \ref{fig:NetcodeCompare}.  
 table from {https://youtu.be/7jb0FOcImdg?t=623}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{NetcodeCompare}
+\caption{Table comparing differences between Rollback and Delay Based Netcode\cite{8Frames}}
+\label{fig:NetcodeCompare}
+\end{figure}
+
+Made even easier to implement given an open source solution under the MIT licence \cite{GGPO}. 
 \section{Industry Issues}
 
 \subsection{Street Fighter V}
-One sided rollback  
+https://www.youtube.com/watch?v=OtSveL7X6xg
+
+Dynamic Network latency frames can cause issues with rollback.
+Didn't design some game mechanics around rollback, so movement  is hard to react to.
+Mashing causes latency, even though inputs don't matter (Don't send them)
+
+https://www.youtube.com/watch?v=qYPBasy5STg
+One sided rollback got patched out
+
+https://www.youtube.com/watch?v=9ENocn-x0Ws
+Syncing between systems didn't take latency into account = one sided rollback guaranteed
+
+
+https://github.com/AltimorTASDK/SFVNetcodeFix
+Netcode fix
+Constantly resyncs if drift
+
+https://github.com/fluffysheap/SFVNetcodeFix
+Montiors connection and evaluates if resync is needed, takes into account wifi jitter
+can hide resync when the game is paused
+
+
 
 \subsection{Mortal Kombat X}
 Identify QOS cut off (max ping)
@@ -179,16 +210,6 @@ defer processing until guaranteed response i.e. camera cuts, particle spawning
 \subsection{Third party Rollback}
 - Slippi
 - Fightcade (GGPO)
-
-\section{Effects of Rollback on Game Design}
-\subsection{8 Frames}
-Rollback frame size fastest move? Target frame?
-move away from flashy effects at start of animations
-Game over effect more subtle SF2T vs GGST 
-\subsection{Audio Design}
-each Audio clip 
-\subsection{Visual Design}
-Don't have particles that can change location based on user input after they're spawned
 
 \section{Rollback Visualization tool}
 To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was made.
@@ -259,23 +280,15 @@ This simulation could also allow for testing of various improvements of the netc
 \section{Improvements for Rollback}
 
 I propose a theory for rollback frames 
-how to model ping?
-\[rollback frames = ceiling(max acceptable ping}{2*frameduration} - delay frames)\]
-%
-%(Only care about upper bound so sd is halved)
-%(2 sd's 98.5 could use 3 for 99.95) 
-%30(SFV round length) * FPS (60) * 3 (BO3) = number of frames.
-%Chance of a 1F stutter = (1-confidance interval)^frames = 
-
-
-%delay = ceiling ((RTT)/(2*frameDuration) + constant)
-for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback?), however try to keep delay static
-for static: use upperbound of tolerable network connections (cite Mortal kombat)
+\[rollback frames = ceiling{max acceptable ping}{2*frameduration} - delay frames)\]
+for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback? = Divergence and hardware doesn't support rolling back that far in 1 frame (16ms))
+however try to keep delay static
 
 \subsection{Prediction Quality}
 https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962  -> neural networks
 
--Naive is ~90% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4&t=1888s}
+-Naive is ~90\% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4\&t=1888s}
+hard to run expensive algorithms alongside large rollbacks (cite MKX talk)
 \subsection{Packet Contents Optimization}
 Delay based strategies]
 How many frames to send, request for frame? = delay frames? + constant?
