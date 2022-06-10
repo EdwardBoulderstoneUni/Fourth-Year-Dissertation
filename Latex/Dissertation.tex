@@ -258,81 +258,27 @@ Initially the packet structure was chosen to be a single frame's input, however 
 
 State serialization was surprising simple, as the only two dynamic elements of the game were the two players. This meant that that the only properties to save were be the location and velocity of the avatars. More functionality, such as a health system, or audio effects, which are present in most modern games, extra systems would have had to be implemented on top to support dynamic saving and loading of game state.
 
-Experiment With packet loss solutions
+The learnings from this development are:
+\begin{itemize}
+\item Unity doesn't have deterministic physics, meaning it cannot be used to make networked games. However for this demonstrator the differences between rollback and delay based netcode were still apparent.
+\item Rollback is difficult to implement even for small scale projects.
+\item The overhead of game engines can make rollback more problematic.
+\item The differences between rollback and delay  based netcode were as reported in the literature, and discussed in this document.
+\end{itemize}
 
-
-How seperate rendering from game state in unity? = Don't allow render texture to update
-
-
-If a players inputs cannot change the state, then the simulation can continue without them. This can be used to slightly reduce the average amount of rollbacks and freezes in both netcode implementations. To implement this idea, a frames till actionable variable was added to the packet data, and the delay based netcode would not freeze for the remote user's inputs / rollback would not re-simulate frames if the guessed inputs were different whilst the frames till actionable value was larger than 0. This could also have further adaption in rollback netcode, where only a certain number of the remote's inputs could matter, minimizing potential rollbacks.
-
-
-I noticed desyncs happening, between my adjacent simulations, despite inputs being identical. In order to try to fix this, I made more thorough re-jump detection, reducing parallelization in the code, manually ran physics updates for a set duration in stead of relying upon unity's fixed updates. Ultimately to no prevail. So I had to chose between redesigning unity's physics engine (the presumed source of lack of determinism) for deterministic behaviour or re-designing my visualization tool. I chose redeisgn as I could felt I could demonstrate the difference in delay based and rollback netcode from a users experience, if they were allowed to toggle between the different types of netcode.
-
-reworked design
-
-Networked state
- |                  \
-\ /                  \
- V                    Netcode handler (recives input from game states and handles communication between them) - Network interfence customiser, Rollback, delay based, remote input
-1 game states              
-/             \                        \
-1 local player   1 remote player        local input
- remote input subclass of local input
-
-made own fixed size buffer class to prevent excess memory being used
-Rollback always saving state, so if swap, can load prior states
-Delay based code explained
-Rollback code explained
-pause game when rollbacks happen
-
-having issues with frames taking longer than 16ms (Turns out unity overhead)
-simulate max rollbacks 100\% of time
-needed extra for game state from rollback explained
-
-Buffer sizes?
-
-Implement ideas from delay based netcode packet soultions = expanded packet size
-
-\subsection{Evaluation}
-Unity no determinism (redo engine?)
-Rollback hard even for simple projects
-Didn't implement Audio or particle systems
-Better ping modelling
-This simulation could also allow for testing of various improvements of the netcodes, such as multiple packet sending, increasing frames sent, etc.
-
-\section{Improvements for Rollback}
-
-
-
-\subsection{Prediction Quality}
-https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962  -> neural networks
-
--Naive is ~90\% accurate {https://www.youtube.com/watch?v=k9JTIn1SVQ4\&t=1888s}
-hard to run expensive algorithms alongside large rollbacks (cite MKX talk)
-
-\subsection{Packet Contents Optimization}
-Delay based strategies
-How many frames to send, request for frame? = delay frames? + constant?
-
-I propose a theory for rollback frames 
-\[rollback frames = ceiling{max acceptable ping}{2*frameduration} - delay frames)\]
-for dynamic: dynamically changing rollback = minimal effect, (Problem with maxing rollback? = Divergence and hardware doesn't support rolling back that far in 1 frame (16ms))
-however try to keep delay static \cite{sec:Industry Issues}
-
-\subsection{Input Locking}
-No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window \cite{sec:Industry Issues}
-
-\subsection{Conclusion}
+\section{Conclusion}
 
 Multiplayer online games have continued to gain popularity over the last few years as the growth and capacity of the internet has increased. Games involving fight simulations require highly responsive interaction with the local user. A number of techniques have been explored in this paper to achieve this goal over a network with latency. The primary strategy 'rollback netcode' uses prediction to overcome the limitations of network latency. This solution can be difficult to implement in pre-existing games but the availability of open source software to support rollback netcode has made implementation easier. Games that are originally developed with rollback in mind are easier to design and implement.
 
-\section{Conclusions and further work}
+Suggestions for further research in this area include:
+\begin{itemize}
+\item The implementation of audio and particle systems
+\item Better ping modelling
+\item The evaluation of various netcode features in a controlled environment.
+\item Discarding user inputs when they would have no effect on the game state. 
+\item Prediction quality in rollback netcode \cite {neuralPred}.
+\end{itemize}
 
-Overall rollback hard to implement, but not impossible, newer games not releasing without it. Lessons learnt. Probably not applicable for wider use case. 
-
-furture work: 
-Non-game applications? Expand upon demo
 \begin{thebibliography}{25}
 
 \bibitem{GGPODocumentation} {\texttt https://drive.google.com/file/d/1nRa3cRBQmKj0-SEyrT\_1VNOkPOJWNhVI/view} or 
@@ -413,5 +359,6 @@ https://en.wikipedia.org/wiki/Samurai\_Shodown\_(2019\_video\_game)} Samurai Sho
 
 \bibitem{SFV 3} {\texttt https://github.com/https://github.com/fluffysheap/SFVNetcodeFix/SFVNetcodeFix} fluffysheap. SFV Netcode Fix. (Visted 08/06/2022)
 
+\bibitem{neuralPred} {\texttt https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1560069&dswid=-2962} Anton E. Improving Input Prediction in Online Fighting Games  (Visted 08/06/2022)
 \end{thebibliography}
 \end{document}
