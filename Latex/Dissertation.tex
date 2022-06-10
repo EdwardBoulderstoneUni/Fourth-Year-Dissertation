@@ -327,15 +327,6 @@ No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutsc
 \subsection{Conclusion}
 These require further testing
 
-\section{Wider use case of rollback netcode}
-Rollback ideas that only apply to fighting games? (Visual teleportation?, Expensive to implement?, ) 
- RTS (Including sports games)
-FPS - https://ieeexplore.ieee.org/abstract/document/7991545
-Prediction quality:
-- Connection ‘quality’. This doesn’t mean bandwidth, but rather how much a connection’s response time fluctuates. This has improved in modern times, making rollback a much more viable option than it once was.
-- The type of game. Because rollback needs you to be able to revert the state of the game in some cases, trying to implement it in a game with hundreds of different units all acting at once is extremely challenging (not to mention very offputting for the player). As a result, it’s more suited to fighting games and other games with fewer player-controlled assets flying around at any given time.
-
-
 \section{Conclusions and further work}
 
 Overall rollback hard to implement, but not impossible, newer games not releasing without it. Lessons learnt. Probably not applicable for wider use case. 
