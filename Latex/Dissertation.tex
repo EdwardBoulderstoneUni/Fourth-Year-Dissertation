@@ -1,6 +1,7 @@
 \documentclass{entcs} 
 \usepackage{CSC8498macro}
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{{./Images/}}
 %% This document describes the formatting instructions for the CSC8498 final report.
 
@@ -20,7 +21,7 @@
 			
 				
 \begin{abstract} 
-Rollback netcode is a peer to peer networking soultion. It had potential to improve online experiences by minimizing the effects of latency over traditional delay based . However the implementation of rollback netcode in the fighting game industry has been slow and difficult. This project aims to understand  understand how the industry has had difficulty implementing rollback, and find any optimizations that can be made to existing public rollback netcode understanding.
+Rollback netcode is a process sychronisation method for interactive multi-user games played over a network with latency. The method has the potential to improve online game experiences by minimizing the effects of latency in the networks used by remote gamers. The focus of this project is 'fighting games' where the quality of the game experience is driven by the smoothness and apparent immediacy of the game action. The implementation of rollback netcode in the games industry has been slow and difficult. This project explores the difficulties implementing rollback, and researches optimizations that can be made to existing open source rollback netcode.
 \end{abstract}
 
 \begin{keyword}
@@ -29,23 +30,24 @@ rollback, netcode, peer to peer, fighting games, networking, industry.
 \end{frontmatter}
 
 \section{Introduction}\label{sec: introduction}
-The goal of networking in video games is to allow people from all over the world to play with each other. However fans of fighting games have historically (Before the pandemic) gone out of their way to organise local tournaments with most major tournaments before the pandemic taking place off-line\cite{FGCMajors}. This trend started because of the when fighting games were played in arcades in the mid 1990's,\cite{FirstUSTournament} and continued until the start of the pandemic, in part because fighting games rely on consistent timing and a low latency environment \cite{DelayVsRollback}, \cite{BadNetcode}. The existing networking solutions at the time simply did not provide this environment for competitive play\cite{FGCAsEsport}. However the spread of the corona virus in the mid 2020's fighting games found themselves having to fall back onto these "lower quality" online platforms. Games which did not have well optimized netcode found themselves on the back foot, with reduced attention \cite{SmashTournamentsInThePandemic}, and games with well written netcode found their success  \cite{GuiltyGearStriveInThePandemic}.
+Multiplayer online games have continued to gain popularity over the last few years as the growth and capacity of the internet has increased. These games allow people from all over the world to effectively play the same game at the same time in the same game environment. However, games that involve fight simulations between players require a level of interaction that has been difficult to achieve on wide area networks. To side-step these network latency issues, many fans of fighting games have gone out of their way to organise local tournaments, with most major tournaments before the pandemic taking place off-line\cite{FGCMajors}. Games where fighting is a central component to the game play has its roots in the video arcades of the mid 1990's,\cite{FirstUSTournament} and continued until the start of the pandemic, in part because fighting games rely on consistent timing and a low latency network environment \cite{DelayVsRollback}, \cite{BadNetcode}. The networking solutions during the early years of the internet simply did not provide an environment for competitive play\cite{FGCAsEsport}. However, with the spread of corona virus in the 2020's, fighting style games had to use the low latency internet for multiuser games. Games which did not have well optimized netcode found themselves at a disadvantage, with reduced attention \cite{SmashTournamentsInThePandemic}, while games with well written netcode found significantly more success  \cite{GuiltyGearStriveInThePandemic}.
 
 \subsection{Delay Based Netcode}
-The first solution to online play for fighting games was a peer to peer system known as delay based netcode. Peer to peer netcode is important for fighting games because of the aforementioned need for low latency. Because most fighting games are between two players \cite{FightingGameDefine}, introducing a server will increase the ping between the two players, as the information has to travel to a seperate location, before being sent to the opposing player. Delay based netcode works by keeping two players games identical, by waiting for the remote player's input, before running the game update
+The classic solution to game synchronisation for online multiplayer games is a peer to peer network system known as delay based netcode. Peer to peer netcode is important for fighting games because of the low latency requirement. Most fighting games are between two players \cite{FightingGameDefine}, where the game must maintain state and synchronisation. Delay based netcode works by keeping the two players games synchronised, by exchanging network frames, before updating the game status. In effect, in delay based netcode. A satisfactory game experience can only occur on a very low latency network with this methodology.
 
 \subsection{Rollback Netcode}
-Rollback netcode was developed in 2006 as a solution to the problems with delay based netcode. \cite{RollbackDevelopment}. It works on top of existing delay based netcode by adding rollback frames, predicting the remote users inputs. When the remote user's input arrives if it matches with the predicted input, nothing happens, however if there's a discrepancy the game will "rollback", to the point of the discrepancy and re-simulate the game state back to the real time frame as shown in figure \ref{fig:RollbackNetcodeRepresentation}.
+Rollback netcode was developed in 2006 as a solution to the problems with delay based netcode. \cite{RollbackDevelopment}. Rollback netcode is underpinned by delay based netcode but also contains rollback features and the prediction of user inputs. As game play progresses, the system predicts the response of the other player(s) to the most recent player action. If the prediction is accurate game play continues. However, if the prediction is incorrect the game will be "rollbacked" to the point where the discrepancy occured; and the game state will be re-simulated back to the real time frame as shown in figure \ref{fig:RollbackNetcodeRepresentation}. The accuracy of the prediction and the method of rollback are clearly critical success factors in making this system function well. Poor prediction will lead to many rollbacks which can produce a jerky game experience.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics{RollbackNetcodeRepresentation}
 \caption{Rollback netcode \cite{GGPODocumentation}}
 \label{fig:RollbackNetcodeRepresentation}
 \end{figure}
 \newpage
-\subsection{Difficulties in industry}
-In today's fighting game market, many games have rollback \cite{GamesWithRollback}.However there are still notable exceptions such as:
+
+\subsection{Rollback Netcode in The Fightgame market}
+In today's fighting game market, many games have rollback \cite{GamesWithRollback} implemented to improve the user experience in game play. However there are still notable exceptions such as:
 \begin{itemize}
 \item Super Smash Bros. Ultimate\cite{SSBU}
 \item Granblue Fantasy Versus\cite{GBFV}
@@ -57,124 +59,138 @@ In today's fighting game market, many games have rollback \cite{GamesWithRollbac
 \item Dragon Ball FighterZ\cite{DBFZ}
 \end{itemize}
 
-Other fighting games have had difficulty in implementing rollback, such as Street fighter V and Mortal Kombat X.
+Other fighting games have had difficulty in implementing rollback, such as Street Fighter V and Mortal Kombat X.
 These difficulties with implementing and developing rollback are the basis of the motivation of this paper.
 
 \subsection{Aim}
-To investigate rollback netcode, it's usage in industry and any short comings of existing public rollback netcode infrastructure
+To investigate rollback netcode, it's usage in the game industry and short comings of existing open source rollback netcode software.
 \subsection{Objectives}
 \begin{itemize}
 \item Understand rollback netcode and the effects on the games it's implemented in.
 \item Create a visualization for the differences between rollback and delay based netcode.
 \item Research the difficulties of implementing rollback in existing games.
-\item Explore optimizations for the existing public rollback structure.
+\item Explore optimizations for the existing open source rollback software.
 \item Investigate further uses of rollback netcode, in the wider video game industry.
 \end{itemize}
 \newpage
 \section{Background}
 \subsection{Peer to Peer Netcode}
-Peer to peer networks over the internet communicate data in packets which can run into the following issues.
+Peer to peer networks over the internet communicate though data packets. Data packet communication can have the following issues.
 \begin{itemize}
 \item{Packets take time to reach their destination (Network Latency).}
-\item{Packets can get lost on their way (Packet Loss).}
-\item{Packets can get there, but have their data corrupted (Corruption).}
-\item{Computers can run at different speeds.}
-\item{Computers can occasionally get hung up on doing things and skip a frame or two.}
+\item{Packets can get lost through the network (Packet Loss).}
+\item{Packets can become corrupted on route (Corruption).}
+\item{Computers have different processing capacity and hence process packets at different rates.}
+\item{Computers can be busy with other tasks and miss packets.}
 \end{itemize}
 
-In solving these issues, not only does the quality of the user experience for on-line play, but it also allows for more effective matchmaking soultions, by increasing maximum tolerable connection quality.
+By reducing the impact of these flaws in data packet communication the user experience of online games can be considerably improved. One overall method to reduce the impact of data packet delay and loss is to set a minimium tolerable connection quality. This minimum tolerable connection quality can be pre-defined, depending on the requirements of the game, and tested for each user as they connect to the online game server. As the selection of players (matchmaking) for a multiuser game is in the control of the game software, players can be matched together who have good network connectivity to each other. 
 
 \subsection{Delay-based netcode}
 \subsubsection{Concept}
-Delay based netcode works by keeping both players games in lockstep, meaning that each player's simulation of the game are waits for the input of the remote player, before simulating the frame\cite{DelayBasedNetcode}. This system works well when latency is not a major factor, for example, in a turn based game, where the inputs are spread apart by seconds, a pause of half a second may go unnoticed.
-Input latency frames are added to compensate for the Network Latency, and allow the local inputs to be sent before the frame they would be read on as shown in figure \ref{fig:InputLatencyEffect}.
+Delay based netcode works by keeping game players in lockstep, meaning that each player's simulation of the game waits for the input of the other player(s), before simulating the current frame\cite{DelayBasedNetcode}. This system works well when latency is not a major factor, for example, in a turn based games, where the inputs are spread apart by seconds, a pause of half a second may go unnoticed.
 
-\begin{figure}[h]
+Local user input can be delayed by a number of frames to compensate for the Network Latency, as seen in figure \ref{fig:InputLatencyEffect}.
+
+\begin{figure}[H]
 \centering
 \includegraphics{InputDelay}
 \caption{4 Frame Input Delay Example \cite{FightingGameNetworking}}
 \label{fig:InputLatencyEffect}
 \end{figure}
 
-The Input delay to be used can be calculated as follows:
-\[InputLatencyFrames = Ceiling( \frac{RoundTripLatency}{2 * FrameDuration} ) + Constant\]
+The Input delay can be calculated as follows:\\
 
-Where the constant represents additional frames of delay to compensate for variance in Network Latency.
+\[InputLatencyFrames = Ceiling( \frac{RoundTripLatency}{2 * FrameDuration} ) + \epsilon\]
 
-\subsubsection{Improvements}
-However this model does not take into account potential for packet loss/ corrupted packets, which may lead the actual states to progress as shown in figure \ref{fig:PacketLossEffect}
+Where $\epsilon$ represents additional frames of delay to compensate for variance in Network Latency.
+
+\subsubsection{Improvements To Delay Based Netcode}
+However the 4 Frame Input Delay Example does not take into account the potential for packet loss or corrupted packets, which may lead the game states to progress as shown in figure \ref{fig:PacketLossEffect}
 
 \begin{figure}[h]
 \centering
 \includegraphics{PacketLossEffect}
-\caption{Packet Loss's Affect on Game State progression \cite{FightingGameNetworking}}
+\caption{The affect of packet loss on game state progression \cite{FightingGameNetworking}}
 \label{fig:PacketLossEffect}
 \end{figure}
 
-One unexpected side effect of packet loss with single input packets is knock on delays, where by a delay in one game, makes the frame process later, so the inputs for that frame are postponed, delaying the origins game.
+One further affect of packet loss with single input packets is knock on delays, where a delay in one frame, delays the delivery of subsequent frames. This causes inputs to be lost or delayed resulting in a intermittent user experience.
 
-To combat packet loss and data corruption multiple inputs can be sent with one packet, extra frames of input delay can be added, and inputs can be sent multiple times, as shown in \ref{fig:PacketLossSoultions}
+To combat packet loss and data corruption multiple frames inputs can be sent within one packet, extra frames of input delay can be added, and inputs can be sent multiple times, as shown in figure \ref{fig:PacketLossSoultions}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics{PacketLossSoultions}
 \caption{Potential Solutions to Packet Loss in Delay Based Netcode \cite{FightingGameNetworking}}
 \label{fig:PacketLossSoultions}
 \end{figure}
 
-Another improvement to made to delay based netcode is to account for Network Latency variance with a dynamic number of delay frames. way to account for Network Latency variance is to have a dynamic number of Delay Frames, varying with average Latency\cite{DelayVsRollback}. This can hide stutters, and remedy degrading network conditions causing consistent pauses. However, consistency for fighting games is the one of the highest determiners on network quality\cite{Core-ARollback}.
+Another way to improve delay based netcode is to account for Network Latency variance with a dynamic number of short input delays. These input delays can help to reduce the intermittentcy of the game players synchronized by briefly delaying the action for both of the players while the other player catches up\cite{DelayVsRollback}. This can hide screen stutters, and reduce the impact of degrading network conditions that could cause consistent game pauses. However, data packet delivery consistency for fighting games is a primary determinant of quality of user experience\cite{Core-ARollback}, because of the highly interactive nature of fight simulation.
 
 \subsubsection{Evaluation}
-When there is minimal Network Latency variance, delay based netcode functions similarly to a non networked experience, with increased Input Latency. This is the ideal case for delay based networking. However, when the Network Latency variance is high, the game can freeze at seemingly random moments, removing agency from the player in the middle of a game. This breaks user imersion and significantly decreases the quality of the experience\cite{DelayVsRollback}.
-
-Ultimately Delay based netcode functions as network soultion for high quality connections, but struggles when operating as connection quality degrades. \cite{KIInterview}.
+In an environement with minimal Network Latency variance, the delay based netcode has a similar functionality to a non-networked game experience. This is the ideal case for delay based networking. However, when the Network Latency variance is high, the game can freeze at seemingly random moments, removing agency from the player in the middle of a game. This breaks user immersion and significantly decreases the quality of the experience\cite{DelayVsRollback}\cite{KIInterview}.
 \subsection{Rollback netcode}
 \subsubsection{Concept}
-Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  is These predictive frames By not requiring the input of the remote user to simulate a frame, it can tolerate late and lost packets better than delay based \cite{GGPODocumentation}. When a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing.
+Rollback netcode takes the existing framework of delay based netcode and builds on top of it. Instead of waiting for the remote user's input to simulate a frame, the game predicts it.  The game can then proceed independently for all the users for a short time, In the event a packet is lost or late, the rollback frames act as a buffer preventing the from game freezing. Thus the game is more resilient to turbulent network conditions than delay based netcode \cite{GGPODocumentation}. 
 
-\subsubsection{Extra functionality required}
-Implementing rollback is not as simple as just changing your existing networking solution, these things need to be added
+\subsubsection{Extra functionality required to support Rollback Netcode}
+Implementing rollback is not as simple as changing the existing networking solution, other factors have to be considered, these include:
 \begin{itemize}
-\item separate gameplay from rendering
-\item serializable game state
-\item loadable game state
-\item game state simulation for multiple frames in the duration (time) of a single frame
+\item Decouple gameplay logic from screen rendering
+\item Fast storage and retrieval of game state
+\item Loadable game state
+\item Faster than real time game state simulation
 \end{itemize}
 \subsubsection{Issues In theory}
-Because rollback doesn't require the remote user's input to simulate the frame, it comes with it's own associated issues.
+Rollback does not require the remote users input to simulate a frame. However rollback has implementation issues.
 \begin{itemize}
-\item Particle Simulation.
-Because particles are often expensive computationally to process, so preventing deletion of the particles until the roll-back buffer expiries, and only generating them until their existence is confirmed from a remote input
-\item Sound Effects
-Typically sound effects are loaded as files and sent to audio drivers, with no ability to pause the effect or play from a specific time stamp. To allow for rollback without jarring audio effects they will have to be handled differently.
-\item Desync Detection
-Naturally rollbacks occur because the remote input state (and thus game state) disagrees with the local game state. Desyncs in rollback netcode happen when confirmed ( non-rollback) frames differ.
-\item Optimization
-Because rollbac can require the simulation of multiple game state frames in the space of a normal frame duration, the game will likely have to have the capability to process game state updates faster than delay based solutions.
-\end{itemize}
-\subsection{Evaluation}
-Ultimately Rollback on paper seems like a superior solution for fighting games as shown in the figure \ref{fig:NetcodeCompare}.  
-table from {https://youtu.be/7jb0FOcImdg?t=623}
+\item Particle Systems.
+A particle system is a technique that uses many minute graphic objects to simulate certain kinds of "fuzzy" phenomena e.g. rain. Particles are computationally expensive to process, and their rollback is complex and difficult.
 
-\begin{figure}[h]
+\item Sound Effects
+
+Typically sound effects are buffered in the audio driver, with limited ability to pause the effect or play from a specific time stamp. Therefore, managing the game sound with rollback particularly problematic.
+
+\item Desync Detection
+
+Desync is the process by which the game state of different users is unreconcilable, so that drastic action has to be taken to continue the game play.  In rollback it is quite often difficult to detect a desync happening as it is expected that the different users have different game states.
+\item Optimization
+Because rollback can require the simulation of multiple game states in the space of a normal time interval, more processing capacity will be required to implement.
+\end{itemize}
+\subsection{Comparison}
+In comparing rollback netcode vs delay based netcode, a number of factors to be used, the factors chosen in this study are:
+\begin{itemize}
+\item Simple to implement without complex real time dependant rollback code
+\item Visually smooth for more realistic simulation
+\item Computationally Performant, the required processing capacity to create a realistic game
+\item Robust to network turbulence, computer performance and user interaction
+\item Low bandwidth to minimize the amount of network traffic required to support game play.
+\item Responsive to user input i.e. the game responds immediately to user commands
+\end{itemize}
+The analysis of Nether realm studio \cite{8Frames} is that delay based netcode is superior to rollback in the simple, visually smooth and performant categories, whilst the rollback netcode is superior in the responsive category.
+
+As previously discussed responsiveness is critical to fighting game simulation, meaning that rollback is required for this category of games.
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{NetcodeCompare}
 \caption{Table comparing differences between Rollback and Delay Based Netcode\cite{8Frames}}
 \label{fig:NetcodeCompare}
 \end{figure}
 
-Made even easier to implement given an open source solution under the MIT licence \cite{GGPODocumentation}. 
+
 \section{Industry Issues}
-However the fighting game industry has had significant difficulty in adopting rollback netcode into their games \ref{sec: introduction}. In this section, Street Fighter V and Mortal Kombat X are analysed, to understand the issues they had with implementation of rollback.
+The fighting game industry has had significant difficulty in adopting rollback netcode into their existing games \ref{sec: introduction}. In this section, Street Fighter V and Mortal Kombat X are analysed, to understand the issues they have had with the implementation of rollback.
 \subsection{Street Fighter V}
 Street Fighter V(SFV)'s rollback netcode was released to the public to widespread disappointment \cite{Netcode 1} \cite{Netcode 2} \cite {Netcode 3} \cite {Netcode 4} \cite{Core-ARollback}.  The following issues were found with SFV's rollback:
 \begin{itemize}
 \item One Sided rollback. \cite{SFV 1}  \cite{SFV 2} \cite {SFV 3}
-One sided rollback is when two game states drift out of sync, through either a series of lost packets, or one machine failing to keep up to 60FPS. So for one client, they will receive extremely frequent rollbacks. Whilst the other client will not receive any rollbacks as shown in figure \ref{fig:OneSided}
-\begin{figure}[h]
-A network with 1 frame Input Latency and 1 Rollback frame.
+One sided rollback is when two game states drift out of sync, through either a series of lost packets, or one machine failing to keep up with the required frame rate. The effect of this that one user, will have to process a large number of rollbacks. Whilst the other user will not receive fewer rollbacks as shown in figure \ref{fig:OneSided}
+\vspace{1em}
+\begin{figure}[H]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{c|c|c|c|c}
+\hline
 \multicolumn{2}{c|}{User 0} & & \multicolumn{2}{c}{User 1} \\
 \hline
 Local Frame & Local Network Events & & Local Network Events & Local Frame\\
@@ -195,55 +211,38 @@ Local Frame & Local Network Events & & Local Network Events & Local Frame\\
 \hline
 4 & Sends 0's input for frame 4 && Sends 1's input for frame 4 & 5 \\
 4 & Receive 1's input for frame 4 && Guesses 0's input for frame 3 & 5 \\
+\hline
 \end{tabular}
 }
-\caption{A demonstration of how onesided rollback occurs}
+\caption{A demonstration of how onesided rollback occurs in a network with one frame of input delay and one rollback frame}
 \label{fig:OneSided}
 \end{figure}
 \item Dynamic Delay frames. \cite{SFV 1}
-Dynamic delay frames can make a game feel slow despite having no freezing, because it's hard to feel how long after a button is pressed, that its effect happens on screen.
-\item Large effects faster than rollback buffer. \cite{SFV 1}
-If there are large effects that get rollback over or rollback into the effect can be very jarring for the player.
+To accomplish rollback netcode in existing SFV, dynamic delay frames have been used.
+Dynamic delay frames, which delay action on the user inputs, can make the game feel slow despite not freezing. 
+\item The rollback of large effects such as particle and audio effects causes jarring experiences for the user\cite{SFV 1}.
 \end{itemize}
+There are a number of ways these issues with rollback netcode can be resolved. These include fixing one sided rollback, using static delay frames, and making event are confirmed before large effects are used.
 
-
-From These issues we can learn the following lessons.
-\begin{itemize}
-\item How to fix one sided rollback.
-\item Static Delay frames.
-\item Make sure events are confirmed before large effects
-\end{itemize}
 \subsection{Mortal Kombat X}
-Mortal Kombat X (MKX) was released in 2015 with delay based netcode. Rollback netcode was added in a patch to the game in 2018. However there are les
-Issues:
-Manpower
-Performance
+Mortal Kombat X (MKX) was released in 2015 with delay based netcode. Rollback netcode was added in a patch to the game in 2018. However there are considerable development required to reimplement the game with rollback features.
 
-Lessons Learnt:
-Identify QOS cut off (max ping)
-Performance tricks  
-Added after lauch, huge performance issues solved with:
-Multithreading, improved object handling (deferred deletion), evaulation of fixed cost, profiling tools !, optimizing game play loop as it in the worst case is going to be replayed multiple times.
-Turn off predictable(?) things each frame (by predictable I mean, f(sum(inputs)) = sum(f(inputs)).
-Need a seperate resimulated gameplay loop (desync detection).
-Only need to save confirmed frame (good for worst, bad for average) (save simulation mid point calculate performance based on rollback frame and particles generated this frame)
-precompute!
-Really fuzzy matching on non gameplay effecting effects i.e. audio, particles with no hitboxes
-Game rollback max really infrequently. Humans input speed max = find sc2 max apm
-Possible to slow fps of game if struggling to get performance instead of pausing
-Design systems to update with variable time steps
-defer processing until guaranteed response i.e. camera cuts, particle spawning
-7/8 man years to implement (4/5 optimization, 1/2 serialization,
-
+The lessons learnt from this redevelopment include, defining a network quality threshold so that a maximum of 8 frames would be considered in a rollback scenario. Performance improvements such as:
+\begin{itemize}
+\item Multithreading
+\item During rollback compute predefined object changes, rather than transmit them in a frame update.
+\item Only serialize selective game states to maximize performance.
+\item Use fuzzy matching on non gameplay effects.
+\end{itemize}
 
 \section{Rollback Visualization tool}
-To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was made.
+To demonstrate the effectiveness of Rollback vs Delay based netcode, a simulation of the two different styles of netcode was produced.
 \subsection{Design}
-The high level design of this visualization tool was to have two side by side game clients, communicating to each other through simulated latency and netcode. Because the visualization tool was just supposed to be a demonstration, no overly complex mechanics would be implemented. It would just be two avatars that could move and jump.
+The high level design of this visualization tool was to have two side by side game clients, communicating with each other through simulated latency and netcode. As the visualization tool was designed to be a demonstration, no overly complex mechanics were implemented. The tool consisted of two avatars that could move and jump.
 
-Unity was chosen as the engine to develop the simulation, as designing from an existing game engine, would make development faster, and the developer had experience in using unity before.
+Unity was chosen as the engine to develop the simulation.
 
-The user would have the options to change the effect of network latency on the simulation(s) in real time, and the properties of the netcode, such as Input Latency, Rollback frames and packet loss \%. 
+The user of the visualization tool has the option to change the properties of the simulated network latency in real time, and the properties of the netcode, such as Input Latency, Rollback frames. 
 The overall design of the visualization tool is shown in figure \ref{fig:DFD}.
 
 \begin{figure}[h]
@@ -255,9 +254,9 @@ The overall design of the visualization tool is shown in figure \ref{fig:DFD}.
 
 \subsection{Implementation}
 
-Initially the packet structure was chosen to be a single frame's input, however during development I realized that the packet structure improvements mentioned in \ref{sec: Background} could be applied to combat packet loss.
+Initially the packet structure was chosen to be a single frame's input, however during development it was realized that the packet structure improvements mentioned in this document could be applied to combat packet loss.
 
-State serialization was surprising simple, as the only two dynamic elements of my game were the two players. Meaning that the only properties I had to save would be their location and velocity. If the game had more functionality, such as a health system, or audio effects, which are present in most modern games, extra systems would have had to be implemented on top to support dynamic saving and loading of state.
+State serialization was surprising simple, as the only two dynamic elements of the game were the two players. This meant that that the only properties to save were be the location and velocity of the avatars. More functionality, such as a health system, or audio effects, which are present in most modern games, extra systems would have had to be implemented on top to support dynamic saving and loading of game state.
 
 Experiment With packet loss solutions
 
@@ -325,7 +324,8 @@ however try to keep delay static \cite{sec:Industry Issues}
 No need for rollbacks when input doesn't matter, i.e. hit stun, hit pause, cutscene, jumping, in a move past a cancel window \cite{sec:Industry Issues}
 
 \subsection{Conclusion}
-These require further testing
+
+Multiplayer online games have continued to gain popularity over the last few years as the growth and capacity of the internet has increased. Games involving fight simulations require highly responsive interaction with the local user. A number of techniques have been explored in this paper to achieve this goal over a network with latency. The primary strategy 'rollback netcode' uses prediction to overcome the limitations of network latency. This solution can be difficult to implement in pre-existing games but the availability of open source software to support rollback netcode has made implementation easier. Games that are originally developed with rollback in mind are easier to design and implement.
 
 \section{Conclusions and further work}
 
