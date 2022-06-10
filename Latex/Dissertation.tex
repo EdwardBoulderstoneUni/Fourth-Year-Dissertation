@@ -170,8 +170,40 @@ However the fighting game industry has had significant difficulty in adopting ro
 Street Fighter V(SFV)'s rollback netcode was released to the public to widespread disappointment \cite{Netcode 1} \cite{Netcode 2} \cite {Netcode 3} \cite {Netcode 4} \cite{Core-ARollback}.  The following issues were found with SFV's rollback:
 \begin{itemize}
 \item One Sided rollback. \cite{SFV 1}  \cite{SFV 2} \cite {SFV 3}
+One sided rollback is when two game states drift out of sync, through either a series of lost packets, or one machine failing to keep up to 60FPS. So for one client, they will receive extremely frequent rollbacks. Whilst the other client will not receive any rollbacks as shown in figure \ref{fig:OneSided}
+\begin{figure}[h]
+A network with 1 frame Input Latency and 1 Rollback frame.
+\resizebox{\textwidth}{!}{
+\begin{tabular}{c|c|c|c|c}
+\multicolumn{2}{c|}{User 0} & & \multicolumn{2}{c}{User 1} \\
+\hline
+Local Frame & Local Network Events & & Local Network Events & Local Frame\\
+\hline
+0 & Send 0's input for frame 0 && Send 1's input for frame 1 & 0 \\
+\hline
+1 & Send 0's input for frame 1 && Send 1's input for frame 1(Lost) & 1 \\
+1 & Receive 1's input for frame 0 && Receive 0's input for frame 0 & 1 \\
+\hline
+2 & Send 0's input for frame 2 && Send 1's input for frame 2(Lost) & 2 \\
+2 & Guesses 1's input for frame 1 && Receive 0's input for frame 1 & 2 \\
+\hline
+3 & Send 0's input for frame 3 && Send 1's input for frame 3(Lost) & 3 \\
+3 & Halt for 1's input from frame 1 && Receive 0's input for frame 2 & 3 \\
+\hline
+3 & Send 0's input for frame 3 && Send 1's input for frame 4 & 4 \\
+3 & Receive 1's input for frame 1,2 and 3 (Rollback) && Receive 0's input for frame 3 & 4 \\
+\hline
+4 & Sends 0's input for frame 4 && Sends 1's input for frame 4 & 5 \\
+4 & Receive 1's input for frame 4 && Guesses 0's input for frame 3 & 5 \\
+\end{tabular}
+}
+\caption{A demonstration of how onesided rollback occurs}
+\label{fig:OneSided}
+\end{figure}
 \item Dynamic Delay frames. \cite{SFV 1}
+Dynamic delay frames can make a game feel slow despite having no freezing, because it's hard to feel how long after a button is pressed, that its effect happens on screen.
 \item Large effects faster than rollback buffer. \cite{SFV 1}
+If there are large effects that get rollback over or rollback into the effect can be very jarring for the player.
 \end{itemize}
 
 
@@ -306,7 +338,7 @@ Prediction quality:
 
 \section{Conclusions and further work}
 
-Rollback hard to implement, but not too hard to be impossible, newer games not releasing without it. Lessons learnt. Probably not applicable for wider use case. 
+Overall rollback hard to implement, but not impossible, newer games not releasing without it. Lessons learnt. Probably not applicable for wider use case. 
 
 furture work: 
 Non-game applications? Expand upon demo
