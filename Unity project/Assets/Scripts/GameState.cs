@@ -36,11 +36,6 @@ public class GameState : MonoBehaviour
         stateQueue = new TimedQueue<State>(netcodeManager.getRollbackFrames() + 1);
     }
 
-    void Update(){
-        localInput.ping();
-        trueRemoteInput.ping();
-    }
-
     void FixedUpdate() {
         tickHaltingFrames();
         if(!halted && haltingFrames < 1){

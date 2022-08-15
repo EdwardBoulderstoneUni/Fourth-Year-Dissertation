@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     void Start(){
         inputBuffer = new bool[inputs];
     }
-    public void ping()
+    public void Update()
     {
         inputBuffer[0] = Input.GetKey(jumpKey) || inputBuffer[0];
         inputBuffer[1] = Input.GetKey(leftKey) || inputBuffer[1];
