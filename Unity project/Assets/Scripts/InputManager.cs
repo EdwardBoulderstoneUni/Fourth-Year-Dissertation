@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
         inputBuffer[2] = Input.GetKey(rightKey) || inputBuffer[2];
     }
 
-    protected void readInputs(){
+    protected void readBufferedInputs(){
         input.jump = inputBuffer[0];
         input.horizontalMove = 0;
         input.horizontalMove -= inputBuffer[1] ? 1 : 0;
@@ -25,7 +25,7 @@ public class InputManager : MonoBehaviour
     }
         
     public virtual InputStruct getInput() {
-        readInputs();
+        readBufferedInputs();
         reset();
         return input;
     }
