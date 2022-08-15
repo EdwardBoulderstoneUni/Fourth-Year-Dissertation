@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
@@ -7,7 +6,6 @@ public class CharacterController2D : MonoBehaviour
     private GameState game;
     private bool grounded;
     private const float groundedY = 1.52f;
-    private bool syncedRendering = false;
 
     void Start(){
         rigidBody = GetComponent<Rigidbody2D>();
