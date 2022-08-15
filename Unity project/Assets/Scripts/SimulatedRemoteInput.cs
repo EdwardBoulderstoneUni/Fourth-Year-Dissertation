@@ -1,7 +1,7 @@
 public class SimulatedRemoteInput : InputManager
 {
     TimedQueue<InputStruct> remoteInputs;
-    int remoteFrame = 0;
+    int simulatedFrame = 0;
     void Start()
     {
         inputBuffer = new bool[inputs];
@@ -11,9 +11,9 @@ public class SimulatedRemoteInput : InputManager
     public override InputStruct getInput() {
         readInputs();
         reset();
-        remoteFrame += 1;
+        simulatedFrame += 1;
         var remoteInput = new TimedData<InputStruct>();
-        remoteInput.frame = remoteFrame;
+        remoteInput.frame = simulatedFrame;
         remoteInput.data = input;
         remoteInputs.push(remoteInput);
         return input;
