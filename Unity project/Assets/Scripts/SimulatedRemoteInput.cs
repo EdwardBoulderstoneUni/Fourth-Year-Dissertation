@@ -9,13 +9,9 @@ public class SimulatedRemoteInput : InputManager
     }
 
     public override InputStruct getInput() {
-        readInputs();
+        readBufferedInputs();
         reset();
         simulatedFrame += 1;
-        var remoteInput = new TimedData<InputStruct>();
-        remoteInput.frame = simulatedFrame;
-        remoteInput.data = input;
-        remoteInputs.push(remoteInput);
         return input;
     }
 
