@@ -7,7 +7,7 @@ public class NetcodeManager : MonoBehaviour
     [SerializeField] private DelayBased delayBasedNetcode;
     [SerializeField] public GameState game;
     [SerializeField] public bool useRollback = false;
-    [SerializeField] private RemoteInput remoteInputManager;
+    [SerializeField] private SimulatedRemoteInput remoteInputManager;
     public static int packetFrameSize = 5;
     public TimedData<InputStruct> fetchRemote(int frame){
         var packet = remoteInputManager.getRemoteInput(frame);

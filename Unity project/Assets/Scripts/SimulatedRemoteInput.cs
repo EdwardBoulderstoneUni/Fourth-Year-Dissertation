@@ -1,4 +1,4 @@
-public class RemoteInput : InputManager
+public class SimulatedRemoteInput : InputManager
 {
     TimedQueue<InputStruct> remoteInputs;
     int remoteFrame = 0;
