@@ -3,6 +3,7 @@ public class Rollback : DelayBased
 {
     private NetcodeManager netcodeManager;
     [SerializeField] [OnChangedCall("rollbackFramesChange")] public int rollbackFrames = 8;
+    [SerializeField] public bool resync = true;
     private TimedQueue<InputStruct> guessedInputs;
     private TimedData<InputStruct> mostRecentInput;
     void Start(){

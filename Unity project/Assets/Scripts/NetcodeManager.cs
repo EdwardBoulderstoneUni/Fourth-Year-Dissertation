@@ -9,7 +9,7 @@ public class NetcodeManager : MonoBehaviour
     [SerializeField] public bool useRollback = false;
     [SerializeField] private SimulatedRemoteInput remoteInputManager;
     public static int packetFrameSize = 5;
-    public TimedData<InputStruct> fetchRemote(int frame){
+    public TimedData<InputStruct> fetchRemoteInputOnFrame(int frame){
         var packet = remoteInputManager.getRemoteInput(frame);
         interference.interfere(rollbackNetcode, packet);
         interference.interfere(delayBasedNetcode, packet);
