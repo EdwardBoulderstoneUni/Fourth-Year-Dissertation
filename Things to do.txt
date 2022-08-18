@@ -1,0 +1,8 @@
+Things to do: 
+Understand code
+add Game tick counter graph
+what other things can be graphed?
+Seperate clients?
+Current frame
+Last recieved input frame
+Slow down

@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1318182784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab96a487a75b2e64492b87d5f1f58a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b36223e892ca8a4bb3ccd9790f014e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   jumpKey: 273
@@ -1433,7 +1433,7 @@ GameObject:
   - component: {fileID: 1470653876}
   - component: {fileID: 1470653875}
   m_Layer: 0
-  m_Name: Player1LocalState
+  m_Name: LocalState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localInput: {fileID: 1470653875}
-  trueRemoteInput: {fileID: 1318182790}
+  trueRemoteInput: {fileID: 0}
   characters:
   - {fileID: 835481182}
   - {fileID: 1431223174}
