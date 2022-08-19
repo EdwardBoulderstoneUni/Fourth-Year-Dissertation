@@ -10,11 +10,11 @@ public class GameState : MonoBehaviour
     public const int rejumpPreventionFrames = 10;    
     private TimedQueue<InputStruct>[] inputQueues = new TimedQueue<InputStruct>[2];
     private TimedQueue<State> stateQueue;
-    private int frame;
+    private int lastSimulatedFrame;
     private NetcodeManager netcodeManager;
-    private int haltingFrames;
+    private int frameToPauseForResync;
     private bool paused;
-    private bool halted;
+    private bool resyncing;
     private const float frameDuration = 1/60f;
 
     public State getState(){
@@ -26,9 +26,9 @@ public class GameState : MonoBehaviour
         return state;
     }
     void Start(){
-        haltingFrames = -1;
-        halted = false;
+        frameToPauseForResync = -1;
         paused = false;
+        resyncing = false;
         netcodeManager = gameObject.GetComponentInParent<NetcodeManager>();
         for(int character = 0; character < 2; character ++){
             inputQueues[character] = new TimedQueue<InputStruct>(Math.Max(netcodeManager.getRollbackFrames(), netcodeManager.getDelayFrames()) *3);
@@ -38,7 +38,7 @@ public class GameState : MonoBehaviour
 
     void FixedUpdate() {
         tickHaltingFrames();
-        if(!halted && haltingFrames < 1){
+        if(!paused && !resyncing){
             readLocalInput();
             if (!paused){
                 readRemoteInput();
@@ -51,29 +51,33 @@ public class GameState : MonoBehaviour
     }
 
     void tickHaltingFrames(){
-        if (haltingFrames < 1)
-            return;
-        haltingFrames -= 1;
+        if (frameToPauseForResync < 1)
+            resyncing = false;
+        else{
+            resyncing = true; 
+            frameToPauseForResync -= 1;
+        }
+        
     }
 
     void readLocalInput() {
         TimedData<InputStruct> userInput = new TimedData<InputStruct>();
         userInput.data = localInput.getInput();
-        userInput.frame = frame;
+        userInput.frame = lastSimulatedFrame;
         inputQueues[0].push(userInput);
     }
 
     void readRemoteInput() {
-        inputQueues[1].push(netcodeManager.fetchRemote(getFrame()));
+        inputQueues[1].push(netcodeManager.fetchRemoteInputOnFrame(getFrame()));
     }
     void updateGame() {
-        int delayedFrame = frame - netcodeManager.getDelayFrames();
+        int delayedFrame = lastSimulatedFrame - netcodeManager.getDelayFrames();
         if (delayedFrame >= 0){
             updateObjectStates(delayedFrame);
             Physics2D.Simulate(frameDuration);
             saveState();
         }
-        frame += 1;
+        lastSimulatedFrame += 1;
     }
     void updateObjectStates(int targetFrame) {
         for(int character = 0; character < 2; character ++){
@@ -85,19 +89,9 @@ public class GameState : MonoBehaviour
     public void saveState() {
         TimedData<State> state = new TimedData<State>();
         state.data = getState();
-        state.frame = frame;
+        state.frame = lastSimulatedFrame;
         stateQueue.push(state);
     }
-    private void haltGame(){
-        pauseGame();
-        halted = true;
-    }
-
-    private void unhaltGame(){
-        resumeGame();
-        halted = false;
-    }
-
     public void pauseGame(){
         paused = true;
     }
@@ -106,28 +100,28 @@ public class GameState : MonoBehaviour
         paused = false;
     }
 
-    public void rollback(int destFrame){
-        haltGame();
-        int last_frame = frame;
-        loadState(stateQueue.getFrame(destFrame));
-        simulateToFrame(last_frame);
-        unhaltGame();
+    public void rollback(int destinationFrame){
+        pauseGame();
+        int lastRealTimeFrame = lastSimulatedFrame;
+        loadState(stateQueue.getFrame(destinationFrame));
+        simulateToFrame(lastRealTimeFrame);
+        resumeGame();
     }
     private void loadState(TimedData<State> timedState){
         var localState = timedState.data;
         characters[0].loadState(localState.player1);
         characters[1].loadState(localState.player2);
-        frame = timedState.frame;
+        lastSimulatedFrame = timedState.frame;
     }
-    private void simulateToFrame (int destFrame){
-        while (frame < destFrame)
+    private void simulateToFrame (int destinationFrame){
+        while (lastSimulatedFrame < destinationFrame)
             updateGame();
     }
 
     public int getFrame(){
-        return frame;
+        return lastSimulatedFrame;
     }
     public void haltForFrames(int frames){
-        haltingFrames = frames;
+        frameToPauseForResync = frames;
     }
 }

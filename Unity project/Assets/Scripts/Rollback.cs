@@ -30,7 +30,8 @@ public class Rollback : DelayBased
             
             mostRecentInput = input.data[0];
             unhaltOnPacket(input);
-            haltForOneSidedRollback();
+            if (resync)
+                haltForOneSidedRollback();
         }
     }
     private void haltForOneSidedRollback(){
