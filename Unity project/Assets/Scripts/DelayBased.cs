@@ -11,7 +11,7 @@ public class DelayBased : Netcode
     override public void remoteInput(Packet<InputStruct> input)
     {
         receivedInputs.readPacket(input);
-        unhaltOnPacket(input);
+        checkIfHaltingPacket(input);
     }
     override public TimedData<InputStruct> fetchRemote(int frame)
     {
@@ -22,7 +22,7 @@ public class DelayBased : Netcode
             haltForFrame(frame);
         return remote;
     }
-    protected void unhaltOnPacket(Packet<InputStruct> packet){
+    protected void checkIfHaltingPacket(Packet<InputStruct> packet){
         if (haltingFrame > 0 && receivedInputs.contains(haltingFrame)){
             haltingFrame = -1;
             gameObject.GetComponent<NetcodeManager>().resumeGame();
